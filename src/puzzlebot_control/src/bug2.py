@@ -6,14 +6,15 @@ from geometry_msgs.msg import Twist, Pose
 from nav_msgs.msg import Odometry
 from math import atan2, sqrt, pi, tan
 from tf.transformations import euler_from_quaternion
-from puzzlebot_control.srv import SetGoal, SetGoalResponse
+from puzzlebot_sim.srv import SetGoal, SetGoalResponse
 
 class Bug2Algorithm:
     # Define class-level constants
     OBSTACLE_DISTANCE_THRESHOLD = 0.3 # m
     RATE = 60 # Hz
-    DESIRED_WALL_DISTANCE = 0.3 # m
-    MAX_TURN_SPEED = 0.1 # rad/s
+    DESIRED_WALL_DISTANCE = 0.5 # m
+    MAX_TURN_SPEED = 0.2 # rad/s
+    MAX_LINEAR_SPEED = 0.2
     KP = 0.75 # Proportional gain for turning
     GOAL_REACHED_THRESHOLD = 0.4  # the goal is considered reached if we are closer than this value
 
@@ -39,9 +40,10 @@ class Bug2Algorithm:
         self.goal = None 
         self.robot_position = Pose() 
         self.current_speed = 0.0
+        self.current_angular_speed = 0.0
         self.robot_orientation = 0.0 # Robot orientation in RADIANS in world frame
         # Calculate the maximum allowed speed change based on the acceleration limit
-        MAX_ACCELERATION = 0.2 # m/s^2
+        MAX_ACCELERATION = 0.3 # m/s^2
         self.MAX_SPEED_CHANGE = MAX_ACCELERATION / self.RATE  # Assumes rate is in Hz
         
     # Callback function to process LaserScan messages    
@@ -73,6 +75,7 @@ class Bug2Algorithm:
     def set_goal_service_callback(self, req):
         self.goal = req.goal
         self.calculate_goal_direction()
+
         # Start the bug2 algorithm towards the new goal
         completed = self.run()
         return SetGoalResponse(completed)
@@ -94,14 +97,16 @@ class Bug2Algorithm:
         encounter_direction = self.goal_direction
         robot_position_at_encounter = self.robot_position
         # Circumnavigate the obstacle
+        start_time = rospy.Time.now()
+
         while True:
             self.move_around_obstacle()
-
+            delta_t = (rospy.Time.now().to_sec() - start_time.to_sec())
             # Check if the robot has intersected the goal line
             self.calculate_goal_direction()
             if (self.has_crossed_line(robot_position_at_encounter.position.x, robot_position_at_encounter.position.y, 
                                       self.robot_position.position.x, self.robot_position.position.y, 
-                                      encounter_direction) and self.goal_distance < encounter_distance):
+                                      encounter_direction) and self.goal_distance < encounter_distance and delta_t > 2):
                 rospy.loginfo("Goal line intersected")
                 break
     
@@ -112,13 +117,12 @@ class Bug2Algorithm:
 
     # Function to make the robot move around the obstacle while maintaining a constant distance from it
     def move_around_obstacle(self):
-        rospy.loginfo("Moving around obstacle")
         cmd_vel = Twist()
         # Get the indices of the laser scan that cover from 90 degrees to 0 degrees
         left_indices = range(0, len(self.laser_scan) // 4 + 1) # 0 to 90 degrees
         # Get the minimum distance to the wall on the right
         left_distance = min(self.laser_scan[i] for i in left_indices)
-        rospy.loginfo("left_distance: " + str(left_distance))
+        #rospy.loginfo("left_distance: " + str(left_distance))
         # Calculate the error
         error = self.DESIRED_WALL_DISTANCE - left_distance
         # Calculate the turn speed using a P controller
@@ -142,7 +146,6 @@ class Bug2Algorithm:
 
     # Function to make the robot move towards the goal
     def move_towards_goal(self):
-        rospy.loginfo("Moving towards goal")
         cmd_vel = Twist()
         cmd_vel.linear.x = 0.1
         cmd_vel.angular.z = self.goal_direction - self.robot_orientation
@@ -157,9 +160,21 @@ class Bug2Algorithm:
         if abs(speed_change) > self.MAX_SPEED_CHANGE:
             speed_change = self.MAX_SPEED_CHANGE if speed_change > 0 else -self.MAX_SPEED_CHANGE
 
+        angular_speed_change = cmd_vel.angular.z - self.current_angular_speed
+        # If the desired speed change exceeds the maximum, limit it
+        if abs(angular_speed_change) > self.MAX_SPEED_CHANGE:
+            angular_speed_change = self.MAX_SPEED_CHANGE if angular_speed_change > 0 else -self.MAX_SPEED_CHANGE
+
         # Update the current speed
         self.current_speed += speed_change
+        self.current_angular_speed += angular_speed_change
+        if abs(self.current_speed) > self.MAX_LINEAR_SPEED:
+            self.current_speed = self.MAX_LINEAR_SPEED
+
+        if abs(self.current_angular_speed) > self.MAX_TURN_SPEED:
+            self.current_angular_speed = self.MAX_TURN_SPEED
         cmd_vel.linear.x = self.current_speed
+        cmd_vel.angular.z = self.current_angular_speed
 
         self.cmd_pub.publish(cmd_vel)
 
@@ -178,10 +193,7 @@ class Bug2Algorithm:
             if self.detect_obstacle_ahead():
                 self.circumnavigate_obstacle()
             elif self.goal_distance < self.GOAL_REACHED_THRESHOLD:
-                cmdvel = Twist()
-                cmdvel.linear.x = 0
-                cmdvel.angular.z = 0
-                self.cmd_pub.publish(cmdvel)
+                self.cmd_pub.publish(Twist())
                 rospy.loginfo("Goal reached!")
                 return True
             else:

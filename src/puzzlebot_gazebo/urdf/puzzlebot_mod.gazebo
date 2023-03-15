@@ -96,7 +96,7 @@
   <gazebo reference="$(arg prefix)lidar">
     <material>Gazebo/Red</material>
     <sensor type="ray" name="rplidar">
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0 0 0 0 0 ${PI}</pose>
       <visualize>false</visualize>
       <update_rate>10</update_rate>
       <always_on>true</always_on>

@@ -136,7 +136,7 @@ class Odom():
 
 def main():
     rospy.init_node('localisation', anonymous=True)
-    hz = 10
+    hz = 100
     rate = rospy.Rate(hz)
     model = Odom(hz)
     while not rospy.is_shutdown():

@@ -7,7 +7,6 @@
 #include <aruco_msgs/Marker.h>
 #include <aruco_msgs/MarkerArray.h>
 #include <tf/transform_listener.h>
-
 class MarkerRvizShow
 {
 private:
@@ -19,6 +18,7 @@ private:
 	std::string marker_frame_;
 	std::string camera_frame_;
 	std::string reference_frame_;
+	std::string shape_;
 	tf::TransformListener listener;
 public:
 	MarkerRvizShow() : nh("~")
@@ -27,12 +27,13 @@ public:
 		nh.param<std::string>("advertise", advertise, "");
 		nh.param<std::string>("subscribe", subscribe, "");
 
-		sub = nh.subscribe( subscribe + "/markers", 10, &MarkerRvizShow::markers_callback, this);
-		marker_rviz_pub = nh.advertise<visualization_msgs::MarkerArray>((advertise + "/markers_show"), 1);
+		sub = nh.subscribe( subscribe, 10, &MarkerRvizShow::markers_callback, this);
+		marker_rviz_pub = nh.advertise<visualization_msgs::MarkerArray>((advertise + "markers_show"), 1);
 		nh.param<double>("marker_size", marker_size, 0.05);
 		nh.param<std::string>("reference_frame", reference_frame_, "");
 		nh.param<std::string>("camera_frame", camera_frame_, "");
 		nh.param<std::string>("marker_frame", marker_frame_, "");
+		nh.param<std::string>("shape", shape_, "");
 
 		marker_array = visualization_msgs::MarkerArray();
 	}
@@ -46,6 +47,8 @@ public:
 			// publish rviz marker representing the ArUco marker patch
 			visualization_msgs::Marker visMarker;
 			visMarker.header = msg_marker.header;
+			visMarker.header.stamp = ros::Time::now();
+
 			visMarker.ns = "aruco_markers";
 			visMarker.id = msg_marker.id;
 			visMarker.type = visualization_msgs::Marker::CUBE;
@@ -53,7 +56,12 @@ public:
 			visMarker.pose = msg_marker.pose.pose;
 			visMarker.scale.x = marker_size;
 			visMarker.scale.y = marker_size;
-			visMarker.scale.z = 0.001;
+			if (shape_ == "cube") {
+				visMarker.scale.z = marker_size;
+			}
+			else {
+				visMarker.scale.z = .01;
+			}
 			visMarker.color.r = 1.0;
 			visMarker.color.g = 0;
 			visMarker.color.b = 0;
