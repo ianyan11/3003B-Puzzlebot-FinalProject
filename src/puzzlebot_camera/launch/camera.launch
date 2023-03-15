@@ -4,20 +4,20 @@
     <arg name="cam_frame"       value="puzzlebot/camera"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
     <arg name="ref_frame"       value="puzzlebot/camera"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
 
-    <node pkg="aruco_ros" type="marker_publisher" name="cube_marker_publisher">
+   <!-- <node pkg="aruco_ros" type="marker_publisher" name="cube_marker_publisher">
         <remap from="/camera_info" to="camera/camera_info" />
         <remap from="/image" to="camera/image_color" />
         <param name="image_is_rectified" value="False"/>
         <param name="marker_size"        value="0.04"/>
-        <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="reference_frame"    value="$(arg ref_frame)"/>
         <param name="camera_frame"       value="$(arg cam_frame)"/>
         <param name="marker_frame"       value="$(arg marker_frame)"/>
         <param name="detection_mode"     value="DM_VIDEO_FAST" />
-        <param name="advertise_name"     value="/puzzlebot/cube" />  <!-- /markers and /markers_list  -->
+        <param name="advertise_name"     value="/puzzlebot/cube" />
         <param name="set_y_perpendicular" value="False" />
         <param name="dictionary"         value="DICT_4X4_50"/>
         <param name="marker_id_list" type="yaml" value="[0, 1, 2]" />
-    </node>
+    </node> -->
     <node pkg="aruco_ros" type="marker_publisher" name="wall_marker_publisher">
         <remap from="/camera_info" to="camera/camera_info" />
         <remap from="/image" to="camera/image_color" />

@@ -10,12 +10,12 @@ from puzzlebot_sim.srv import SetGoal, SetGoalResponse
 
 class Bug2Algorithm:
     # Define class-level constants
-    OBSTACLE_DISTANCE_THRESHOLD = 0.3 # m
+    OBSTACLE_DISTANCE_THRESHOLD = 0.4 # m
     RATE = 60 # Hz
     DESIRED_WALL_DISTANCE = 0.5 # m
     MAX_TURN_SPEED = 0.2 # rad/s
     MAX_LINEAR_SPEED = 0.2
-    KP = 0.75 # Proportional gain for turning
+    KP = 1 # Proportional gain for turning
     GOAL_REACHED_THRESHOLD = 0.4  # the goal is considered reached if we are closer than this value
 
     # Initialize ROS node, subscribers, and publishers
@@ -43,7 +43,7 @@ class Bug2Algorithm:
         self.current_angular_speed = 0.0
         self.robot_orientation = 0.0 # Robot orientation in RADIANS in world frame
         # Calculate the maximum allowed speed change based on the acceleration limit
-        MAX_ACCELERATION = 0.3 # m/s^2
+        MAX_ACCELERATION = 0.2 # m/s^2
         self.MAX_SPEED_CHANGE = MAX_ACCELERATION / self.RATE  # Assumes rate is in Hz
         
     # Callback function to process LaserScan messages    
@@ -97,16 +97,14 @@ class Bug2Algorithm:
         encounter_direction = self.goal_direction
         robot_position_at_encounter = self.robot_position
         # Circumnavigate the obstacle
-        start_time = rospy.Time.now()
 
         while True:
             self.move_around_obstacle()
-            delta_t = (rospy.Time.now().to_sec() - start_time.to_sec())
             # Check if the robot has intersected the goal line
             self.calculate_goal_direction()
             if (self.has_crossed_line(robot_position_at_encounter.position.x, robot_position_at_encounter.position.y, 
                                       self.robot_position.position.x, self.robot_position.position.y, 
-                                      encounter_direction) and self.goal_distance < encounter_distance and delta_t > 2):
+                                      encounter_direction) and self.goal_distance < encounter_distance - 0.1):
                 rospy.loginfo("Goal line intersected")
                 break
     
@@ -160,22 +158,21 @@ class Bug2Algorithm:
         if abs(speed_change) > self.MAX_SPEED_CHANGE:
             speed_change = self.MAX_SPEED_CHANGE if speed_change > 0 else -self.MAX_SPEED_CHANGE
 
-        angular_speed_change = cmd_vel.angular.z - self.current_angular_speed
-        # If the desired speed change exceeds the maximum, limit it
-        if abs(angular_speed_change) > self.MAX_SPEED_CHANGE:
-            angular_speed_change = self.MAX_SPEED_CHANGE if angular_speed_change > 0 else -self.MAX_SPEED_CHANGE
+        # angular_speed_change = cmd_vel.angular.z - self.current_angular_speed
+        # # If the desired speed change exceeds the maximum, limit it
+        # if abs(angular_speed_change) > self.MAX_SPEED_CHANGE:
+        #     angular_speed_change = self.MAX_SPEED_CHANGE if angular_speed_change > 0 else -self.MAX_SPEED_CHANGE
 
         # Update the current speed
         self.current_speed += speed_change
-        self.current_angular_speed += angular_speed_change
-        if abs(self.current_speed) > self.MAX_LINEAR_SPEED:
-            self.current_speed = self.MAX_LINEAR_SPEED
+        # self.current_angular_speed += angular_speed_change
+        # if abs(self.current_speed) > self.MAX_LINEAR_SPEED:
+        #     self.current_speed = self.MAX_LINEAR_SPEED
 
-        if abs(self.current_angular_speed) > self.MAX_TURN_SPEED:
-            self.current_angular_speed = self.MAX_TURN_SPEED
+        # if abs(self.current_angular_speed) > self.MAX_TURN_SPEED:
+        #     self.current_angular_speed = self.MAX_TURN_SPEED
         cmd_vel.linear.x = self.current_speed
-        cmd_vel.angular.z = self.current_angular_speed
-
+        #cmd_vel.angular.z = self.current_angular_speed
         self.cmd_pub.publish(cmd_vel)
 
     # Function to normalize an angle to the range [-pi, pi]

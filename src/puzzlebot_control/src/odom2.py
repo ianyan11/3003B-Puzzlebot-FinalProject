@@ -214,7 +214,7 @@ class Odom():
                 p = delta_x**2 + delta_y**2 # calculate the change in distance
                 z = self.calculate_observation_matrix(delta_x, delta_y, p, s) # calculate the observation matrix
                 G = self.linearised_observation_matrix(delta_x, delta_y, p) # calculate the linearised observation matrix
-                Z = G @ sigma @ G.T + np.array([[0.1, 0],[0, 0.02]]) # calculate the Z matrix
+                Z = G @ sigma @ G.T + np.array([[0.001, 0],[0, 0.0002]]) # calculate the Z matrix
                 K = sigma @ G.T @ np.linalg.inv(Z) # calculate the K matrix
                 delta_real = np.array([[real_marker_position[0][0]] - s[0][0], [real_marker_position[1][0]] - s[1][0]])
                 p2 = delta_real[0][0]**2 + delta_real[1][0]**2
@@ -370,7 +370,7 @@ class Odom():
         #prediction_step
         sigma = self.priori_covariance(self.__sigma, u)
         #correction_step
-       # sigma = self.posteriori_covariance(sigma)
+        sigma = self.posteriori_covariance(sigma)
 
         self.odom_message.pose.pose.position = Point(
             self.__s[0][0], self.__s[1][0], self.r)
