@@ -15,8 +15,8 @@ class Odom():
         self.wl = 0
         self.wr = 0
         self.rate =rate
-        self.l = .08
-        self.r = .05
+        self.l = .09
+        self.r = .057
         self.pose = np.empty((3,1))
         self.sigmak = np.empty((3,3))
 
