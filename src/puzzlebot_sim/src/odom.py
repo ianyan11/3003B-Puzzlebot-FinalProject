@@ -22,7 +22,7 @@ class Odom():
 
         rospy.Subscriber('/wl', Float32, self.update_wl)
         rospy.Subscriber('/wr', Float32, self.update_wr)
-        self.odom = rospy.Publisher('/odom', Odometry, queue_size=10)
+        self.odom = rospy.Publisher('/odometry', Odometry, queue_size=10)
         self.odomConstants = self.fill_odomerty()
 
     def update_wl(self, wl: Float32) -> None:

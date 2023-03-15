@@ -20,8 +20,8 @@ class transformPuzzlebot:
         self.frequency = 100
 
     def odomCallback(self, odom: Odometry):
-        self.x = odom.pose.pose.position[0]
-        self.y = odom.pose.pose.position[1]
+        self.x = odom.pose.pose.position.x
+        self.y = odom.pose.pose.position.y
         self.broadcast_transform(odom.pose.pose.orientation)
 
         #Send transformation using broadcaster
@@ -44,7 +44,7 @@ def main():
     tf = transformPuzzlebot()
     rate =  rospy.Rate(100)
     while not rospy.is_shutdown():
-        tf.run()
+        # tf.run()
         rate.sleep()
 
 if (__name__== "__main__") :

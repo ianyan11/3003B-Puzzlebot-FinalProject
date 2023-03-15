@@ -116,10 +116,7 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../aruco_ros/aruco_ros/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/../aruco_ros/aruco/include
-
-)
+    )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -151,7 +148,7 @@ add_dependencies(enable_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPO
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libmultiply.so aruco)
+target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} aruco)
 #############
 ## Install ##
 #############
@@ -181,11 +178,11 @@ target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CM
 # )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
-)
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
 #   # myfile1

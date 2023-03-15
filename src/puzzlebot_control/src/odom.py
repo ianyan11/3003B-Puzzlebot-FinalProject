@@ -3,15 +3,16 @@ import rospy
 import numpy as np
 import math
 from std_msgs.msg import Float32
-from geometry_msgs.msg import Point
+from geometry_msgs.msg import Point, Quaternion, Vector3
 from nav_msgs.msg import Odometry
 from tf.transformations import quaternion_from_euler 
+from tf2_ros import TransformBroadcaster, TransformStamped 
 
 class Odom():
 
     def __init__(self, rate):
-        self.kr = .6
-        self.kl = .6
+        self.kr = .3
+        self.kl = .3
         self.wl = 0
         self.wr = 0
         self.rate =rate
@@ -19,7 +20,7 @@ class Odom():
         self.r = .057
         self.pose = np.empty((3,1))
         self.sigmak = np.empty((3,3))
-
+        self.br = TransformBroadcaster()
         rospy.Subscriber('/wl', Float32, self.update_wl)
         rospy.Subscriber('/wr', Float32, self.update_wr)
         self.odom = rospy.Publisher('/odom', Odometry, queue_size=10)
@@ -41,7 +42,21 @@ class Odom():
                         [self.v * math.sin(angle)],
                         [self.w]])/self.rate 
         self.pose += mat
-        
+      #Send transformation using broadcaster
+      
+    def broadcast_transform(self, orientation: Quaternion):
+        #Initialize broadcaster
+        t = TransformStamped()
+        #Fill the transform with the position and orientations
+        t.header.stamp = rospy.Time.now()
+        #Frame names
+        t.header.frame_id = "base_link"
+        t.child_frame_id = "chassis"
+        t.transform.translation = Vector3(self.pose[0].item(), self.pose[1].item(), 0)
+        t.transform.rotation = orientation
+        #Send transform
+        self.br.sendTransform(t)
+            
     def calculate_odometry(self) -> None:
         self.calculate_speeds()
         self.calculate_dead_reckoning()
@@ -54,6 +69,8 @@ class Odom():
         self.odomConstants.pose.pose.orientation.y = q[1]
         self.odomConstants.pose.pose.orientation.z = q[2]
         self.odomConstants.pose.pose.orientation.w = q[3]
+        self.broadcast_transform(self.odomConstants.pose.pose.orientation)
+
         self.odomConstants.twist.twist.linear.x = self.v
         self.odomConstants.twist.twist.angular.z = self.w
         self.odom.publish(self.odomConstants)
