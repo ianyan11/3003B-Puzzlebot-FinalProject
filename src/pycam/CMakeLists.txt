@@ -7,7 +7,7 @@ project(pycam)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS cv_bridge aruco_ros roscpp rospy std_msgs image_transport)
+find_package(catkin REQUIRED COMPONENTS cv_bridge roscpp rospy std_msgs image_transport)
 find_package(OpenCV 4 REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -115,7 +115,10 @@ include_directories(
 # include
     ${OpenCV_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
-    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../aruco_ros/aruco_ros/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../aruco_ros/aruco/include
+
 )
 
 ## Declare a C++ library
@@ -148,7 +151,7 @@ add_dependencies(enable_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPO
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_SOURCE_DIR}/lib/libmultiply.so)
+target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libmultiply.so aruco)
 #############
 ## Install ##
 #############
