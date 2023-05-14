@@ -7,7 +7,7 @@ project(pycam)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS cv_bridge aruco_ros roscpp rospy std_msgs)
+find_package(catkin REQUIRED COMPONENTS cv_bridge aruco_ros roscpp rospy std_msgs image_transport)
 find_package(OpenCV 4 REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -115,6 +115,7 @@ include_directories(
 # include
     ${OpenCV_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}/include
 )
 
 ## Declare a C++ library
@@ -141,12 +142,13 @@ add_executable(enable_camera src/enable_camera.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(enable_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} )
+target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_SOURCE_DIR}/lib/libmultiply.so)
 #############
 ## Install ##
 #############
@@ -176,12 +178,11 @@ target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} )
 # )
 
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
-
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
 #   # myfile1
