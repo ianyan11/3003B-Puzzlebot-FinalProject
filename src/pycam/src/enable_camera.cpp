@@ -1,72 +1,79 @@
 #include "ros/ros.h"
 #include "ros/console.h"
-#include <geometry_msgs/PointStamped.h>
 #include <image_transport/image_transport.h>
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.h>
-#include <aruco_ros/aruco_ros_utils.h>
-#include "pycam/multiply.h"
+#include <sensor_msgs/CameraInfo.h>
+
 int main(int argc, char** argv) {
     ros::init(argc, argv, "webcam_publish_test");
     ros::NodeHandle nh;
+
     image_transport::ImageTransport it(nh);
-    image_transport::Publisher pub = it.advertise("camera/image", 1);
-    image_transport::Publisher marker_pub = it.advertise("camera/marker_image", 1);
-    ros::Publisher marker_center_pub = nh.advertise<geometry_msgs::PointStamped>("camera/marker_center", 1);
-    ros::Rate rate(60);
-    cv::VideoCapture cap(
-        "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)1920, height=(int)1080,format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", 
-        cv::CAP_GSTREAMER);
+    image_transport::Publisher pub = it.advertise("camera/image_color", 1);
+
+    // Adding CameraInfo publisher
+    ros::Publisher cam_info_pub = nh.advertise<sensor_msgs::CameraInfo>("camera/camera_info", 1);
+    ros::Rate rate(120);
+
+    sensor_msgs::CameraInfo cam_info_msg;
+
+    // Camera intrinsic parameters
+    cam_info_msg.K = {385.172671, 0., 319.493898, 0., 516.679620, 231.445904, 0., 0., 1.};
+
+    // Distortion coefficients
+    cam_info_msg.D = {-0.311362, 0.082442, 0.000836, 0.001488};
+
+    // Projection matrix parameters
+    cam_info_msg.P = {84.19519, 0., 321.97906, 0., 0., 477.86301, 229.88387, 0., 0., 0., 1., 0.};
+
+    //Rotation Matrix
+    cam_info_msg.R = {1., 0., 0., 0., 1., 0., 0., 0., 1.};
+
+    // Camera distortion model
+    cam_info_msg.distortion_model = "plumb_bob";
+
+    // Camera frame id
+    cam_info_msg.header.frame_id = "camera";
+
+    // Image dimensions
+    cam_info_msg.height = 480;
+    cam_info_msg.width = 640;
+    
+
+    // Define the video size
+    cv::Size size = cv::Size(640, 480);
+    // Initialize video capture
+    cv::VideoCapture cap("nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)120/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", cv::CAP_GSTREAMER);
+    
     if (!cap.isOpened()) {
         ROS_ERROR("Could not open camera");
-        return -1;
+        return -1;  
     } 
-    bool stuff = cap.set(cv::CAP_PROP_FPS, 30);
-    aruco::CameraParameters camParam = aruco::CameraParameters();
-    cv::Mat frame, frame2;
-    aruco::MarkerDetector mDetector;
-    float min_marker_size; // percentage of image area
-    nh.param<float>("min_marker_size", min_marker_size, 0.01);
-    std::vector<aruco::Marker> markers;
-    mDetector.setDetectionMode(aruco::DM_VIDEO_FAST, min_marker_size);
+
+    // Matrix to store each frame
+    cv::Mat frame;
+    
+    // Main loop
     while (ros::ok()) {
-        markers.clear();
+        // Capture a frame
         cap >> frame;
-        if (frame.rows) {
-            // resize image to 640x480
-            cv::resize(frame, frame, cv::Size(640, 480));
-             //make frame sharper
-            cv::GaussianBlur(frame, frame2, cv::Size(0, 0), 3);
-            cv::addWeighted(frame, 1.5, frame2, -0.6, 0, frame);
-            cv::resize(frame, frame2, cv::Size(320, 240));
-            // detect markers
-            sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame2).toImageMsg();
+        
+        // If frame is valid
+        if (!frame.empty()) {
+            // Convert the frame to a ROS image message
+            sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame).toImageMsg();
+            // Publish the message
             pub.publish(msg);
-            mDetector.detect(frame, markers, camParam);
-              // for each marker, draw info and its boundaries in the image
-            for (std::size_t i = 0; i < markers.size(); ++i)
-            {
-                markers[i].draw(frame, cv::Scalar(0, 0, 255), 2);
-                //get center of marker
-                cv::Point2f center = markers[i].getCenter();
-                //publish center of marker
-                int x = center.x;
-                int y = center.y;
-                multiply(&x, &y);
-                geometry_msgs::PointStamped marker_center;
-                marker_center.header.stamp = ros::Time::now();
-                marker_center.point.x = x;
-                marker_center.point.y = y;
-                marker_center_pub.publish(marker_center);
-            }
-            if(markers.size() > 0)
-            {
-                cv::resize(frame, frame2, cv::Size(320, 240));
-                marker_pub.publish(cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame2).toImageMsg());
-            }
+            // Publish camera info
+            cam_info_msg.header.stamp = ros::Time::now();
+            cam_info_pub.publish(cam_info_msg);
         }
+
         rate.sleep();
     }
+
+    // Release the video capture object
     cap.release();
     return 0;
 }
