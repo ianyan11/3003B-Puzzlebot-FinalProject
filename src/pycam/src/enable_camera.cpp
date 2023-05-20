@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     image_transport::Publisher pub = it.advertise("camera/image", 1);
     image_transport::Publisher marker_pub = it.advertise("camera/marker_image", 1);
     ros::Publisher marker_center_pub = nh.advertise<geometry_msgs::PointStamped>("camera/marker_center", 1);
-    ros::Rate rate(60);
+    ros::Rate rate(30);
     cv::VideoCapture cap(
         "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)1920, height=(int)1080,format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", 
         cv::CAP_GSTREAMER);

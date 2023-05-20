@@ -115,12 +115,12 @@ include_directories(
 # include
     ${OpenCV_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
-    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/pycam.cpp
+#   include/${PROJECT_NAME}/multiply.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -148,7 +148,7 @@ add_dependencies(enable_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPO
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_SOURCE_DIR}/lib/libmultiply.so)
+target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libmultiply.so)
 #############
 ## Install ##
 #############

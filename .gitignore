@@ -3,3 +3,4 @@ build/
 devel/
 .catkin_workspace
 .git_old
+aruco_ros/
