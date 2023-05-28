@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     ros::Publisher marker_center_pub = nh.advertise<geometry_msgs::PointStamped>("camera/marker_center", 1);
     ros::Rate rate(30);
     cv::VideoCapture cap(
-        "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)1920, height=(int)1080,format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", 
+        "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)720, height=(int)480,format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", 
         cv::CAP_GSTREAMER);
     if (!cap.isOpened()) {
         ROS_ERROR("Could not open camera");
