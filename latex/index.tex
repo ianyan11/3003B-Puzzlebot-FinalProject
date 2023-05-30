@@ -1,0 +1,252 @@
+\chapter{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, g\+RPC y REST-\/\+API}
+\hypertarget{index}{}\label{index}\index{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API@{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API}}
+\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introducción}{Introducción}}\label{index_intro_sec}
+Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, g\+RPC y REST-\/\+API para lograr esta funcionalidad.\hypertarget{index_steps_sec}{}\doxysection{\texorpdfstring{Pasos del Proyecto}{Pasos del Proyecto}}\label{index_steps_sec}
+
+\begin{DoxyEnumerate}
+\item Captura de imagen y detección del objeto verde utilizando un ROS Node en Python.
+\item Creación de una librería en C++ para multiplicar las coordenadas por 100.
+\item Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.
+\item Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp.
+\item Desarrollo de un Wrapper de g\+RPC para convertir el ROS Topic en un servicio RPC.
+\item Implementación de un programa en C\# que consume el servicio RPC y muestra las coordenadas en la terminal.
+\item Uso de grpc-\/\+Gateway para exponer el servicio como un REST-\/\+API.
+\item Adquisición de las coordenadas del objeto desde el nuevo REST-\/\+API utilizando Postman o Flask, y guardar los datos en un archivo JSON.
+\end{DoxyEnumerate}\hypertarget{index_lang_sec}{}\doxysection{\texorpdfstring{Lenguajes y Plataformas}{Lenguajes y Plataformas}}\label{index_lang_sec}
+El proyecto utiliza los siguientes lenguajes y plataformas\+:
+
+
+\begin{DoxyItemize}
+\item Python\+: como wrapper para mandar el topico de ros por medio de un serivicio RPC.
+\item C++\+: para la captura de imagen y detección de objeto utilizando el ROS Node. Tambien la creación de la librería que realiza la multiplicación de las coordenadas.
+\item ROS\+: como plataforma de desarrollo y comunicación entre los componentes.
+\item g\+RPC\+: para la comunicación entre el ROS Node y el programa en Java a través de un servicio RPC.
+\item Java\+: para el programa que consume el servicio RPC y muestra las coordenadas en la terminal.
+\item grpc-\/\+Gateway junto con Go\+: para exponer el servicio como un REST-\/\+API.
+\item Postman o Flask\+: para adquirir las coordenadas desde el REST-\/\+API y guardar los datos en un archivo JSON.
+\item Protoc\+: para definir los mensajes y servicios utilizados en la comunicación g\+RPC.
+\end{DoxyItemize}\hypertarget{index_comp_sec}{}\doxysection{\texorpdfstring{Componentes Principales}{Componentes Principales}}\label{index_comp_sec}
+Los componentes principales del proyecto son\+:
+
+
+\begin{DoxyItemize}
+\item ROS Node en C++\+: captura una imagen de la webcam, detecta el objeto verde y calcula las coordenadas X e Y.
+\item Librería en C++\+: realiza la multiplicación de las coordenadas por 100.
+\item Wrapper de g\+RPC\+: convierte el ROS Topic en un servicio RPC.
+\item Protoc\+: define los mensajes y servicios utilizados en la comunicación g\+RPC.
+\item Programa en C\#\+: muestra las coordenadas del objeto en la terminal al consumir el servicio RPC.
+\item grpc-\/\+Gateway\+: expone el servicio como un REST-\/\+API para obtener las coordenadas.
+\item Postman o Flask\+: adquiere las coordenadas desde el REST-\/\+API y las guarda en un archivo JSON.
+\end{DoxyItemize}\hypertarget{index_steps_sec1}{}\doxysection{\texorpdfstring{Paso 1\+: Captura de imagen y detección del objeto verde utilizando un ROS Node en C++}{Paso 1: Captura de imagen y detección del objeto verde utilizando un ROS Node en C++}}\label{index_steps_sec1}
+\hypertarget{index_code_sec}{}\doxysubsection{\texorpdfstring{Código Fuente}{Código Fuente}}\label{index_code_sec}
+El código fuente para este paso se encuentra en el archivo {\ttfamily \doxylink{enable__camera_8cpp}{enable\+\_\+camera.\+cpp}}.
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}ros/ros.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}ros/console.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <geometry\_msgs/PointStamped.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <image\_transport/image\_transport.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cv\_bridge/cv\_bridge.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <aruco\_ros/aruco\_ros\_utils.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{multiply_8h}{pycam/multiply.h}}"{}}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{enable__camera_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv)\ \{}
+\DoxyCodeLine{\ \ \ \ ros::init(argc,\ argv,\ \textcolor{stringliteral}{"{}webcam\_publish\_test"{}});}
+\DoxyCodeLine{\ \ \ \ ros::NodeHandle\ nh;}
+\DoxyCodeLine{\ \ \ \ image\_transport::ImageTransport\ it(nh);}
+\DoxyCodeLine{\ \ \ \ image\_transport::Publisher\ pub\ =\ it.advertise(\textcolor{stringliteral}{"{}camera/image"{}},\ 1);}
+\DoxyCodeLine{\ \ \ \ image\_transport::Publisher\ marker\_pub\ =\ it.advertise(\textcolor{stringliteral}{"{}camera/marker\_image"{}},\ 1);}
+\DoxyCodeLine{\ \ \ \ ros::Publisher\ marker\_center\_pub\ =\ nh.advertise<geometry\_msgs::PointStamped>(\textcolor{stringliteral}{"{}camera/marker\_center"{}},\ 1);}
+\DoxyCodeLine{\ \ \ \ ros::Rate\ rate(30);}
+\DoxyCodeLine{\ \ \ \ cv::VideoCapture\ cap(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}nvarguscamerasrc\ !\ video/x-\/raw(memory:NVMM),\ width=(int)720,\ height=(int)480,format=(string)NV12,\ framerate=(fraction)30/1\ !\ nvvidconv\ !\ video/x-\/raw,\ format=(string)BGRx\ !\ videoconvert\ !\ \ appsink"{}},\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cv::CAP\_GSTREAMER);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!cap.isOpened())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ROS\_ERROR(\textcolor{stringliteral}{"{}Could\ not\ open\ camera"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\ \ \ \ \}\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ stuff\ =\ cap.set(cv::CAP\_PROP\_FPS,\ 30);}
+\DoxyCodeLine{\ \ \ \ aruco::CameraParameters\ camParam\ =\ aruco::CameraParameters();}
+\DoxyCodeLine{\ \ \ \ cv::Mat\ frame,\ frame2;}
+\DoxyCodeLine{\ \ \ \ aruco::MarkerDetector\ mDetector;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ min\_marker\_size;\ \textcolor{comment}{//\ percentage\ of\ image\ area}}
+\DoxyCodeLine{\ \ \ \ nh.param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}min\_marker\_size"{}},\ min\_marker\_size,\ 0.01);}
+\DoxyCodeLine{\ \ \ \ std::vector<aruco::Marker>\ markers;}
+\DoxyCodeLine{\ \ \ \ mDetector.setDetectionMode(aruco::DM\_VIDEO\_FAST,\ min\_marker\_size);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (ros::ok())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ markers.clear();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cap\ >>\ frame;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (frame.rows)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resize\ image\ to\ 640x480}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ cv::resize(frame,\ frame,\ cv::Size(640,\ 480));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//make\ frame\ sharper}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ cv::GaussianBlur(frame,\ frame2,\ cv::Size(0,\ 0),\ 3);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ cv::addWeighted(frame,\ 1.5,\ frame2,\ -\/0.6,\ 0,\ frame);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ cv::resize(frame,\ frame2,\ cv::Size(320,\ 240));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ detect\ markers}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ sensor\_msgs::ImagePtr\ msg\ =\ cv\_bridge::CvImage(std\_msgs::Header(),\ \textcolor{stringliteral}{"{}bgr8"{}},\ frame2).toImageMsg();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ pub.publish(msg);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ mDetector.detect(frame,\ markers,\ camParam);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ each\ marker,\ draw\ info\ and\ its\ boundaries\ in\ the\ image}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ markers.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ markers[i].draw(frame,\ cv::Scalar(0,\ 0,\ 255),\ 2);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ center\ of\ marker}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point2f\ center\ =\ markers[i].getCenter();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//publish\ center\ of\ marker}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ center.x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ center.y;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//call\ multiply\ .so\ function}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{multiply_8cpp_ad8d9ee68852e46ad9115ffae3bb0bc0b}{multiply}}(\&x,\ \&y);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ geometry\_msgs::PointStamped\ marker\_center;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.header.stamp\ =\ ros::Time::now();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.point.x\ =\ x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.point.y\ =\ y;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center\_pub.publish(marker\_center);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(markers.size()\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::resize(frame,\ frame2,\ cv::Size(320,\ 240));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_pub.publish(cv\_bridge::CvImage(std\_msgs::Header(),\ \textcolor{stringliteral}{"{}bgr8"{}},\ frame2).toImageMsg());}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rate.sleep();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ cap.release();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_description_sec}{}\doxysubsection{\texorpdfstring{Descripción del Código}{Descripción del Código}}\label{index_description_sec}
+En esta etapa, inicializamos un nodo ROS llamado \"{}webcam\+\_\+publish\+\_\+test\"{} y configuramos varios publicadores y suscriptores. El código entonces comienza a capturar imágenes desde la webcam utilizando Open\+CV y detecta marcadores Ar\+Uco en la imagen.
+
+Cada vez que se captura una imagen, se publica en el tópico \"{}camera/image\"{}. Si se detectan marcadores Ar\+Uco en la imagen, se dibujan en la imagen y se publica en el tópico \"{}camera/marker\+\_\+image\"{}. El centro del marcador detectado se calcula, se multiplica por 100 y se publica en el tópico \"{}camera/marker\+\_\+center\"{}.
+
+La detección de marcadores Ar\+Uco se realiza utilizando la biblioteca Ar\+Uco. Los marcadores son objetos cuadrados en el mundo real que pueden ser fácilmente detectados y identificados en imágenes. Son útiles para la calibración de cámaras y la estimación de la pose en aplicaciones de realidad aumentada. El código detecta los marcadores utilizando el modo de detección rápido de video ({\ttfamily DM\+\_\+\+VIDEO\+\_\+\+FAST}) con un tamaño mínimo de marcador especificado por el parámetro \"{}min\+\_\+marker\+\_\+size\"{}.
+
+El código continúa en un bucle hasta que se detiene el nodo ROS. Luego, libera la cámara y finaliza.\hypertarget{index_usage_sec1}{}\doxysubsection{\texorpdfstring{Uso del Código}{Uso del Código}}\label{index_usage_sec1}
+Para usar este código, debses tener una webcam compatible y un marcador Ar\+Uco visible en la imagen de la webcam. Puedes ajustar el tamaño mínimo del marcador y la frecuencia de captura de imágenes cambiando los parámetros \"{}min\+\_\+marker\+\_\+size\"{} y \"{}rate\"{}, respectivamente.\hypertarget{index_steps_sec2}{}\doxysection{\texorpdfstring{Paso 2\+: Creación de una librería en C++ para multiplicar las coordenadas por 100}{Paso 2: Creación de una librería en C++ para multiplicar las coordenadas por 100}}\label{index_steps_sec2}
+\hypertarget{index_code_sec}{}\doxysubsection{\texorpdfstring{Código Fuente}{Código Fuente}}\label{index_code_sec}
+El código fuente para este paso se encuentra en los archivos {\ttfamily \doxylink{multiply_8h}{multiply.\+h}} y {\ttfamily \doxylink{multiply_8cpp}{multiply.\+cpp}}.
+
+{\ttfamily \doxylink{multiply_8cpp}{multiply.\+cpp}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{multiply_8cpp_ad8d9ee68852e46ad9115ffae3bb0bc0b}{multiply}}(\textcolor{keywordtype}{int}*\ x,\ \textcolor{keywordtype}{int}*\ y)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *x\ *=\ 100;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *y\ *=\ 100;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ {\ttfamily \doxylink{multiply_8h}{multiply.\+h}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{multiply_8cpp_ad8d9ee68852e46ad9115ffae3bb0bc0b}{multiply}}(\textcolor{keywordtype}{int}*\ a,\ \textcolor{keywordtype}{int}*\ b);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_description_sec}{}\doxysubsection{\texorpdfstring{Descripción del Código}{Descripción del Código}}\label{index_description_sec}
+En esta etapa, creamos una librería en C++ que proporciona una función para multiplicar las coordenadas por 100.
+
+El archivo {\ttfamily \doxylink{multiply_8h}{multiply.\+h}} contiene la declaración de la función {\ttfamily multiply} que toma dos punteros a enteros y multiplica sus valores por 100.
+
+El archivo {\ttfamily \doxylink{multiply_8cpp}{multiply.\+cpp}} contiene la implementación de la función {\ttfamily multiply}. En esta implementación, los valores apuntados por los punteros se multiplican por 100.\hypertarget{index_steps_sec3}{}\doxysection{\texorpdfstring{Paso 3\+: Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.}{Paso 3: Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.}}\label{index_steps_sec3}
+\hypertarget{index_usage_sec2}{}\doxysubsection{\texorpdfstring{Uso del Código}{Uso del Código}}\label{index_usage_sec2}
+Para utilizar esta librería en tu proyecto, debes incluir el archivo de encabezado {\ttfamily \doxylink{multiply_8h}{multiply.\+h}} en tus archivos fuente donde necesites utilizar la función {\ttfamily multiply}. Luego, enlaza tu proyecto con el archivo objeto generado a partir del archivo fuente {\ttfamily \doxylink{multiply_8cpp}{multiply.\+cpp}}.
+
+Puedes llamar a la función {\ttfamily multiply} pasando los valores que deseas multiplicar por 100 como argumentos. Los valores se multiplicarán directamente en su ubicación de memoria. Por lo tanto, no es necesario devolver un valor de la función. Por ejemplo en \doxylink{enable__camera_8cpp}{enable\+\_\+camera.\+cpp} su puede ver como se utiliza la librería\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x\ =\ center.x;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ y\ =\ center.y;}
+\DoxyCodeLine{\textcolor{comment}{//call\ multiply\ .so\ function}}
+\DoxyCodeLine{\mbox{\hyperlink{multiply_8cpp_ad8d9ee68852e46ad9115ffae3bb0bc0b}{multiply}}(\&x,\ \&y);}
+
+\end{DoxyCode}
+ Para lograr que el codigo usara el .so al compilar se tuvo que agregar lo siguiente en el {\ttfamily CMakelists.\+txt}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{include\_directories(}
+\DoxyCodeLine{\ \ \ \ \$\{CMAKE\_CURRENT\_SOURCE\_DIR\}/include}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{target\_link\_libraries(enable\_camera\ \$\{OpenCV\_LIBRARIES\}\ \$\{catkin\_LIBRARIES\}\ \$\{CMAKE\_CURRENT\_SOURCE\_DIR\}/lib/libmultiply.so)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{install(DIRECTORY\ include/\$\{PROJECT\_NAME\}/}
+\DoxyCodeLine{\ \ DESTINATION\ \$\{CATKIN\_PACKAGE\_INCLUDE\_DESTINATION\}}
+\DoxyCodeLine{\ \ FILES\_MATCHING\ PATTERN\ "{}*.h"{}}
+\DoxyCodeLine{\ \ PATTERN\ "{}.svn"{}\ EXCLUDE}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\hypertarget{index_python_hyperlink}{}\doxysubsection{\texorpdfstring{Como utilizar una libreria compartida (.\+so) en python}{Como utilizar una libreria compartida (.so) en python}}\label{index_python_hyperlink}
+Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina \doxysectlink{agregar_so_python}{Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes}{0}\hypertarget{index_steps_sec4}{}\doxysection{\texorpdfstring{Paso 4\+: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}{Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}}\label{index_steps_sec4}
+En este paso del proyecto, se publican las coordenadas resultantes en un ROS Topic junto con su timestamp. Esto permite que otros nodos de ROS puedan suscribirse a este topic y obtener las coordenadas actualizadas del objeto.
+
+El proceso de publicación de las coordenadas se realiza utilizando el framework ROS y su sistema de publicación y suscripción de mensajes. A continuación, se describe el flujo de trabajo para realizar esta tarea\+:
+
+
+\begin{DoxyEnumerate}
+\item Definir un mensaje\+: Antes de publicar las coordenadas, se debe definir un mensaje personalizado en ROS que contenga los campos necesarios para almacenar las coordenadas X e Y, así como el timestamp correspondiente. Para ello se escogio un mensaje de tipo Point\+Stamped que ya viene definido en ROS. Este mensaje contiene los campos necesarios para almacenar las coordenadas X e Y, así como el timestamp correspondiente.
+\item Crear un publicador\+: En el nodo responsable de la detección y cálculo de las coordenadas, se debe crear un objeto publicador que esté configurado para publicar mensajes en el topic específico. El publicador se crea utilizando la biblioteca de ROS y se especifica el tipo de mensaje que se publicará (el mensajes definido en el paso anterior). Esto se puede ver en el archivo {\ttfamily \doxylink{enable__camera_8cpp}{enable\+\_\+camera.\+cpp}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros::Publisher\ marker\_center\_pub\ =\ nh.advertise<geometry\_msgs::PointStamped>(\textcolor{stringliteral}{"{}camera/marker\_center"{}},\ 1);}
+
+\end{DoxyCode}
+
+\item Actualizar y publicar las coordenadas\+: En cada iteración del bucle de detección y cálculo de coordenadas, se actualizan los valores de las coordenadas y se establece el timestamp actual. A continuación, se empaquetan los valores de las coordenadas y el timestamp en un objeto de mensaje y se publica a través del publicador creado en el paso anterior. Esto se puede ver en el archivo {\ttfamily \doxylink{enable__camera_8cpp}{enable\+\_\+camera.\+cpp}}\+: 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ each\ marker,\ draw\ info\ and\ its\ boundaries\ in\ the\ image}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ markers.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ markers[i].draw(frame,\ cv::Scalar(0,\ 0,\ 255),\ 2);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ center\ of\ marker}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point2f\ center\ =\ markers[i].getCenter();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//publish\ center\ of\ marker}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ center.x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ center.y;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//call\ multiply\ .so\ function}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{multiply_8cpp_ad8d9ee68852e46ad9115ffae3bb0bc0b}{multiply}}(\&x,\ \&y);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ geometry\_msgs::PointStamped\ marker\_center;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.header.stamp\ =\ ros::Time::now();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.point.x\ =\ x;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center.point.y\ =\ y;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ marker\_center\_pub.publish(marker\_center);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCodeInclude}
+ Una vez que las coordenadas se publican en el topic, otros nodos de ROS pueden suscribirse a este topic y recibir las coordenadas actualizadas en tiempo real. Esto permite la integración con otros componentes del sistema o la realización de acciones específicas basadas en las coordenadas detectadas. 
+\end{DoxyEnumerate}\hypertarget{index_steps_sec5}{}\doxysection{\texorpdfstring{Paso 5\+: Desarrollo de un Wrapper de g\+RPC para convertir el ROS Topic en un servicio RPC}{Paso 5: Desarrollo de un Wrapper de gRPC para convertir el ROS Topic en un servicio RPC}}\label{index_steps_sec5}
+En este paso del proyecto, se desarrolla un Wrapper de g\+RPC que convierte el ROS Topic de las coordenadas en un servicio RPC. Esto permite la comunicación entre el nodo ROS y otros programas o sistemas que pueden consumir el servicio RPC.
+
+El Wrapper de g\+RPC se implementa utilizando el lenguaje de programación Python y las bibliotecas de g\+RPC y ROS. El código se encuentra en el documento {\ttfamily \doxylink{grpc__wrapper_8py}{grpc\+\_\+wrapper.\+py}}. A continuación, se describe el flujo de trabajo para convertir el ROS Topic en un servicio RPC utilizando el Wrapper de g\+RPC\+:
+
+
+\begin{DoxyEnumerate}
+\item Definir el servicio RPC\+: Antes de implementar el Wrapper de g\+RPC, se debe definir el servicio RPC que se proporcionará. El servicio debe tener una interfaz clara que especifique los métodos que estarán disponibles y los tipos de datos que se utilizarán.
+\item Generar los archivos de código\+: Utilizando el compilador de g\+RPC, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio. /include proto/\+Position\+Service.\+proto
+\item Implementar el servidor g\+RPC\+: En el nodo ROS responsable de las coordenadas, se implementa el servidor g\+RPC utilizando el Wrapper de g\+RPC. Esto implica crear una clase que herede de la clase generada por el compilador de g\+RPC para el servicio RPC. En esta clase, se deben implementar los métodos definidos en la interfaz del servicio RPC.
+\item Configurar el servidor g\+RPC\+: Se configura el servidor g\+RPC para que escuche en un puerto específico y acepte conexiones entrantes. Esto se realiza utilizando la biblioteca de g\+RPC y se especifica el número de puerto en el que se desea escuchar.
+\item Agregar el servidor g\+RPC al nodo ROS\+: Se agrega el servidor g\+RPC al nodo ROS para que se ejecute como parte del nodo. Esto se realiza creando una instancia de la clase del servidor g\+RPC y llamando al método de inicio del servidor.
+\end{DoxyEnumerate}
+
+Una vez que se ha implementado el Wrapper de g\+RPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas. 

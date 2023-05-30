@@ -1,0 +1,206 @@
+/*! \mainpage Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-API
+
+\section intro_sec Introducción
+
+Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, gRPC y REST-API para lograr esta funcionalidad.
+
+\section steps_sec Pasos del Proyecto
+
+1. Captura de imagen y detección del objeto verde utilizando un ROS Node en Python.
+2. Creación de una librería en C++ para multiplicar las coordenadas por 100.
+3. Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.
+4. Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp.
+5. Desarrollo de un Wrapper de gRPC para convertir el ROS Topic en un servicio RPC.
+6. Implementación de un programa en C# que consume el servicio RPC y muestra las coordenadas en la terminal.
+7. Uso de grpc-Gateway para exponer el servicio como un REST-API.
+8. Adquisición de las coordenadas del objeto desde el nuevo REST-API utilizando Postman o Flask, y guardar los datos en un archivo JSON.
+
+\section lang_sec Lenguajes y Plataformas
+
+El proyecto utiliza los siguientes lenguajes y plataformas:
+
+- Python: como wrapper para mandar el topico de ros por medio de un serivicio RPC.
+- C++: para la captura de imagen y detección de objeto utilizando el ROS Node. Tambien la creación de la librería que realiza la multiplicación de las coordenadas.
+- ROS: como plataforma de desarrollo y comunicación entre los componentes.
+- gRPC: para la comunicación entre el ROS Node y el programa en Java a través de un servicio RPC.
+- Java: para el programa que consume el servicio RPC y muestra las coordenadas en la terminal.
+- grpc-Gateway junto con Go: para exponer el servicio como un REST-API.
+- Postman o Flask: para adquirir las coordenadas desde el REST-API y guardar los datos en un archivo JSON.
+- Protoc: para definir los mensajes y servicios utilizados en la comunicación gRPC.
+
+\section comp_sec Componentes Principales
+
+Los componentes principales del proyecto son:
+
+- ROS Node en C++: captura una imagen de la webcam, detecta el objeto verde y calcula las coordenadas X e Y.
+- Librería en C++: realiza la multiplicación de las coordenadas por 100.
+- Wrapper de gRPC: convierte el ROS Topic en un servicio RPC.
+- Protoc: define los mensajes y servicios utilizados en la comunicación gRPC.
+- Programa en C#: muestra las coordenadas del objeto en la terminal al consumir el servicio RPC.
+- grpc-Gateway: expone el servicio como un REST-API para obtener las coordenadas.
+- Postman o Flask: adquiere las coordenadas desde el REST-API y las guarda en un archivo JSON.
+
+\section steps_sec1 Paso 1: Captura de imagen y detección del objeto verde utilizando un ROS Node en C++
+
+\subsection code_sec Código Fuente
+
+El código fuente para este paso se encuentra en el archivo `enable_camera.cpp`. 
+
+\include src/enable_camera.cpp
+
+\subsection description_sec Descripción del Código
+
+En esta etapa, inicializamos un nodo ROS llamado "webcam_publish_test" y configuramos varios publicadores y suscriptores. El código entonces comienza a capturar imágenes desde la webcam utilizando OpenCV y detecta marcadores ArUco en la imagen.
+
+Cada vez que se captura una imagen, se publica en el tópico "camera/image". Si se detectan marcadores ArUco en la imagen, se dibujan en la imagen y se publica en el tópico "camera/marker_image". El centro del marcador detectado se calcula, se multiplica por 100 y se publica en el tópico "camera/marker_center".
+
+La detección de marcadores ArUco se realiza utilizando la biblioteca ArUco. Los marcadores son objetos cuadrados en el mundo real que pueden ser fácilmente detectados y identificados en imágenes. Son útiles para la calibración de cámaras y la estimación de la pose en aplicaciones de realidad aumentada. El código detecta los marcadores utilizando el modo de detección rápido de video (`DM_VIDEO_FAST`) con un tamaño mínimo de marcador especificado por el parámetro "min_marker_size".
+
+El código continúa en un bucle hasta que se detiene el nodo ROS. Luego, libera la cámara y finaliza.
+
+\subsection usage_sec1 Uso del Código
+
+Para usar este código, debses tener una webcam compatible y un marcador ArUco visible en la imagen de la webcam. Puedes ajustar el tamaño mínimo del marcador y la frecuencia de captura de imágenes cambiando los parámetros "min_marker_size" y "rate", respectivamente.
+
+\section steps_sec2 Paso 2: Creación de una librería en C++ para multiplicar las coordenadas por 100
+
+\subsection code_sec Código Fuente
+
+El código fuente para este paso se encuentra en los archivos `multiply.h` y `multiply.cpp`.
+
+`multiply.cpp`
+\include include/pycam/multiply.cpp
+`multiply.h`
+\include include/pycam/multiply.h
+
+\subsection description_sec Descripción del Código
+
+En esta etapa, creamos una librería en C++ que proporciona una función para multiplicar las coordenadas por 100.
+
+El archivo `multiply.h` contiene la declaración de la función `multiply` que toma dos punteros a enteros y multiplica sus valores por 100.
+
+El archivo `multiply.cpp` contiene la implementación de la función `multiply`. En esta implementación, los valores apuntados por los punteros se multiplican por 100.
+
+\section steps_sec3 Paso 3: Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.
+\subsection usage_sec2 Uso del Código
+
+Para utilizar esta librería en tu proyecto, debes incluir el archivo de encabezado `multiply.h` en tus archivos fuente donde necesites utilizar la función `multiply`. Luego, enlaza tu proyecto con el archivo objeto generado a partir del archivo fuente `multiply.cpp`.
+
+Puedes llamar a la función `multiply` pasando los valores que deseas multiplicar por 100 como argumentos. Los valores se multiplicarán directamente en su ubicación de memoria. Por lo tanto, no es necesario devolver un valor de la función. Por ejemplo en enable_camera.cpp su puede ver como se utiliza la librería:
+
+\code{.cpp}
+  int x = center.x;
+  int y = center.y;
+  //call multiply .so function
+  multiply(&x, &y);
+\endcode
+Para lograr que el codigo usara el .so al compilar se tuvo que agregar lo siguiente en el `CMakelists.txt`:
+\code{.cmake}
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+\endcode
+
+\code{.cmake}
+target_link_libraries(enable_camera ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libmultiply.so)
+\endcode
+
+\code{.cmake}
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
+\endcode
+
+\subsection python_hyperlink Como utilizar una libreria compartida (.so) en python
+Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina \ref agregar_so_python
+
+
+\section steps_sec4 Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp
+
+En este paso del proyecto, se publican las coordenadas resultantes en un ROS Topic junto con su timestamp. Esto permite que otros nodos de ROS puedan suscribirse a este topic y obtener las coordenadas actualizadas del objeto.
+
+El proceso de publicación de las coordenadas se realiza utilizando el framework ROS y su sistema de publicación y suscripción de mensajes. A continuación, se describe el flujo de trabajo para realizar esta tarea:
+
+1. Definir un mensaje: Antes de publicar las coordenadas, se debe definir un mensaje personalizado en ROS que contenga los campos necesarios para almacenar las coordenadas X e Y, así como el timestamp correspondiente. Para ello se escogio un mensaje de tipo PointStamped que ya viene definido en ROS. Este mensaje contiene los campos necesarios para almacenar las coordenadas X e Y, así como el timestamp correspondiente.
+2. Crear un publicador: En el nodo responsable de la detección y cálculo de las coordenadas, se debe crear un objeto publicador que esté configurado para publicar mensajes en el topic específico. El publicador se crea utilizando la biblioteca de ROS y se especifica el tipo de mensaje que se publicará (el mensajes definido en el paso anterior).
+Esto se puede ver en el archivo `enable_camera.cpp`:
+\code{.cpp}
+ros::Publisher marker_center_pub = nh.advertise<geometry_msgs::PointStamped>("camera/marker_center", 1);
+\endcode
+3. Actualizar y publicar las coordenadas: En cada iteración del bucle de detección y cálculo de coordenadas, se actualizan los valores de las coordenadas y se establece el timestamp actual. A continuación, se empaquetan los valores de las coordenadas y el timestamp en un objeto de mensaje y se publica a través del publicador creado en el paso anterior.
+Esto se puede ver en el archivo `enable_camera.cpp`:
+\snippet src/enable_camera.cpp multiply example
+Una vez que las coordenadas se publican en el topic, otros nodos de ROS pueden suscribirse a este topic y recibir las coordenadas actualizadas en tiempo real. Esto permite la integración con otros componentes del sistema o la realización de acciones específicas basadas en las coordenadas detectadas.
+\section steps_sec5 Paso 5: Desarrollo de un Wrapper de gRPC para convertir el ROS Topic en un servicio RPC
+
+En este paso del proyecto, se desarrolla un Wrapper de gRPC que convierte el ROS Topic de las coordenadas en un servicio RPC. Esto permite la comunicación entre el nodo ROS y otros programas o sistemas que pueden consumir el servicio RPC.
+
+El Wrapper de gRPC se implementa utilizando el lenguaje de programación Python y las bibliotecas de gRPC y ROS. El código se encuentra en el documento `grpc_wrapper.py`. A continuación, se describe el flujo de trabajo para convertir el ROS Topic en un servicio RPC utilizando el Wrapper de gRPC:
+
+1. Definir el servicio RPC: Antes de implementar el Wrapper de gRPC, se debe definir el servicio RPC que se proporcionará. El servicio debe tener una interfaz clara que especifique los métodos que estarán disponibles y los tipos de datos que se utilizarán.
+2. Generar los archivos de código: Utilizando el compilador de gRPC, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio.
+/include proto/PositionService.proto
+3. Implementar el servidor gRPC: En el nodo ROS responsable de las coordenadas, se implementa el servidor gRPC utilizando el Wrapper de gRPC. Esto implica crear una clase que herede de la clase generada por el compilador de gRPC para el servicio RPC. En esta clase, se deben implementar los métodos definidos en la interfaz del servicio RPC.
+4. Configurar el servidor gRPC: Se configura el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Esto se realiza utilizando la biblioteca de gRPC y se especifica el número de puerto en el que se desea escuchar.
+5. Agregar el servidor gRPC al nodo ROS: Se agrega el servidor gRPC al nodo ROS para que se ejecute como parte del nodo. Esto se realiza creando una instancia de la clase del servidor gRPC y llamando al método de inicio del servidor.
+
+Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\page agregar_so_python Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes
+
+La biblioteca ctypes de Python proporciona una forma de acceder a funciones en bibliotecas compartidas desde Python sin necesidad de escribir extensiones de Python en C. A continuación, se muestra una guía paso a paso para agregar un archivo .so a Python utilizando ctypes.
+
+@section paso1 Paso 1: Importar el módulo ctypes
+
+Importa el módulo ctypes en tu script de Python:
+
+@code{python}
+import ctypes
+@endcode
+
+@section paso2 Paso 2: Cargar la biblioteca compartida
+
+Carga la biblioteca compartida utilizando la función `cdll.LoadLibrary` y especificando la ruta del archivo .so:
+
+@code{python}
+lib = ctypes.cdll.LoadLibrary("ruta_del_archivo.so")
+@endcode
+
+@section paso3 Paso 3: Acceder a las funciones de la biblioteca compartida
+
+Accede a las funciones de la biblioteca compartida utilizando el objeto `lib` creado en el paso anterior. Puedes llamar a las funciones de la biblioteca y pasar los argumentos requeridos.
+
+Si la función de la biblioteca requiere el uso de punteros, puedes utilizar el tipo `ctypes.POINTER` para crear un puntero a un tipo de datos específico. Por ejemplo, si tienes una función en la biblioteca compartida que toma un puntero a un entero, puedes crear un puntero utilizando `ctypes.POINTER(ctypes.c_int)`.
+
+Aquí hay un ejemplo de cómo utilizar un puntero en una función de la biblioteca compartida:
+
+@code{python}
+# Declaración de tipo de puntero a entero
+p_int = ctypes.POINTER(ctypes.c_int)
+
+# Creación de un puntero a un entero
+my_pointer = ctypes.pointer(ctypes.c_int(123))
+
+# Llamada a una función que toma un puntero a un entero
+lib.my_function(my_pointer)
+@endcode
+
+@section paso4 Paso 4: Utilizar el resultado (si corresponde)
+
+Si la función de la biblioteca tiene un tipo de retorno, puedes utilizar el resultado según corresponda.
+*/
+

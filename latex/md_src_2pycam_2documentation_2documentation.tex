@@ -1,0 +1,41 @@
+\chapter{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, g\+RPC y REST-\/\+API}
+\hypertarget{md_src_2pycam_2documentation_2documentation}{}\label{md_src_2pycam_2documentation_2documentation}\index{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API@{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API}}
+\label{md_src_2pycam_2documentation_2documentation_autotoc_md0}%
+\Hypertarget{md_src_2pycam_2documentation_2documentation_autotoc_md0}%
+ Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, g\+RPC y REST-\/\+API para lograr esta funcionalidad.\hypertarget{md_src_2pycam_2documentation_2documentation_autotoc_md1}{}\doxysection{\texorpdfstring{Pasos del Proyecto}{Pasos del Proyecto}}\label{md_src_2pycam_2documentation_2documentation_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item Captura de imagen y detección del objeto verde utilizando un ROS Node en Python.
+\item Creación de una librería en C++ para multiplicar las coordenadas por 100.
+\item Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.
+\item Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp.
+\item Desarrollo de un Wrapper de g\+RPC para convertir el ROS Topic en un servicio RPC.
+\item Implementación de un programa en C\# que consume el servicio RPC y muestra las coordenadas en la terminal.
+\item Uso de grpc-\/\+Gateway para exponer el servicio como un REST-\/\+API.
+\item Adquisición de las coordenadas del objeto desde el nuevo REST-\/\+API utilizando Postman o Flask, y guardar los datos en un archivo JSON.
+\end{DoxyEnumerate}\hypertarget{md_src_2pycam_2documentation_2documentation_autotoc_md2}{}\doxysection{\texorpdfstring{Lenguajes y Plataformas}{Lenguajes y Plataformas}}\label{md_src_2pycam_2documentation_2documentation_autotoc_md2}
+El proyecto utiliza los siguientes lenguajes y plataformas\+:
+
+
+\begin{DoxyItemize}
+\item Python\+: para la captura de imagen y detección de objeto utilizando el ROS Node.
+\item C++\+: para la creación de la librería que realiza la multiplicación de las coordenadas.
+\item ROS\+: como plataforma de desarrollo y comunicación entre los componentes.
+\item g\+RPC\+: para la comunicación entre el ROS Node y el programa en C\# a través de un servicio RPC.
+\item C\#\+: para el programa que consume el servicio RPC y muestra las coordenadas en la terminal.
+\item grpc-\/\+Gateway\+: para exponer el servicio como un REST-\/\+API.
+\item Postman o Flask\+: para adquirir las coordenadas desde el REST-\/\+API y guardar los datos en un archivo JSON.
+\end{DoxyItemize}\hypertarget{md_src_2pycam_2documentation_2documentation_autotoc_md3}{}\doxysection{\texorpdfstring{Componentes Principales}{Componentes Principales}}\label{md_src_2pycam_2documentation_2documentation_autotoc_md3}
+Los componentes principales del proyecto son\+:
+
+
+\begin{DoxyItemize}
+\item ROS Node en Python\+: captura una imagen de la webcam, detecta el objeto verde y calcula las coordenadas X e Y.
+\item Librería en C++\+: realiza la multiplicación de las coordenadas por 100.
+\item Wrapper de g\+RPC\+: convierte el ROS Topic en un servicio RPC.
+\item Programa en C\#\+: muestra las coordenadas del objeto en la terminal al consumir el servicio RPC.
+\item grpc-\/\+Gateway\+: expone el servicio como un REST-\/\+API para obtener las coordenadas.
+\item Postman o Flask\+: adquiere las coordenadas desde el REST-\/\+API y las guarda en un archivo JSON.
+\end{DoxyItemize}
+
+{\bfseries{Nota\+:}} Asegúrate de consultar la documentación detallada de cada componente para obtener más información sobre su implementación y funcionamiento. 

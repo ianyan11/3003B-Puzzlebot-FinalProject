@@ -1,0 +1,51 @@
+\begin{theindex}
+
+  \item {\_\_init\_\_}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{14}
+    \subitem {PositionService\_pb2\_grpc.PositionServiceStub}, 
+		\hyperpage{17}
+
+  \indexspace
+
+  \item {callback}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{14}
+
+  \indexspace
+
+  \item {grpc\_wrapper}, \hyperpage{11}
+  \item {grpc\_wrapper.PositionServiceServicer}, \hyperpage{13}
+    \subitem {\_\_init\_\_}, \hyperpage{14}
+    \subitem {callback}, \hyperpage{14}
+    \subitem {SendPosition}, \hyperpage{14}
+    \subitem {serve}, \hyperpage{15}
+    \subitem {server}, \hyperpage{15}
+    \subitem {serverStop}, \hyperpage{15}
+
+  \indexspace
+
+  \item {PositionService\_pb2}, \hyperpage{11}
+  \item {PositionService\_pb2\_grpc}, \hyperpage{12}
+  \item {PositionService\_pb2\_grpc.PositionService}, \hyperpage{13}
+  \item {PositionService\_pb2\_grpc.PositionServiceServicer}, 
+		\hyperpage{16}
+    \subitem {SendPosition}, \hyperpage{16}
+  \item {PositionService\_pb2\_grpc.PositionServiceStub}, 
+		\hyperpage{16}
+    \subitem {\_\_init\_\_}, \hyperpage{17}
+  \item {Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API}, 
+		\hyperpage{1}
+
+  \indexspace
+
+  \item {SendPosition}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{14}
+    \subitem {PositionService\_pb2\_grpc.PositionServiceServicer}, 
+		\hyperpage{16}
+  \item {serve}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{15}
+  \item {server}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{15}
+  \item {serverStop}
+    \subitem {grpc\_wrapper.PositionServiceServicer}, \hyperpage{15}
+
+\end{theindex}

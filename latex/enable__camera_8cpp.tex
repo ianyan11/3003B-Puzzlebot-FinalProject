@@ -1,0 +1,43 @@
+\doxysection{src/pycam/src/enable\+\_\+camera.cpp File Reference}
+\hypertarget{enable__camera_8cpp}{}\label{enable__camera_8cpp}\index{src/pycam/src/enable\_camera.cpp@{src/pycam/src/enable\_camera.cpp}}
+{\ttfamily \#include \"{}ros/ros.\+h\"{}}\newline
+{\ttfamily \#include \"{}ros/console.\+h\"{}}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Point\+Stamped.\+h$>$}\newline
+{\ttfamily \#include $<$image\+\_\+transport/image\+\_\+transport.\+h$>$}\newline
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\newline
+{\ttfamily \#include $<$cv\+\_\+bridge/cv\+\_\+bridge.\+h$>$}\newline
+{\ttfamily \#include $<$aruco\+\_\+ros/aruco\+\_\+ros\+\_\+utils.\+h$>$}\newline
+{\ttfamily \#include \"{}pycam/multiply.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{enable__camera_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Función principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{enable__camera_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{enable__camera_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+\index{enable\_camera.cpp@{enable\_camera.cpp}!main@{main}}
+\index{main@{main}!enable\_camera.cpp@{enable\_camera.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+Función principal. 
+
+Inicializa el nodo ROS, configura los publicadores y se suscribe a los temas relevantes. Captura imágenes de la cámara y realiza la detección de marcadores ARUCO, luego publica las imágenes y las posiciones de los marcadores detectados.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Número de argumentos. \\
+\hline
+{\em argv} & Argumentos de la línea de comandos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 si se ejecuta con éxito, -\/1 si no se pudo abrir la cámara. 
+\end{DoxyReturn}
+\mbox{[}multiply example\mbox{]}
+
+\mbox{[}multiply example\mbox{]}

@@ -8,7 +8,7 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
 # @@protoc_insertion_point(imports)
 
-_sym_db = _symbol_database.Default()
+_sym_db = _symbol_database.Default() # Base de datos de símbolos predeterminada
 
 
 
@@ -19,11 +19,11 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'src.pycam.proto.PositionService_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _EMPTY._serialized_start=58
-  _EMPTY._serialized_end=65
-  _POSITION._serialized_start=67
-  _POSITION._serialized_end=118
-  _POSITIONSERVICE._serialized_start=120
-  _POSITIONSERVICE._serialized_end=204
+  DESCRIPTOR._options = None # Opciones del descriptor
+  _EMPTY._serialized_start=58  # Inicio de la serialización de Empty
+  _EMPTY._serialized_end=65  # Fin de la serialización de Empty
+  _POSITION._serialized_start=67  # Inicio de la serialización de Position
+  _POSITION._serialized_end=118  # Fin de la serialización de Position
+  _POSITIONSERVICE._serialized_start=120  # Inicio de la serialización de PositionService
+  _POSITIONSERVICE._serialized_end=204  # Fin de la serialización de PositionService
 # @@protoc_insertion_point(module_scope)

@@ -6,6 +6,16 @@
 #include <cv_bridge/cv_bridge.h>
 #include <aruco_ros/aruco_ros_utils.h>
 #include "pycam/multiply.h"
+/**
+ * \brief Función principal.
+ * 
+ * Inicializa el nodo ROS, configura los publicadores y se suscribe a los temas relevantes. Captura imágenes de la cámara
+ * y realiza la detección de marcadores ARUCO, luego publica las imágenes y las posiciones de los marcadores detectados.
+ *
+ * \param argc Número de argumentos.
+ * \param argv Argumentos de la línea de comandos.
+ * \return 0 si se ejecuta con éxito, -1 si no se pudo abrir la cámara.
+ */
 int main(int argc, char** argv) {
     ros::init(argc, argv, "webcam_publish_test");
     ros::NodeHandle nh;
@@ -43,7 +53,8 @@ int main(int argc, char** argv) {
             sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame2).toImageMsg();
             pub.publish(msg);
             mDetector.detect(frame, markers, camParam);
-              // for each marker, draw info and its boundaries in the image
+            //! [multiply example]
+            // for each marker, draw info and its boundaries in the image
             for (std::size_t i = 0; i < markers.size(); ++i)
             {
                 markers[i].draw(frame, cv::Scalar(0, 0, 255), 2);
@@ -52,6 +63,7 @@ int main(int argc, char** argv) {
                 //publish center of marker
                 int x = center.x;
                 int y = center.y;
+                //call multiply .so function
                 multiply(&x, &y);
                 geometry_msgs::PointStamped marker_center;
                 marker_center.header.stamp = ros::Time::now();
@@ -59,6 +71,7 @@ int main(int argc, char** argv) {
                 marker_center.point.y = y;
                 marker_center_pub.publish(marker_center);
             }
+            //! [multiply example]
             if(markers.size() > 0)
             {
                 cv::resize(frame, frame2, cv::Size(320, 240));

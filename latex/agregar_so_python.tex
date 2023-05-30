@@ -1,0 +1,39 @@
+\chapter{Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes}
+\hypertarget{agregar_so_python}{}\label{agregar_so_python}\index{Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes@{Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes}}
+La biblioteca ctypes de Python proporciona una forma de acceder a funciones en bibliotecas compartidas desde Python sin necesidad de escribir extensiones de Python en C. A continuación, se muestra una guía paso a paso para agregar un archivo .so a Python utilizando ctypes.\hypertarget{agregar_so_python_paso1}{}\doxysection{\texorpdfstring{Paso 1\+: Importar el módulo ctypes}{Paso 1: Importar el módulo ctypes}}\label{agregar_so_python_paso1}
+Importa el módulo ctypes en tu script de Python\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import}\ ctypes}
+
+\end{DoxyCode}
+\hypertarget{agregar_so_python_paso2}{}\doxysection{\texorpdfstring{Paso 2\+: Cargar la biblioteca compartida}{Paso 2: Cargar la biblioteca compartida}}\label{agregar_so_python_paso2}
+Carga la biblioteca compartida utilizando la función {\ttfamily cdll.\+Load\+Library} y especificando la ruta del archivo .so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lib\ =\ ctypes.cdll.LoadLibrary(\textcolor{stringliteral}{"{}ruta\_del\_archivo.so"{}})}
+
+\end{DoxyCode}
+\hypertarget{agregar_so_python_paso3}{}\doxysection{\texorpdfstring{Paso 3\+: Acceder a las funciones de la biblioteca compartida}{Paso 3: Acceder a las funciones de la biblioteca compartida}}\label{agregar_so_python_paso3}
+Accede a las funciones de la biblioteca compartida utilizando el objeto {\ttfamily lib} creado en el paso anterior. Puedes llamar a las funciones de la biblioteca y pasar los argumentos requeridos.
+
+Si la función de la biblioteca requiere el uso de punteros, puedes utilizar el tipo {\ttfamily ctypes.\+POINTER} para crear un puntero a un tipo de datos específico. Por ejemplo, si tienes una función en la biblioteca compartida que toma un puntero a un entero, puedes crear un puntero utilizando {\ttfamily ctypes.\+POINTER(ctypes.\+c\+\_\+int)}.
+
+Aquí hay un ejemplo de cómo utilizar un puntero en una función de la biblioteca compartida\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Declaración\ de\ tipo\ de\ puntero\ a\ entero}}
+\DoxyCodeLine{p\_int\ =\ ctypes.POINTER(ctypes.c\_int)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Creación\ de\ un\ puntero\ a\ un\ entero}}
+\DoxyCodeLine{my\_pointer\ =\ ctypes.pointer(ctypes.c\_int(123))}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Llamada\ a\ una\ función\ que\ toma\ un\ puntero\ a\ un\ entero}}
+\DoxyCodeLine{lib.my\_function(my\_pointer)}
+
+\end{DoxyCode}
+\hypertarget{agregar_so_python_paso4}{}\doxysection{\texorpdfstring{Paso 4\+: Utilizar el resultado (si corresponde)}{Paso 4: Utilizar el resultado (si corresponde)}}\label{agregar_so_python_paso4}
+Si la función de la biblioteca tiene un tipo de retorno, puedes utilizar el resultado según corresponda. 

@@ -1,0 +1,24 @@
+\indexentry{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API@{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API}|hyperpage}{1}
+\indexentry{grpc\_wrapper@{grpc\_wrapper}|hyperpage}{11}
+\indexentry{PositionService\_pb2@{PositionService\_pb2}|hyperpage}{11}
+\indexentry{PositionService\_pb2\_grpc@{PositionService\_pb2\_grpc}|hyperpage}{12}
+\indexentry{PositionService\_pb2\_grpc.PositionService@{PositionService\_pb2\_grpc.PositionService}|hyperpage}{13}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{13}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!\_\_init\_\_@{\_\_init\_\_}|hyperpage}{14}
+\indexentry{\_\_init\_\_@{\_\_init\_\_}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{14}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!callback@{callback}|hyperpage}{14}
+\indexentry{callback@{callback}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{14}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!SendPosition@{SendPosition}|hyperpage}{14}
+\indexentry{SendPosition@{SendPosition}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{14}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!serve@{serve}|hyperpage}{15}
+\indexentry{serve@{serve}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{15}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!serverStop@{serverStop}|hyperpage}{15}
+\indexentry{serverStop@{serverStop}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{15}
+\indexentry{grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}!server@{server}|hyperpage}{15}
+\indexentry{server@{server}!grpc\_wrapper.PositionServiceServicer@{grpc\_wrapper.PositionServiceServicer}|hyperpage}{15}
+\indexentry{PositionService\_pb2\_grpc.PositionServiceServicer@{PositionService\_pb2\_grpc.PositionServiceServicer}|hyperpage}{16}
+\indexentry{PositionService\_pb2\_grpc.PositionServiceServicer@{PositionService\_pb2\_grpc.PositionServiceServicer}!SendPosition@{SendPosition}|hyperpage}{16}
+\indexentry{SendPosition@{SendPosition}!PositionService\_pb2\_grpc.PositionServiceServicer@{PositionService\_pb2\_grpc.PositionServiceServicer}|hyperpage}{16}
+\indexentry{PositionService\_pb2\_grpc.PositionServiceStub@{PositionService\_pb2\_grpc.PositionServiceStub}|hyperpage}{16}
+\indexentry{PositionService\_pb2\_grpc.PositionServiceStub@{PositionService\_pb2\_grpc.PositionServiceStub}!\_\_init\_\_@{\_\_init\_\_}|hyperpage}{17}
+\indexentry{\_\_init\_\_@{\_\_init\_\_}!PositionService\_pb2\_grpc.PositionServiceStub@{PositionService\_pb2\_grpc.PositionServiceStub}|hyperpage}{17}
