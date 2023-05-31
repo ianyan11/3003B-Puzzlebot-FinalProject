@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['registerallextensions_0',['registerAllExtensions',['../classobject__position_1_1PositionServiceOuterClass.html#abb2658005cb133bb7389ddb73e8319f9',1,'object_position.PositionServiceOuterClass.registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry)'],['../classobject__position_1_1PositionServiceOuterClass.html#ab70c3bab4e279b293280d22985d112d4',1,'object_position.PositionServiceOuterClass.registerAllExtensions(com.google.protobuf.ExtensionRegistry registry)']]]
+  ['newblockingstub_0',['newBlockingStub',['../classobject__position_1_1PositionServiceGrpc.html#a8f26584ae608698c32478de255d075c3',1,'object_position::PositionServiceGrpc']]],
+  ['newfuturestub_1',['newFutureStub',['../classobject__position_1_1PositionServiceGrpc.html#a8e0197bec7820525257967009bd63bae',1,'object_position::PositionServiceGrpc']]],
+  ['newstub_2',['newStub',['../classobject__position_1_1PositionServiceGrpc.html#a11f4093f6e8a696ab6a85c9ca814e5c8',1,'object_position::PositionServiceGrpc']]]
 ];

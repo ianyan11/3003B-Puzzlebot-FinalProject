@@ -945,8 +945,8 @@ WARN_LOGFILE           =
 
 INPUT                  =    src/pycam/src/ \
                             src/pycam/documentation/ \
-                            src/pycam/documentation/paso1.dox \
-                            src/pycam/
+                            src/pycam/ \
+                            src/pycam/proto/PositionService.proto \
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1031,7 +1031,8 @@ FILE_PATTERNS          = *.c \
                          *.vhdl \
                          *.ucf \
                          *.qsf \
-                         *.ice
+                         *.ice \
+                         *.proto
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1078,7 +1079,8 @@ EXCLUDE_SYMBOLS        =
 
 EXAMPLE_PATH           = src/pycam/documentation/ \
                          src/pycam/src/ \
-                         src/pycam/
+                         src/pycam/ \
+                         src/pycam/proto \
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and

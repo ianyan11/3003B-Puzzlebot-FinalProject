@@ -1,17 +1,55 @@
 syntax = "proto3";
 
 package object_position;
-message Empty {
-}
-// The response message containing the greetings
+
+/**
+ * @brief Mensaje vacío.
+ *
+ * Este mensaje se utiliza como una solicitud o respuesta vacía en el servicio.
+ */
+message Empty {}
+
+/**
+ * @brief Mensaje de posición.
+ *
+ * Este mensaje contiene las coordenadas (x e y) de un objeto, junto con un timestamp.
+ */
 message Position {
+  /**
+   * @brief Coordenada X del objeto.
+   *
+   * Este campo representa la coordenada X del objeto.
+   */
   double x = 1;
+
+  /**
+   * @brief Coordenada Y del objeto.
+   *
+   * Este campo representa la coordenada Y del objeto.
+   */
   double y = 2;
-  int64 timestamp = 3; // timestamp as UNIX epoch time
+
+  /**
+   * @brief Timestamp de la posición.
+   *
+   * Este campo representa el timestamp del mensaje.
+   */
+  int64 timestamp = 3;
 }
 
-// The service definition.
+/**
+ * @brief Servicio PositionService.
+ *
+ * Este servicio define el método RPC para enviar una posición.
+ */
 service PositionService {
-  // Sends a greeting
+  /**
+   * @brief Envía la posición.
+   *
+   * Este método RPC envía la posición y devuelve la posición actualizada.
+   *
+   * @param request La solicitud vacía.
+   * @return La respuesta de posición.
+   */
   rpc SendPosition (Empty) returns (Position);
 }

@@ -280,15 +280,29 @@ Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su
 <h1><a class="anchor" id="steps_sec5"></a>
 Paso 5: Desarrollo de un Wrapper de gRPC para convertir el ROS Topic en un servicio RPC</h1>
 <p>En este paso del proyecto, se desarrolla un Wrapper de gRPC que convierte el ROS Topic de las coordenadas en un servicio RPC. Esto permite la comunicación entre el nodo ROS y otros programas o sistemas que pueden consumir el servicio RPC.</p>
-<p>El Wrapper de gRPC se implementa utilizando el lenguaje de programación Python y las bibliotecas de gRPC y ROS. El código se encuentra en el documento <code><a class="el" href="grpc__wrapper_8py.html">grpc_wrapper.py</a></code>. A continuación, se describe el flujo de trabajo para convertir el ROS Topic en un servicio RPC utilizando el Wrapper de gRPC:</p>
-<ol type="1">
-<li>Definir el servicio RPC: Antes de implementar el Wrapper de gRPC, se debe definir el servicio RPC que se proporcionará. El servicio debe tener una interfaz clara que especifique los métodos que estarán disponibles y los tipos de datos que se utilizarán.</li>
-<li>Generar los archivos de código: Utilizando el compilador de gRPC, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio. /include proto/PositionService.proto</li>
-<li>Implementar el servidor gRPC: En el nodo ROS responsable de las coordenadas, se implementa el servidor gRPC utilizando el Wrapper de gRPC. Esto implica crear una clase que herede de la clase generada por el compilador de gRPC para el servicio RPC. En esta clase, se deben implementar los métodos definidos en la interfaz del servicio RPC.</li>
-<li>Configurar el servidor gRPC: Se configura el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Esto se realiza utilizando la biblioteca de gRPC y se especifica el número de puerto en el que se desea escuchar.</li>
-<li>Agregar el servidor gRPC al nodo ROS: Se agrega el servidor gRPC al nodo ROS para que se ejecute como parte del nodo. Esto se realiza creando una instancia de la clase del servidor gRPC y llamando al método de inicio del servidor.</li>
+<p>El Wrapper de gRPC se implementa utilizando el lenguaje de programación Python y las bibliotecas de gRPC y ROS. A continuación, se describe el flujo de trabajo para convertir el ROS Topic en un servicio RPC utilizando el Wrapper de gRPC:</p><ol type="1">
+<li>Definir el servicio RPC: Antes de implementar el Wrapper de gRPC, se debe definir el servicio RPC que se proporcionará. El servicio debe tener una interfaz clara que especifique los métodos que estarán disponibles y los tipos de datos que se utilizarán. Para esto, se utiliza la herramienta <code>protoc</code> para definir el mensaje enviado por gRPC. El archivo <code>.proto</code> contiene la definición del mensaje y se utiliza para generar los archivos de código necesarios. A continuación se puede observar el archivo <code>.proto</code> usado en este proyecto <code><a class="el" href="proto_2PositionService_8proto.html">pycam/proto/PositionService.proto</a></code>: <pre class="fragment"> syntax = "proto3";
+ 
+ package object_position;
+ message Empty {
+ }
+  // El mensaje de respuesta que contiene la posición
+  message Position {
+    double x = 1;
+    double y = 2;
+    int64 timestamp = 3; // Este campo representa el timestamp del mensaje.
+  }
+ 
+  // La definición del servicio
+  service PositionService {
+    // Envía una posición
+    rpc SendPosition (Empty) returns (Position);
+  }
+</pre></li>
+<li>Generar los archivos de código: Utilizando el compilador de gRPC y el archivo <code>.proto</code>, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio. Para generar los archivos se utilizo el siguiente comando: <pre class="fragment">$ python -m grpc_tools.protoc --python_out=. --grpc_python_out=. nombre_del_archivo.proto
+</pre> Y obtuvimos los archivos <code><a class="el" href="PositionService__pb2_8py.html">PositionService_pb2.py</a></code> y <code><a class="el" href="PositionService__pb2__grpc_8py.html">PositionService_pb2_grpc.py</a></code> que se pueden ver en la carpeta <code>pycam/src/</code>.</li>
+<li>Configurar y ejecutar el servidor gRPC: Se configura el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Luego, se agrega el servidor gRPC al nodo ROS para que se ejecute como parte del nodo. Se puede observar el codigo implementado en el archivo <code><a class="el" href="grpc__wrapper_8py.html">grpc_wrapper.py</a></code>: Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas. </li>
 </ol>
-<p>Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

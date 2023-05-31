@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['main_0',['main',['../classcom_1_1example_1_1App.html#a28228b12da000bb30a163d24a7c43c35',1,'com.example.App.main()'],['../enable__camera_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;enable_camera.cpp']]],
-  ['multiply_1',['multiply',['../multiply_8cpp.html#ad8d9ee68852e46ad9115ffae3bb0bc0b',1,'multiply(int *x, int *y):&#160;multiply.cpp'],['../multiply_8h.html#a2a96b4b0966b3fd77c8f5fc512b7a5f0',1,'multiply(int *a, int *b):&#160;multiply.cpp']]],
-  ['multiply_2ecpp_2',['multiply.cpp',['../multiply_8cpp.html',1,'']]],
-  ['multiply_2eh_3',['multiply.h',['../multiply_8h.html',1,'']]]
+  ['getdescriptor_0',['getDescriptor',['../classobject__position_1_1PositionServiceOuterClass.html#a40b6a508a504bde811709ae3b772d234',1,'object_position::PositionServiceOuterClass']]],
+  ['getsendpositionmethod_1',['getSendPositionMethod',['../classobject__position_1_1PositionServiceGrpc.html#a06add1186ac0e38d0a120e096a609e17',1,'object_position::PositionServiceGrpc']]],
+  ['getservicedescriptor_2',['getServiceDescriptor',['../classobject__position_1_1PositionServiceGrpc.html#aa666293e06f82e1ee773d3c4535f43ab',1,'object_position::PositionServiceGrpc']]],
+  ['gettimestamp_3',['getTimestamp',['../interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilder.html#ae7a73ad450cbc9f1d5e7d32ce725134f',1,'object_position::PositionServiceOuterClass::PositionOrBuilder']]],
+  ['getx_4',['getX',['../interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilder.html#a27d3d6f5cb465171ac6307bfad3fba63',1,'object_position::PositionServiceOuterClass::PositionOrBuilder']]],
+  ['gety_5',['getY',['../interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilder.html#a18ebf313a43b636b572fbf294ec9f52c',1,'object_position::PositionServiceOuterClass::PositionOrBuilder']]],
+  ['grpc_5fwrapper_6',['grpc_wrapper',['../namespacegrpc__wrapper.html',1,'']]],
+  ['grpc_5fwrapper_2epy_7',['grpc_wrapper.py',['../grpc__wrapper_8py.html',1,'']]]
 ];
