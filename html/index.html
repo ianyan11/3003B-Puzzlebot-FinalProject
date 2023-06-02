@@ -75,6 +75,7 @@ $(function() {
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introducción</h1>
 <p>Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, gRPC y REST-API para lograr esta funcionalidad.</p>
+<p>Se puede un video del proyecto funcionando en <a href="https://drive.google.com/file/d/1gfKTAAFY7mNjZSFFG5LzwTAjmISHOkOd/view?usp=sharing">https://drive.google.com/file/d/1gfKTAAFY7mNjZSFFG5LzwTAjmISHOkOd/view?usp=sharing</a></p>
 <h1><a class="anchor" id="steps_sec"></a>
 Pasos del Proyecto</h1>
 <ol type="1">
@@ -249,7 +250,7 @@ Uso del Código</h2>
 <div class="line">)</div>
 </div><!-- fragment --><h2><a class="anchor" id="python_hyperlink"></a>
 Como utilizar una libreria compartida (.so) en python</h2>
-<p>Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina <a class="el" href="agregar_so_python.html">Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes</a></p>
+<p>Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina agregar_so_python</p>
 <h1><a class="anchor" id="steps_sec4"></a>
 Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp</h1>
 <p>En este paso del proyecto, se publican las coordenadas resultantes en un ROS Topic junto con su timestamp. Esto permite que otros nodos de ROS puedan suscribirse a este topic y obtener las coordenadas actualizadas del objeto.</p>
@@ -301,7 +302,233 @@ Paso 5: Desarrollo de un Wrapper de gRPC para convertir el ROS Topic en un servi
 </pre></li>
 <li>Generar los archivos de código: Utilizando el compilador de gRPC y el archivo <code>.proto</code>, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio. Para generar los archivos se utilizo el siguiente comando: <pre class="fragment">$ python -m grpc_tools.protoc --python_out=. --grpc_python_out=. nombre_del_archivo.proto
 </pre> Y obtuvimos los archivos <code><a class="el" href="PositionService__pb2_8py.html">PositionService_pb2.py</a></code> y <code><a class="el" href="PositionService__pb2__grpc_8py.html">PositionService_pb2_grpc.py</a></code> que se pueden ver en la carpeta <code>pycam/src/</code>.</li>
-<li>Configurar y ejecutar el servidor gRPC: Se configura el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Luego, se agrega el servidor gRPC al nodo ROS para que se ejecute como parte del nodo. Se puede observar el codigo implementado en el archivo <code><a class="el" href="grpc__wrapper_8py.html">grpc_wrapper.py</a></code>: Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas. </li>
+<li>Configurar y ejecutar el wrapper gRPC: Se crea un wrapper cuya función es configurar el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Y ademas el wrapper va acruat om un nodo de ros el cual se va a subscribir al topico de posición para siempre tener el valor mas actualizado. De esta manera cuando un cliente quiere obtener la posición del objeto, el wrapper le va a devolver la posición que tiene guardada en el momento. Se puede observar el codigo implementado en el archivo <code><a class="el" href="grpc__wrapper_8py.html">grpc_wrapper.py</a></code>: <div class="fragment"><div class="line"><span class="comment">#!/usr/bin/env python3</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">@file grpc_wrapper.py</span></div>
+<div class="line"><span class="stringliteral">@author Ian De La Garza</span></div>
+<div class="line"><span class="stringliteral">@date 28 de mayo de 2023</span></div>
+<div class="line"><span class="stringliteral">@brief Este archivo contiene la clase PositionServiceServicer que </span></div>
+<div class="line"><span class="stringliteral">sirve como servidor para enviar datos de posición a través de gRPC.</span></div>
+<div class="line"><span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> time</div>
+<div class="line"><span class="keyword">from</span> concurrent <span class="keyword">import</span> futures</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> grpc</div>
+<div class="line"><span class="keyword">import</span> rospy</div>
+<div class="line"><span class="keyword">from</span> geometry_msgs.msg <span class="keyword">import</span> PointStamped</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> PositionService_pb2</div>
+<div class="line"><span class="keyword">import</span> PositionService_pb2_grpc</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>PositionServiceServicer(<a class="code hl_class" href="classPositionService__pb2__grpc_1_1PositionServiceServicer.html">PositionService_pb2_grpc.PositionServiceServicer</a>):</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">    </span><span class="preprocessor">@brief</span> Servidor gRPC que transmite datos de posición.</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">    </span><span class="keyword">def </span>__init__(self):</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Inicializa el nodo ROS, se suscribe a <span class="stringliteral">&quot;/camera/marker_center&quot;</span> </div>
+<div class="line">        y configura el servidor gRPC.</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span></div>
+<div class="line"><span class="stringliteral">        self.latest_message = PointStamped()</span></div>
+<div class="line"><span class="stringliteral">        rospy.init_node(&#39;position_listener&#39;</span>, anonymous=<span class="keyword">True</span>)</div>
+<div class="line"> </div>
+<div class="line">        </div>
+<div class="line">        rospy.Subscriber(<span class="stringliteral">&quot;/camera/marker_center&quot;</span>, PointStamped, self.callback)</div>
+<div class="line">        </div>
+<div class="line">        self.server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">def </span>callback(self, data):</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Callback para el suscriptor ROS, actualiza el mensaje más reciente.</div>
+<div class="line"> </div>
+<div class="line">        <span class="preprocessor">@param</span> data El nuevo mensaje de posición a guardar.</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">        self.latest_message = data</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">    </span><span class="keyword">def </span>SendPosition(self, empty, context):</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Envía los datos de posición actuales a través de gRPC.</div>
+<div class="line"> </div>
+<div class="line">        <span class="preprocessor">@param</span> empty El objeto vacío enviado por el cliente, no se utiliza.</div>
+<div class="line">        <span class="preprocessor">@param</span> context El contexto gRPC, no se utiliza.</div>
+<div class="line"> </div>
+<div class="line">        <span class="preprocessor">@return</span> Una respuesta de posición que contiene los datos de posición más recientes.</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="keywordflow">if</span> self.latest_message <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line">            response = PositionService_pb2.Position()</div>
+<div class="line">            response.x = self.latest_message.point.x</div>
+<div class="line">            response.y = self.latest_message.point.y</div>
+<div class="line">            response.timestamp = self.latest_message.header.stamp.nsecs</div>
+<div class="line">            <span class="keywordflow">return</span> response</div>
+<div class="line">        <span class="keywordflow">else</span>:</div>
+<div class="line">            <span class="keywordflow">raise</span> grpc.RpcError(<span class="stringliteral">&quot;No position data received yet&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">def </span>serve(self):</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Inicia el servidor gRPC.</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        <a class="code hl_function" href="namespacePositionService__pb2__grpc.html#ad7a61e046f4995370d5de21ed6992798">PositionService_pb2_grpc.add_PositionServiceServicer_to_server</a>(self, self.server)</span></div>
+<div class="line"><span class="stringliteral">        self.server.add_insecure_port(&#39;[::]:50051&#39;</span>)</div>
+<div class="line">        self.server.start()</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">def </span>serverStop(self):</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Detiene el servidor gRPC.</div>
+<div class="line">        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">        self.server.stop(0)</span></div>
+<div class="line"><span class="stringliteral">    </span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral"></span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&#39;__main__&#39;</span>:</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral">    </span><span class="preprocessor">@brief</span> El punto de entrada del programa. </div>
+<div class="line">    Se crea una instancia de PositionServiceServicer y se inicia el servidor gRPC.</div>
+<div class="line">    Cuando se interrumpe el programa (p.ej., se presiona Ctrl+C), se detiene el servidor gRPC.</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">    </span></div>
+<div class="line"><span class="stringliteral">    servicer = PositionServiceServicer()</span></div>
+<div class="line"><span class="stringliteral">    servicer.serve()</span></div>
+<div class="line"><span class="stringliteral">    </span><span class="keywordflow">try</span>:</div>
+<div class="line">        rospy.spin()</div>
+<div class="line">    <span class="keywordflow">except</span> KeyboardInterrupt:</div>
+<div class="line">        servicer.serverStop()</div>
+<div class="ttc" id="aclassPositionService__pb2__grpc_1_1PositionServiceServicer_html"><div class="ttname"><a href="classPositionService__pb2__grpc_1_1PositionServiceServicer.html">PositionService_pb2_grpc.PositionServiceServicer</a></div><div class="ttdef"><b>Definition</b> PositionService_pb2_grpc.py:25</div></div>
+<div class="ttc" id="anamespacePositionService__pb2__grpc_html_ad7a61e046f4995370d5de21ed6992798"><div class="ttname"><a href="namespacePositionService__pb2__grpc.html#ad7a61e046f4995370d5de21ed6992798">PositionService_pb2_grpc.add_PositionServiceServicer_to_server</a></div><div class="ttdeci">add_PositionServiceServicer_to_server(servicer, server)</div><div class="ttdef"><b>Definition</b> PositionService_pb2_grpc.py:37</div></div>
+</div><!-- fragment --></li>
+</ol>
+<p>Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas.</p>
+<h1><a class="anchor" id="steps_sec56"></a>
+Paso 6: Implementación de un programa en Java que consume el servicio RPC y muestra las coordenadas en la terminal</h1>
+<p>En este paso del proyecto, se implementa un programa en Java que consume el servicio RPC generado en el paso anterior y muestra las coordenadas del objeto en la terminal.</p>
+<p>A continuación, se describe el flujo de trabajo para implementar el programa en Java que consume el servicio RPC:</p>
+<ol type="1">
+<li>Configurar el entorno de desarrollo: Antes de comenzar, nos aseguramos de tener instalado el entorno de desarrollo de Java, como JDK (Java Development Kit) y un IDE (Integrated Development Environment) en nuestro caso usamos Visual Studio Code.</li>
+<li>Importar el código generado: Importamos los archivos de código generados por el compilador de gRPC en el proyecto Java. Estos archivos incluyen los stubs del cliente y los mensajes definidos en el servicio RPC. Utilizamos Maven para manejar las dependencias y compilar el archivo .proto en el proyecto de Java.</li>
+<li>Configurar la conexión al servicio RPC: En el programa Java, configuramos la conexión al servicio RPC proporcionando la dirección y el puerto del servidor gRPC. Se utilizo los stubs del cliente generados para establecer la conexión y crear un cliente gRPC.</li>
+<li>Llamar al método del servicio RPC: Utilizando el cliente gRPC, llamamos el método del servicio RPC que devuelve las coordenadas del objeto. Pasa los parámetros necesarios según la definición del servicio y captura la respuesta del servidor.</li>
+<li>Procesar la respuesta y mostrar las coordenadas: Procesamos la respuesta recibida del servidor gRPC y muestra las coordenadas del objeto en la terminal, en el formato deseado.</li>
+</ol>
+<p>El codigo se puede observar en el archivo <code><a class="el" href="App_8java.html" title="Este archivo contiene la clase App, que implementa un cliente gRPC para el servicio PositionService.">App.java</a></code>: </p><div class="fragment"><div class="line"><span class="keyword">package </span>com.example;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> com.google.protobuf.Empty;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> io.grpc.ManagedChannel;</div>
+<div class="line"><span class="keyword">import</span> io.grpc.ManagedChannelBuilder;</div>
+<div class="line"><span class="keyword">import</span> <a class="code hl_package" href="namespaceobject__position.html">object_position</a>.<a class="code hl_class" href="classobject__position_1_1PositionServiceGrpc.html">PositionServiceGrpc</a>;</div>
+<div class="line"><span class="keyword">import</span> <a class="code hl_package" href="namespaceobject__position.html">object_position</a>.<a class="code hl_class" href="classobject__position_1_1PositionServiceOuterClass.html">PositionServiceOuterClass</a>.<a class="code hl_class" href="classobject__position_1_1PositionServiceOuterClass_1_1Position.html">Position</a>;</div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">class </span>App </div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1example_1_1App.html#a28228b12da000bb30a163d24a7c43c35">main</a>(String[] args) <span class="keywordflow">throws</span> Exception {</div>
+<div class="line">        ManagedChannel channel = ManagedChannelBuilder.forTarget(<span class="stringliteral">&quot;192.168.55.1:50051&quot;</span>)</div>
+<div class="line">        .usePlaintext()</div>
+<div class="line">        .build();</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Reemplace &#39;MyServiceGrpc&#39; y &#39;MyRequest&#39; con los nombres de tu servicio y tu mensaje.</span></div>
+<div class="line">        PositionServiceGrpc.PositionServiceBlockingStub stub = PositionServiceGrpc.newBlockingStub(channel);</div>
+<div class="line">        <span class="keywordflow">try</span> {</div>
+<div class="line">            <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line">                Position response = stub.sendPosition(<span class="keyword">null</span>);</div>
+<div class="line">                System.out.println(<span class="stringliteral">&quot;Response x: &quot;</span> + response.getX() + <span class="stringliteral">&quot;Response y: &quot;</span> + response.getY() + <span class="stringliteral">&quot; Timestamp: &quot;</span> + response.getTimestamp());</div>
+<div class="line">                Thread.sleep(10);  <span class="comment">// Add delay of 1 second between each request</span></div>
+<div class="line">            }</div>
+<div class="line">        } <span class="keywordflow">catch</span> (InterruptedException e) {</div>
+<div class="line">            System.out.println(<span class="stringliteral">&quot;Shutting down due to user request.&quot;</span>);</div>
+<div class="line">        } <span class="keywordflow">finally</span> {</div>
+<div class="line">            channel.shutdown();</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="ttc" id="aclasscom_1_1example_1_1App_html_a28228b12da000bb30a163d24a7c43c35"><div class="ttname"><a href="classcom_1_1example_1_1App.html#a28228b12da000bb30a163d24a7c43c35">com.example.App.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdoc">Punto de entrada del programa. Se establece una conexión gRPC con el servidor y se realizan solicitud...</div><div class="ttdef"><b>Definition</b> App.java:24</div></div>
+<div class="ttc" id="aclassobject__position_1_1PositionServiceGrpc_html"><div class="ttname"><a href="classobject__position_1_1PositionServiceGrpc.html">object_position.PositionServiceGrpc</a></div><div class="ttdef"><b>Definition</b> PositionServiceGrpc.java:14</div></div>
+<div class="ttc" id="aclassobject__position_1_1PositionServiceOuterClass_1_1Position_html"><div class="ttname"><a href="classobject__position_1_1PositionServiceOuterClass_1_1Position.html">object_position.PositionServiceOuterClass.Position</a></div><div class="ttdef"><b>Definition</b> PositionServiceOuterClass.java:471</div></div>
+<div class="ttc" id="aclassobject__position_1_1PositionServiceOuterClass_html"><div class="ttname"><a href="classobject__position_1_1PositionServiceOuterClass.html">object_position.PositionServiceOuterClass</a></div><div class="ttdef"><b>Definition</b> PositionServiceOuterClass.java:6</div></div>
+<div class="ttc" id="anamespaceobject__position_html"><div class="ttname"><a href="namespaceobject__position.html">object_position</a></div><div class="ttdef"><b>Definition</b> PositionServiceGrpc.java:1</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="steps_sec7"></a>
+Paso 7: Uso de grpc-Gateway para exponer el servicio como un REST-API</h1>
+<p>En este paso del proyecto, se utiliza grpc-Gateway para exponer el servicio RPC generado anteriormente como un REST-API. Esto permite a otros sistemas o aplicaciones consumir el servicio RPC utilizando protocolos RESTful estándar.</p>
+<p>A continuación, se describe el flujo de trabajo para utilizar grpc-Gateway y exponer el servicio RPC como un REST-API:</p>
+<ol type="1">
+<li>Configurar grpc-Gateway: Antes de comenzar, instalamos el entorno de desarrollo, se utilizo el github oficial de grpc-Gateway para obtener instrucciones sobre cómo instalarlo.</li>
+<li>Definir el archivo de configuración: Generamos una copia del archivo proto y creamos otro arhivo configuración proto pero le agregamos las especificaciones de la configuración del gateway. En este archivo se definio cómo se mapean los endpoints REST a los métodos del servicio RPC. A continuación se puede observar el archivo <code>.proto</code> usado en este proyecto <code><a class="el" href="PositionServiceGo_8proto.html">go/positionGateway/PositionServiceGo.proto</a></code>: <pre class="fragment">syntax = "proto3";
+
+package object_position;
+option go_package = ".";
+import "google/api/annotations.proto";
+
+message Empty {
+}
+// The response message containing the greetings
+message Position {
+  double x = 1;
+  double y = 2;
+  int64 timestamp = 3; // timestamp as UNIX epoch time
+}
+
+// The service definition.
+service PositionService {
+  // Sends a greeting
+  rpc SendPosition (Empty) returns (Position){
+    option (google.api.http) = {
+      get: "/position"
+    };
+  }
+}
+</pre></li>
+<li>Generar el servidor proxy: Utilizando el compilador de grpc-Gateway, generamoos el código del servidor proxy que actuará como intermediario entre las solicitudes REST y el servicio RPC. El servidor proxy se encargará de traducir las solicitudes REST a llamadas RPC y viceversa.</li>
+<li>Implementar el servidor proxy: Implementamos el servidor proxy en el lenguaje de Go. El servidor proxy debe configurarse para escuchar en un puerto específico y gestionar las solicitudes REST entrantes.</li>
+</ol>
+<p>La implementación del servidor proxy se puede observar en el archivo <code>go/main.go</code>: </p><div class="fragment"><div class="line">package main</div>
+<div class="line"> </div>
+<div class="line">import (</div>
+<div class="line">    &quot;context&quot;</div>
+<div class="line">    &quot;log&quot;</div>
+<div class="line">    &quot;net/http&quot;</div>
+<div class="line"> </div>
+<div class="line">    &quot;google.golang.org/grpc&quot;</div>
+<div class="line">    &quot;github.com/grpc-ecosystem/grpc-gateway/v2/runtime&quot;</div>
+<div class="line"> </div>
+<div class="line">    pb &quot;positionGate/positionGateway&quot;</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">func main() {</div>
+<div class="line">    ctx := context.Background()</div>
+<div class="line">    mux := runtime.NewServeMux()</div>
+<div class="line"> </div>
+<div class="line">    // Create a gRPC connection to your existing Python gRPC server</div>
+<div class="line">    grpcServerEndpoint := &quot;localhost:50051&quot; // Replace with the actual address of your Python gRPC server</div>
+<div class="line">    opts := []grpc.DialOption{grpc.WithInsecure()}</div>
+<div class="line">    err := pb.RegisterPositionServiceHandlerFromEndpoint(ctx, mux, grpcServerEndpoint, opts)</div>
+<div class="line">    if err != nil {</div>
+<div class="line">        log.Fatalf(&quot;failed to register gateway: %v&quot;, err)</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    // Start the HTTP server</div>
+<div class="line">    httpAddr := &quot;:8080&quot; // Set the listening address for the gateway server</div>
+<div class="line">    log.Printf(&quot;gRPC gateway server listening on %s&quot;, httpAddr)</div>
+<div class="line">    if err := http.ListenAndServe(httpAddr, mux); err != nil {</div>
+<div class="line">        log.Fatalf(&quot;failed to serve: %v&quot;, err)</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><ol type="1">
+<li>Ejecutar el servidor proxy: Inicia el servidor proxy y asegúrate de que esté en funcionamiento y escuchando en el puerto especificado. Puedes probar el servidor proxy enviando solicitudes REST utilizando herramientas como cURL o Postman y verificar las respuestas recibidas.</li>
+</ol>
+<p>Si quiere ver el servidor proxy funcionando puedes ver el video de la demostración del proyecto que esta al inicio.</p>
+<h1><a class="anchor" id="steps_sec8"></a>
+Paso 8:  Adquisición de las coordenadas del objeto desde el nuevo REST-API utilizando Postman o Flask, y guardar los datos en un archivo JSON</h1>
+<p>A continuación, se describe el flujo de trabajo para adquirir las coordenadas del objeto utilizando Postman o Flask:</p>
+<ol type="1">
+<li>Configurar el entorno: Insalamos Postman. Postman es una herramienta de desarrollo de API que permite enviar solicitudes HTTP y recibir respuestas.</li>
+<li>Crear una solicitud HTTP: Utilizando Postman, creamos una solicitud HTTP a la ruta específica del REST-API que proporciona las coordenadas del objeto.</li>
+<li>Enviar la solicitud: Envíamos la solicitud HTTP al REST-API y esperamos la respuesta. Se puede ver la respuesta directamente en la interfaz de Postman.</li>
+<li>Guardar los datos en un archivo JSON: Una vez recibido la respuesta del REST-API, extramos los datos de coordenadas del objeto y guardarlos en un archivo JSON. </li>
 </ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

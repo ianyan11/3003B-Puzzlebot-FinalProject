@@ -5,8 +5,8 @@ var indexSectionsWithContent =
   2: "cgop",
   3: "abcdefghlmopqrstuvw",
   4: "_acgmnrs",
-  5: "_cdls",
-  6: "ap"
+  5: "_cdelps",
+  6: "p"
 };
 
 var indexSectionNames =

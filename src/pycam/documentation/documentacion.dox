@@ -4,6 +4,8 @@
 
 Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, gRPC y REST-API para lograr esta funcionalidad.
 
+Se puede un video del proyecto funcionando en https://drive.google.com/file/d/1gfKTAAFY7mNjZSFFG5LzwTAjmISHOkOd/view?usp=sharing
+
 \section steps_sec Pasos del Proyecto
 
 1. Captura de imagen y detección del objeto verde utilizando un ROS Node en Python.
@@ -165,9 +167,101 @@ Para generar los archivos se utilizo el siguiente comando:
 $ python -m grpc_tools.protoc --python_out=. --grpc_python_out=. nombre_del_archivo.proto
 \endverbatim
 Y obtuvimos los archivos `PositionService_pb2.py` y `PositionService_pb2_grpc.py` que se pueden ver en la carpeta `pycam/src/`.
-3. Configurar y ejecutar el servidor gRPC: Se configura el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. Luego, se agrega el servidor gRPC al nodo ROS para que se ejecute como parte del nodo.
+3. Configurar y ejecutar el wrapper gRPC: Se crea un wrapper cuya función es configurar el servidor gRPC para que escuche en un puerto específico y acepte conexiones entrantes. 
+Y ademas el wrapper va acruat om un nodo de ros el cual se va a subscribir al topico de posición para siempre tener el valor mas actualizado. De esta manera cuando un cliente quiere obtener la posición del objeto, el wrapper le va a devolver la posición que tiene guardada en el momento.
 Se puede observar el codigo implementado en el archivo `grpc_wrapper.py`:
+\include src/grpc_wrapper.py
+
 Una vez que se ha implementado el Wrapper de gRPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas.
+
+\section steps_sec56 Paso 6: Implementación de un programa en Java que consume el servicio RPC y muestra las coordenadas en la terminal
+
+En este paso del proyecto, se implementa un programa en Java que consume el servicio RPC generado en el paso anterior y muestra las coordenadas del objeto en la terminal.
+
+A continuación, se describe el flujo de trabajo para implementar el programa en Java que consume el servicio RPC:
+
+1. Configurar el entorno de desarrollo: Antes de comenzar, nos aseguramos de tener instalado el entorno de desarrollo de Java, como JDK (Java Development Kit) y un IDE (Integrated Development Environment) en nuestro caso usamos Visual Studio Code.
+
+2. Importar el código generado: Importamos los archivos de código generados por el compilador de gRPC en el proyecto Java. Estos archivos incluyen los stubs del cliente y los mensajes definidos en el servicio RPC. 
+Utilizamos Maven para manejar las dependencias y compilar el archivo .proto en el proyecto de Java.
+
+3. Configurar la conexión al servicio RPC: En el programa Java, configuramos la conexión al servicio RPC proporcionando la dirección y el puerto del servidor gRPC. Se utilizo los stubs del cliente generados para establecer la conexión y crear un cliente gRPC.
+
+4. Llamar al método del servicio RPC: Utilizando el cliente gRPC, llamamos el método del servicio RPC que devuelve las coordenadas del objeto. Pasa los parámetros necesarios según la definición del servicio y captura la respuesta del servidor.
+
+5. Procesar la respuesta y mostrar las coordenadas: Procesamos la respuesta recibida del servidor gRPC y muestra las coordenadas del objeto en la terminal, en el formato deseado.
+
+El codigo se puede observar en el archivo `App.java`:
+\include App.java
+
+
+\section steps_sec7 Paso 7: Uso de grpc-Gateway para exponer el servicio como un REST-API
+
+En este paso del proyecto, se utiliza grpc-Gateway para exponer el servicio RPC generado anteriormente como un REST-API. Esto permite a otros sistemas o aplicaciones consumir el servicio RPC utilizando protocolos RESTful estándar.
+
+A continuación, se describe el flujo de trabajo para utilizar grpc-Gateway y exponer el servicio RPC como un REST-API:
+
+1. Configurar grpc-Gateway: Antes de comenzar, instalamos el entorno de desarrollo, se utilizo el github oficial de grpc-Gateway para obtener instrucciones sobre cómo instalarlo.
+
+2. Definir el archivo de configuración: Generamos una copia del archivo proto y creamos otro arhivo configuración proto pero le agregamos las especificaciones de la configuración del gateway. En este archivo se definio cómo se mapean los endpoints REST a los métodos del servicio RPC. 
+A continuación se puede observar el archivo `.proto` usado en este proyecto `go/positionGateway/PositionServiceGo.proto`:
+\verbatim
+syntax = "proto3";
+
+package object_position;
+option go_package = ".";
+import "google/api/annotations.proto";
+
+message Empty {
+}
+// The response message containing the greetings
+message Position {
+  double x = 1;
+  double y = 2;
+  int64 timestamp = 3; // timestamp as UNIX epoch time
+}
+
+// The service definition.
+service PositionService {
+  // Sends a greeting
+  rpc SendPosition (Empty) returns (Position){
+    option (google.api.http) = {
+      get: "/position"
+    };
+  }
+}
+\endverbatim
+3. Generar el servidor proxy: Utilizando el compilador de grpc-Gateway, generamoos el código del servidor proxy que actuará como intermediario entre las solicitudes REST y el servicio RPC. El servidor proxy se encargará de traducir las solicitudes REST a llamadas RPC y viceversa.
+
+4. Implementar el servidor proxy: Implementamos el servidor proxy en el lenguaje de Go. El servidor proxy debe configurarse para escuchar en un puerto específico y gestionar las solicitudes REST entrantes.
+
+La implementación del servidor proxy se puede observar en el archivo `go/main.go`:
+\include go/main.go
+
+5. Ejecutar el servidor proxy: Inicia el servidor proxy y asegúrate de que esté en funcionamiento y escuchando en el puerto especificado. Puedes probar el servidor proxy enviando solicitudes REST utilizando herramientas como cURL o Postman y verificar las respuestas recibidas.
+
+Si quiere ver el servidor proxy funcionando puedes ver el video de la demostración del proyecto que esta al inicio.
+
+
+\section steps_sec8 Paso 8:  Adquisición de las coordenadas del objeto desde el nuevo REST-API utilizando Postman o Flask, y guardar los datos en un archivo JSON
+
+A continuación, se describe el flujo de trabajo para adquirir las coordenadas del objeto utilizando Postman o Flask:
+
+1. Configurar el entorno: Insalamos Postman. Postman es una herramienta de desarrollo de API que permite enviar solicitudes HTTP y recibir respuestas.
+
+2. Crear una solicitud HTTP: Utilizando Postman, creamos una solicitud HTTP a la ruta específica del REST-API que proporciona las coordenadas del objeto.
+
+3. Enviar la solicitud: Envíamos la solicitud HTTP al REST-API y esperamos la respuesta. Se puede ver la respuesta directamente en la interfaz de Postman.
+
+4. Guardar los datos en un archivo JSON: Una vez recibido la respuesta del REST-API, extramos los datos de coordenadas del objeto y guardarlos en un archivo JSON. 
+*/
+
+
+
+
+
+
+
 
 
 

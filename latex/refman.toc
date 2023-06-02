@@ -4,43 +4,196 @@
 \contentsline {section}{\numberline {1.2}Pasos del Proyecto}{1}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Lenguajes y Plataformas}{2}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Componentes Principales}{2}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Paso 1\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Captura de imagen y detección del objeto verde utilizando un ROS Node en Python}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.5}Paso 1\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Captura de imagen y detección del objeto verde utilizando un ROS Node en C++}{2}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Código Fuente}{2}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Descripción del Código}{3}{subsection.1.5.2}%
 \contentsline {subsection}{\numberline {1.5.3}Uso del Código}{4}{subsection.1.5.3}%
-\contentsline {chapter}{\numberline {2}Namespace Index}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Namespace List}{5}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Hierarchical Index}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Class Hierarchy}{7}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Class Index}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Class List}{9}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Namespace Documentation}{11}{chapter.5}%
-\contentsline {section}{\numberline {5.1}grpc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wrapper Namespace Reference}{11}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{11}{subsection.5.1.1}%
-\contentsline {section}{\numberline {5.2}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2 Namespace Reference}{11}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{12}{subsection.5.2.1}%
-\contentsline {section}{\numberline {5.3}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc Namespace Reference}{12}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{12}{subsection.5.3.1}%
-\contentsline {chapter}{\numberline {6}Class Documentation}{13}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{13}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{13}{subsection.6.1.1}%
-\contentsline {section}{\numberline {6.2}grpc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wrapper.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servicer Class Reference}{13}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{14}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Constructor \& Destructor Documentation}{14}{subsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.2.1}\_\_init\_\_()}{14}{subsubsection.6.2.2.1}%
-\contentsline {subsection}{\numberline {6.2.3}Member Function Documentation}{14}{subsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.3.1}callback()}{14}{subsubsection.6.2.3.1}%
-\contentsline {subsubsection}{\numberline {6.2.3.2}SendPosition()}{15}{subsubsection.6.2.3.2}%
-\contentsline {subsubsection}{\numberline {6.2.3.3}serve()}{15}{subsubsection.6.2.3.3}%
-\contentsline {subsubsection}{\numberline {6.2.3.4}serverStop()}{15}{subsubsection.6.2.3.4}%
-\contentsline {subsection}{\numberline {6.2.4}Member Data Documentation}{15}{subsection.6.2.4}%
-\contentsline {subsubsection}{\numberline {6.2.4.1}server}{15}{subsubsection.6.2.4.1}%
-\contentsline {section}{\numberline {6.3}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servicer Class Reference}{16}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{16}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Member Function Documentation}{16}{subsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.1}SendPosition()}{16}{subsubsection.6.3.2.1}%
-\contentsline {section}{\numberline {6.4}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stub Class Reference}{16}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{17}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Constructor \& Destructor Documentation}{17}{subsection.6.4.2}%
-\contentsline {subsubsection}{\numberline {6.4.2.1}\_\_init\_\_()}{17}{subsubsection.6.4.2.1}%
-\contentsline {chapter}{Index}{19}{section*.16}%
+\contentsline {section}{\numberline {1.6}Paso 2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Creación de una librería en C++ para multiplicar las coordenadas por 100}{4}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Código Fuente}{4}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Descripción del Código}{4}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.7}Paso 3\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Integración de la librería C++ en el ROS Node para realizar la operación de multiplicación.}{4}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Uso del Código}{4}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Como utilizar una libreria compartida (.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}so) en python}{5}{subsection.1.7.2}%
+\contentsline {section}{\numberline {1.8}Paso 4\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}{5}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Paso 5\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Desarrollo de un Wrapper de g\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RPC para convertir el ROS Topic en un servicio RPC}{6}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Paso 6\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Implementación de un programa en Java que consume el servicio RPC y muestra las coordenadas en la terminal}{8}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Paso 7\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Uso de grpc-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gateway para exponer el servicio como un REST-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}API}{9}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Paso 8\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Adquisición de las coordenadas del objeto desde el nuevo REST-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}API utilizando Postman o Flask, y guardar los datos en un archivo JSON}{10}{section.1.12}%
+\contentsline {chapter}{\numberline {2}Namespace Index}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Namespace List}{11}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Hierarchical Index}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class Hierarchy}{13}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Index}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Class List}{15}{section.4.1}%
+\contentsline {chapter}{\numberline {5}File Index}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}File List}{17}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Namespace Documentation}{21}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}example}{21}{section.6.1}%
+\contentsline {section}{\numberline {6.2}grpc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wrapper Namespace Reference}{21}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{21}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Variable Documentation}{21}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}servicer}{21}{subsubsection.6.2.2.1}%
+\contentsline {section}{\numberline {6.3}Package object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position}{22}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2 Namespace Reference}{22}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{22}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Variable Documentation}{22}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}\_options}{22}{subsubsection.6.4.2.1}%
+\contentsline {subsubsection}{\numberline {6.4.2.2}\_serialized\_end}{22}{subsubsection.6.4.2.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.3}\_serialized\_start}{22}{subsubsection.6.4.2.3}%
+\contentsline {subsubsection}{\numberline {6.4.2.4}\_sym\_db}{22}{subsubsection.6.4.2.4}%
+\contentsline {subsubsection}{\numberline {6.4.2.5}DESCRIPTOR}{23}{subsubsection.6.4.2.5}%
+\contentsline {section}{\numberline {6.5}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc Namespace Reference}{23}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{23}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Function Documentation}{23}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}add\_PositionServiceServicer\_to\_server()}{23}{subsubsection.6.5.2.1}%
+\contentsline {chapter}{\numberline {7}Class Documentation}{25}{chapter.7}%
+\contentsline {section}{\numberline {7.1}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}example.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App Class Reference}{25}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Member Function Documentation}{25}{subsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.1.1}main()}{25}{subsubsection.7.1.1.1}%
+\contentsline {section}{\numberline {7.2}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}example.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{26}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Detailed Description}{26}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Member Function Documentation}{26}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}shouldAnswerWithTrue()}{26}{subsubsection.7.2.2.1}%
+\contentsline {section}{\numberline {7.3}object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Outer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Class.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Empty\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Interface Reference}{26}{section.7.3}%
+\contentsline {section}{\numberline {7.4}object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Outer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Class.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Builder Interface Reference}{26}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Member Function Documentation}{27}{subsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.1.1}getTimestamp()}{27}{subsubsection.7.4.1.1}%
+\contentsline {subsubsection}{\numberline {7.4.1.2}getX()}{27}{subsubsection.7.4.1.2}%
+\contentsline {subsubsection}{\numberline {7.4.1.3}getY()}{27}{subsubsection.7.4.1.3}%
+\contentsline {section}{\numberline {7.5}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{28}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{28}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Member Function Documentation}{28}{subsection.7.5.2}%
+\contentsline {subsubsection}{\numberline {7.5.2.1}SendPosition()}{28}{subsubsection.7.5.2.1}%
+\contentsline {section}{\numberline {7.6}object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Grpc Class Reference}{28}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Detailed Description}{29}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Member Function Documentation}{29}{subsection.7.6.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.1}getSendPositionMethod()}{29}{subsubsection.7.6.2.1}%
+\contentsline {subsubsection}{\numberline {7.6.2.2}getServiceDescriptor()}{29}{subsubsection.7.6.2.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.3}newBlockingStub()}{29}{subsubsection.7.6.2.3}%
+\contentsline {subsubsection}{\numberline {7.6.2.4}newFutureStub()}{29}{subsubsection.7.6.2.4}%
+\contentsline {subsubsection}{\numberline {7.6.2.5}newStub()}{30}{subsubsection.7.6.2.5}%
+\contentsline {subsection}{\numberline {7.6.3}Member Data Documentation}{30}{subsection.7.6.3}%
+\contentsline {subsubsection}{\numberline {7.6.3.1}SERVICE\_NAME}{30}{subsubsection.7.6.3.1}%
+\contentsline {section}{\numberline {7.7}object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Outer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Class Class Reference}{30}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Member Function Documentation}{30}{subsection.7.7.1}%
+\contentsline {subsubsection}{\numberline {7.7.1.1}getDescriptor()}{30}{subsubsection.7.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.7.1.2}registerAllExtensions()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{30}{subsubsection.7.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.7.1.3}registerAllExtensions()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{31}{subsubsection.7.7.1.3}%
+\contentsline {section}{\numberline {7.8}grpc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wrapper.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servicer Class Reference}{31}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Detailed Description}{31}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}Constructor \& Destructor Documentation}{32}{subsection.7.8.2}%
+\contentsline {subsubsection}{\numberline {7.8.2.1}\_\_init\_\_()}{32}{subsubsection.7.8.2.1}%
+\contentsline {subsection}{\numberline {7.8.3}Member Function Documentation}{32}{subsection.7.8.3}%
+\contentsline {subsubsection}{\numberline {7.8.3.1}callback()}{32}{subsubsection.7.8.3.1}%
+\contentsline {subsubsection}{\numberline {7.8.3.2}SendPosition()}{32}{subsubsection.7.8.3.2}%
+\contentsline {subsubsection}{\numberline {7.8.3.3}serve()}{32}{subsubsection.7.8.3.3}%
+\contentsline {subsubsection}{\numberline {7.8.3.4}serverStop()}{33}{subsubsection.7.8.3.4}%
+\contentsline {subsection}{\numberline {7.8.4}Member Data Documentation}{33}{subsection.7.8.4}%
+\contentsline {subsubsection}{\numberline {7.8.4.1}callback}{33}{subsubsection.7.8.4.1}%
+\contentsline {subsubsection}{\numberline {7.8.4.2}latest\_message}{33}{subsubsection.7.8.4.2}%
+\contentsline {subsubsection}{\numberline {7.8.4.3}server}{33}{subsubsection.7.8.4.3}%
+\contentsline {section}{\numberline {7.9}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servicer Class Reference}{33}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{34}{subsection.7.9.1}%
+\contentsline {subsection}{\numberline {7.9.2}Member Function Documentation}{34}{subsection.7.9.2}%
+\contentsline {subsubsection}{\numberline {7.9.2.1}SendPosition()}{34}{subsubsection.7.9.2.1}%
+\contentsline {section}{\numberline {7.10}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stub Class Reference}{34}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{34}{subsection.7.10.1}%
+\contentsline {subsection}{\numberline {7.10.2}Constructor \& Destructor Documentation}{35}{subsection.7.10.2}%
+\contentsline {subsubsection}{\numberline {7.10.2.1}\_\_init\_\_()}{35}{subsubsection.7.10.2.1}%
+\contentsline {subsection}{\numberline {7.10.3}Member Data Documentation}{35}{subsection.7.10.3}%
+\contentsline {subsubsection}{\numberline {7.10.3.1}SendPosition}{35}{subsubsection.7.10.3.1}%
+\contentsline {chapter}{\numberline {8}File Documentation}{37}{chapter.8}%
+\contentsline {section}{\numberline {8.1}src/pycam/documentation/documentacion.dox File Reference}{37}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Function Documentation}{37}{subsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.1.1}compartida()}{37}{subsubsection.8.1.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Variable Documentation}{37}{subsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.2.1}ejemplo}{37}{subsubsection.8.1.2.1}%
+\contentsline {subsubsection}{\numberline {8.1.2.2}entero}{38}{subsubsection.8.1.2.2}%
+\contentsline {subsubsection}{\numberline {8.1.2.3}Paso}{38}{subsubsection.8.1.2.3}%
+\contentsline {section}{\numberline {8.2}src/pycam/go/position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gateway/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Go.proto File Reference}{38}{section.8.2}%
+\contentsline {section}{\numberline {8.3}src/pycam/include/pycam/multiply.cpp File Reference}{38}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Detailed Description}{38}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Function Documentation}{38}{subsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.1}multiply()}{38}{subsubsection.8.3.2.1}%
+\contentsline {section}{\numberline {8.4}src/pycam/include/pycam/multiply.h File Reference}{39}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Detailed Description}{39}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Function Documentation}{39}{subsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.2.1}multiply()}{39}{subsubsection.8.4.2.1}%
+\contentsline {section}{\numberline {8.5}multiply.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{39}{section.8.5}%
+\contentsline {section}{\numberline {8.6}src/pycam/proto/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.proto File Reference}{40}{section.8.6}%
+\contentsline {section}{\numberline {8.7}src/pycam/windows/demo/src/main/resources/proto/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.proto File Reference}{40}{section.8.7}%
+\contentsline {section}{\numberline {8.8}src/pycam/windows/demo/target/classes/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.proto File Reference}{40}{section.8.8}%
+\contentsline {section}{\numberline {8.9}src/pycam/windows/demo/target/classes/proto/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.proto File Reference}{40}{section.8.9}%
+\contentsline {section}{\numberline {8.10}src/pycam/src/enable\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}camera.cpp File Reference}{40}{section.8.10}%
+\contentsline {subsection}{\numberline {8.10.1}Function Documentation}{40}{subsection.8.10.1}%
+\contentsline {subsubsection}{\numberline {8.10.1.1}main()}{40}{subsubsection.8.10.1.1}%
+\contentsline {section}{\numberline {8.11}src/pycam/src/grpc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}wrapper.py File Reference}{41}{section.8.11}%
+\contentsline {section}{\numberline {8.12}src/pycam/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2.py File Reference}{41}{section.8.12}%
+\contentsline {section}{\numberline {8.13}src/pycam/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pb2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}grpc.py File Reference}{42}{section.8.13}%
+\contentsline {section}{\numberline {8.14}src/pycam/windows/demo/src/main/java/com/example/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App.java File Reference}{42}{section.8.14}%
+\contentsline {subsection}{\numberline {8.14.1}Detailed Description}{42}{subsection.8.14.1}%
+\contentsline {section}{\numberline {8.15}src/pycam/windows/demo/src/main/java/object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Grpc.java File Reference}{43}{section.8.15}%
+\contentsline {section}{\numberline {8.16}src/pycam/windows/demo/src/main/java/object\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}position/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Outer\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Class.java File Reference}{43}{section.8.16}%
+\contentsline {section}{\numberline {8.17}src/pycam/windows/demo/src/test/java/com/example/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{43}{section.8.17}%
+\contentsline {section}{\numberline {8.18}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/any.proto File Reference}{45}{section.8.18}%
+\contentsline {section}{\numberline {8.19}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/api.proto File Reference}{45}{section.8.19}%
+\contentsline {section}{\numberline {8.20}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/compiler/plugin.proto File Reference}{45}{section.8.20}%
+\contentsline {section}{\numberline {8.21}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/descriptor.proto File Reference}{45}{section.8.21}%
+\contentsline {section}{\numberline {8.22}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/duration.proto File Reference}{45}{section.8.22}%
+\contentsline {section}{\numberline {8.23}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/empty.proto File Reference}{45}{section.8.23}%
+\contentsline {section}{\numberline {8.24}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mask.proto File Reference}{45}{section.8.24}%
+\contentsline {section}{\numberline {8.25}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/source\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}context.proto File Reference}{45}{section.8.25}%
+\contentsline {section}{\numberline {8.26}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/struct.proto File Reference}{45}{section.8.26}%
+\contentsline {section}{\numberline {8.27}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/timestamp.proto File Reference}{45}{section.8.27}%
+\contentsline {section}{\numberline {8.28}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/type.proto File Reference}{45}{section.8.28}%
+\contentsline {section}{\numberline {8.29}src/pycam/windows/demo/target/protoc-\/dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/wrappers.proto File Reference}{45}{section.8.29}%
+\contentsline {section}{\numberline {8.30}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/annotations.proto File Reference}{45}{section.8.30}%
+\contentsline {section}{\numberline {8.31}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/auth.proto File Reference}{45}{section.8.31}%
+\contentsline {section}{\numberline {8.32}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/backend.proto File Reference}{45}{section.8.32}%
+\contentsline {section}{\numberline {8.33}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/billing.proto File Reference}{45}{section.8.33}%
+\contentsline {section}{\numberline {8.34}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/client.proto File Reference}{45}{section.8.34}%
+\contentsline {section}{\numberline {8.35}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}change.proto File Reference}{45}{section.8.35}%
+\contentsline {section}{\numberline {8.36}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/consumer.proto File Reference}{45}{section.8.36}%
+\contentsline {section}{\numberline {8.37}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/context.proto File Reference}{45}{section.8.37}%
+\contentsline {section}{\numberline {8.38}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/control.proto File Reference}{45}{section.8.38}%
+\contentsline {section}{\numberline {8.39}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/distribution.proto File Reference}{45}{section.8.39}%
+\contentsline {section}{\numberline {8.40}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/documentation.proto File Reference}{45}{section.8.40}%
+\contentsline {section}{\numberline {8.41}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/endpoint.proto File Reference}{45}{section.8.41}%
+\contentsline {section}{\numberline {8.42}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}behavior.proto File Reference}{45}{section.8.42}%
+\contentsline {section}{\numberline {8.43}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/http.proto File Reference}{45}{section.8.43}%
+\contentsline {section}{\numberline {8.44}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/httpbody.proto File Reference}{45}{section.8.44}%
+\contentsline {section}{\numberline {8.45}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/label.proto File Reference}{45}{section.8.45}%
+\contentsline {section}{\numberline {8.46}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/launch\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}stage.proto File Reference}{45}{section.8.46}%
+\contentsline {section}{\numberline {8.47}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/log.proto File Reference}{45}{section.8.47}%
+\contentsline {section}{\numberline {8.48}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/logging.proto File Reference}{45}{section.8.48}%
+\contentsline {section}{\numberline {8.49}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/metric.proto File Reference}{45}{section.8.49}%
+\contentsline {section}{\numberline {8.50}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/monitored\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}resource.proto File Reference}{45}{section.8.50}%
+\contentsline {section}{\numberline {8.51}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/monitoring.proto File Reference}{45}{section.8.51}%
+\contentsline {section}{\numberline {8.52}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/quota.proto File Reference}{45}{section.8.52}%
+\contentsline {section}{\numberline {8.53}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/resource.proto File Reference}{45}{section.8.53}%
+\contentsline {section}{\numberline {8.54}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/service.proto File Reference}{45}{section.8.54}%
+\contentsline {section}{\numberline {8.55}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/source\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}info.proto File Reference}{45}{section.8.55}%
+\contentsline {section}{\numberline {8.56}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/system\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}parameter.proto File Reference}{45}{section.8.56}%
+\contentsline {section}{\numberline {8.57}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/api/usage.proto File Reference}{45}{section.8.57}%
+\contentsline {section}{\numberline {8.58}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/cloud/audit/audit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}log.proto File Reference}{45}{section.8.58}%
+\contentsline {section}{\numberline {8.59}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/geo/type/viewport.proto File Reference}{45}{section.8.59}%
+\contentsline {section}{\numberline {8.60}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/logging/type/http\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}request.proto File Reference}{45}{section.8.60}%
+\contentsline {section}{\numberline {8.61}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/logging/type/log\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}severity.proto File Reference}{45}{section.8.61}%
+\contentsline {section}{\numberline {8.62}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/longrunning/operations.proto File Reference}{45}{section.8.62}%
+\contentsline {section}{\numberline {8.63}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/code.proto File Reference}{45}{section.8.63}%
+\contentsline {section}{\numberline {8.64}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/context/attribute\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}context.proto File Reference}{45}{section.8.64}%
+\contentsline {section}{\numberline {8.65}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/error\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}details.proto File Reference}{45}{section.8.65}%
+\contentsline {section}{\numberline {8.66}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/status.proto File Reference}{45}{section.8.66}%
+\contentsline {section}{\numberline {8.67}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/calendar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}period.proto File Reference}{45}{section.8.67}%
+\contentsline {section}{\numberline {8.68}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/color.proto File Reference}{45}{section.8.68}%
+\contentsline {section}{\numberline {8.69}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/date.proto File Reference}{45}{section.8.69}%
+\contentsline {section}{\numberline {8.70}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/datetime.proto File Reference}{45}{section.8.70}%
+\contentsline {section}{\numberline {8.71}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/dayofweek.proto File Reference}{45}{section.8.71}%
+\contentsline {section}{\numberline {8.72}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/expr.proto File Reference}{45}{section.8.72}%
+\contentsline {section}{\numberline {8.73}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/fraction.proto File Reference}{45}{section.8.73}%
+\contentsline {section}{\numberline {8.74}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/latlng.proto File Reference}{45}{section.8.74}%
+\contentsline {section}{\numberline {8.75}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/money.proto File Reference}{45}{section.8.75}%
+\contentsline {section}{\numberline {8.76}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/postal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}address.proto File Reference}{45}{section.8.76}%
+\contentsline {section}{\numberline {8.77}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/quaternion.proto File Reference}{45}{section.8.77}%
+\contentsline {section}{\numberline {8.78}src/pycam/windows/demo/target/protoc-\/dependencies/626bed7ab4ce352886b6de85447453e5/google/type/timeofday.proto File Reference}{45}{section.8.78}%
+\contentsline {chapter}{Index}{47}{section*.49}%

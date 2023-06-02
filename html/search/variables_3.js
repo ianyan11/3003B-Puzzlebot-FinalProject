@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['latest_5fmessage_0',['latest_message',['../classgrpc__wrapper_1_1PositionServiceServicer.html#a4a4d0652b6f7e3f0a75fb60241af5dad',1,'grpc_wrapper::PositionServiceServicer']]]
+  ['ejemplo_0',['ejemplo',['../documentacion_8dox.html#a2763d0d073c8a087baf55a022af95341',1,'documentacion.dox']]],
+  ['entero_1',['entero',['../documentacion_8dox.html#a99bbf883a4898dc3fbe43dd70d7c30c5',1,'documentacion.dox']]]
 ];

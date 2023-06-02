@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['agregar_20un_20archivo_20de_20biblioteca_20compartida_20_28_2eso_29_20a_20python_20utilizando_20ctypes_0',['Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes',['../agregar_so_python.html',1,'']]]
+  ['proyecto_20de_20captura_20y_20procesamiento_20de_20coordenadas_20de_20objeto_20utilizando_20ros_2c_20grpc_20y_20rest_2dapi_0',['Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-API',['../index.html',1,'']]]
 ];

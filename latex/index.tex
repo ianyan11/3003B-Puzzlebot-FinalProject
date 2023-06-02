@@ -1,7 +1,9 @@
 \chapter{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, g\+RPC y REST-\/\+API}
 \hypertarget{index}{}\label{index}\index{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API@{Proyecto de Captura y Procesamiento de Coordenadas de Objeto utilizando ROS, gRPC y REST-\/API}}
 \hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introducción}{Introducción}}\label{index_intro_sec}
-Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, g\+RPC y REST-\/\+API para lograr esta funcionalidad.\hypertarget{index_steps_sec}{}\doxysection{\texorpdfstring{Pasos del Proyecto}{Pasos del Proyecto}}\label{index_steps_sec}
+Este proyecto tiene como objetivo principal capturar una imagen de la webcam, detectar un objeto verde en la imagen y calcular sus coordenadas X e Y. Utiliza el Robot Operating System (ROS), Python, C++, g\+RPC y REST-\/\+API para lograr esta funcionalidad.
+
+Se puede un video del proyecto funcionando en \href{https://drive.google.com/file/d/1gfKTAAFY7mNjZSFFG5LzwTAjmISHOkOd/view?usp=sharing}{\texttt{ https\+://drive.\+google.\+com/file/d/1gf\+KTAAFY7m\+Nj\+ZSFFG5\+Lzw\+TAjm\+ISHOk\+Od/view?usp=sharing}}\hypertarget{index_steps_sec}{}\doxysection{\texorpdfstring{Pasos del Proyecto}{Pasos del Proyecto}}\label{index_steps_sec}
 
 \begin{DoxyEnumerate}
 \item Captura de imagen y detección del objeto verde utilizando un ROS Node en Python.
@@ -199,7 +201,7 @@ Puedes llamar a la función {\ttfamily multiply} pasando los valores que deseas 
 
 \end{DoxyCode}
 \hypertarget{index_python_hyperlink}{}\doxysubsection{\texorpdfstring{Como utilizar una libreria compartida (.\+so) en python}{Como utilizar una libreria compartida (.so) en python}}\label{index_python_hyperlink}
-Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina \doxysectlink{agregar_so_python}{Agregar un archivo de biblioteca compartida (.so) a Python utilizando ctypes}{0}\hypertarget{index_steps_sec4}{}\doxysection{\texorpdfstring{Paso 4\+: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}{Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}}\label{index_steps_sec4}
+Si le interesa saber como utilizar un .so en python puede ver la siguiente pagina agregar\+\_\+so\+\_\+python\hypertarget{index_steps_sec4}{}\doxysection{\texorpdfstring{Paso 4\+: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}{Paso 4: Publicación de las coordenadas resultantes en un ROS Topic junto con su timestamp}}\label{index_steps_sec4}
 En este paso del proyecto, se publican las coordenadas resultantes en un ROS Topic junto con su timestamp. Esto permite que otros nodos de ROS puedan suscribirse a este topic y obtener las coordenadas actualizadas del objeto.
 
 El proceso de publicación de las coordenadas se realiza utilizando el framework ROS y su sistema de publicación y suscripción de mensajes. A continuación, se describe el flujo de trabajo para realizar esta tarea\+:
@@ -262,5 +264,247 @@ El Wrapper de g\+RPC se implementa utilizando el lenguaje de programación Pytho
 \item Generar los archivos de código\+: Utilizando el compilador de g\+RPC y el archivo {\ttfamily .proto}, se deben generar los archivos de código necesarios para implementar el servicio RPC. Estos archivos incluyen los stubs del cliente y del servidor, así como los mensajes definidos en el servicio. Para generar los archivos se utilizo el siguiente comando\+: \begin{DoxyVerb}$ python -m grpc_tools.protoc --python_out=. --grpc_python_out=. nombre_del_archivo.proto
 \end{DoxyVerb}
  Y obtuvimos los archivos {\ttfamily \doxylink{PositionService__pb2_8py}{Position\+Service\+\_\+pb2.\+py}} y {\ttfamily \doxylink{PositionService__pb2__grpc_8py}{Position\+Service\+\_\+pb2\+\_\+grpc.\+py}} que se pueden ver en la carpeta {\ttfamily pycam/src/}.
-\item Configurar y ejecutar el servidor g\+RPC\+: Se configura el servidor g\+RPC para que escuche en un puerto específico y acepte conexiones entrantes. Luego, se agrega el servidor g\+RPC al nodo ROS para que se ejecute como parte del nodo. Se puede observar el codigo implementado en el archivo {\ttfamily \doxylink{grpc__wrapper_8py}{grpc\+\_\+wrapper.\+py}}\+: Una vez que se ha implementado el Wrapper de g\+RPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas. 
+\item Configurar y ejecutar el wrapper g\+RPC\+: Se crea un wrapper cuya función es configurar el servidor g\+RPC para que escuche en un puerto específico y acepte conexiones entrantes. Y ademas el wrapper va acruat om un nodo de ros el cual se va a subscribir al topico de posición para siempre tener el valor mas actualizado. De esta manera cuando un cliente quiere obtener la posición del objeto, el wrapper le va a devolver la posición que tiene guardada en el momento. Se puede observar el codigo implementado en el archivo {\ttfamily \doxylink{grpc__wrapper_8py}{grpc\+\_\+wrapper.\+py}}\+: 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{\#!/usr/bin/env\ python3}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{@file\ grpc\_wrapper.py}}
+\DoxyCodeLine{\textcolor{stringliteral}{@author\ Ian\ De\ La\ Garza}}
+\DoxyCodeLine{\textcolor{stringliteral}{@date\ 28\ de\ mayo\ de\ 2023}}
+\DoxyCodeLine{\textcolor{stringliteral}{@brief\ Este\ archivo\ contiene\ la\ clase\ PositionServiceServicer\ que\ }}
+\DoxyCodeLine{\textcolor{stringliteral}{sirve\ como\ servidor\ para\ enviar\ datos\ de\ posición\ a\ través\ de\ gRPC.}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{import}\ time}
+\DoxyCodeLine{\textcolor{keyword}{from}\ concurrent\ \textcolor{keyword}{import}\ futures}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{import}\ grpc}
+\DoxyCodeLine{\textcolor{keyword}{import}\ rospy}
+\DoxyCodeLine{\textcolor{keyword}{from}\ geometry\_msgs.msg\ \textcolor{keyword}{import}\ PointStamped}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{import}\ PositionService\_pb2}
+\DoxyCodeLine{\textcolor{keyword}{import}\ PositionService\_pb2\_grpc}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }PositionServiceServicer(\mbox{\hyperlink{classPositionService__pb2__grpc_1_1PositionServiceServicer}{PositionService\_pb2\_grpc.PositionServiceServicer}}):}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }\textcolor{preprocessor}{@brief}\ Servidor\ gRPC\ que\ transmite\ datos\ de\ posición.}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }\textcolor{keyword}{def\ }\_\_init\_\_(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{@brief}\ Inicializa\ el\ nodo\ ROS,\ se\ suscribe\ a\ \textcolor{stringliteral}{"{}/camera/marker\_center"{}}\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ y\ configura\ el\ servidor\ gRPC.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ self.latest\_message\ =\ PointStamped()}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ rospy.init\_node('position\_listener'},\ anonymous=\textcolor{keyword}{True})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rospy.Subscriber(\textcolor{stringliteral}{"{}/camera/marker\_center"{}},\ PointStamped,\ self.callback)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.server\ =\ grpc.server(futures.ThreadPoolExecutor(max\_workers=10))}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }callback(self,\ data):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{@brief}\ Callback\ para\ el\ suscriptor\ ROS,\ actualiza\ el\ mensaje\ más\ reciente.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{preprocessor}{@param}\ data\ El\ nuevo\ mensaje\ de\ posición\ a\ guardar.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ self.latest\_message\ =\ data}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }\textcolor{keyword}{def\ }SendPosition(self,\ empty,\ context):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{@brief}\ Envía\ los\ datos\ de\ posición\ actuales\ a\ través\ de\ gRPC.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{preprocessor}{@param}\ empty\ El\ objeto\ vacío\ enviado\ por\ el\ cliente,\ no\ se\ utiliza.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{preprocessor}{@param}\ context\ El\ contexto\ gRPC,\ no\ se\ utiliza.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{preprocessor}{@return}\ Una\ respuesta\ de\ posición\ que\ contiene\ los\ datos\ de\ posición\ más\ recientes.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{keywordflow}{if}\ self.latest\_message\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ response\ =\ PositionService\_pb2.Position()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ response.x\ =\ self.latest\_message.point.x}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ response.y\ =\ self.latest\_message.point.y}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ response.timestamp\ =\ self.latest\_message.header.stamp.nsecs}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ grpc.RpcError(\textcolor{stringliteral}{"{}No\ position\ data\ received\ yet"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }serve(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{@brief}\ Inicia\ el\ servidor\ gRPC.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacePositionService__pb2__grpc_ad7a61e046f4995370d5de21ed6992798}{PositionService\_pb2\_grpc.add\_PositionServiceServicer\_to\_server}}(self,\ self.server)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ self.server.add\_insecure\_port('[::]:50051'})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.server.start()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }serverStop(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{preprocessor}{@brief}\ Detiene\ el\ servidor\ gRPC.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ self.server.stop(0)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{}\textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{'\_\_main\_\_'}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }\textcolor{preprocessor}{@brief}\ El\ punto\ de\ entrada\ del\ programa.\ }
+\DoxyCodeLine{\ \ \ \ Se\ crea\ una\ instancia\ de\ PositionServiceServicer\ y\ se\ inicia\ el\ servidor\ gRPC.}
+\DoxyCodeLine{\ \ \ \ Cuando\ se\ interrumpe\ el\ programa\ (p.ej.,\ se\ presiona\ Ctrl+C),\ se\ detiene\ el\ servidor\ gRPC.}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ servicer\ =\ PositionServiceServicer()}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ servicer.serve()}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ }\textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rospy.spin()}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{except}\ KeyboardInterrupt:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ servicer.serverStop()}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyEnumerate}
+
+Una vez que se ha implementado el Wrapper de g\+RPC y configurado el servidor, otros programas o sistemas pueden consumir el servicio RPC para obtener las coordenadas del objeto. Esto permite la integración con diferentes plataformas y la comunicación eficiente de las coordenadas.\hypertarget{index_steps_sec56}{}\doxysection{\texorpdfstring{Paso 6\+: Implementación de un programa en Java que consume el servicio RPC y muestra las coordenadas en la terminal}{Paso 6: Implementación de un programa en Java que consume el servicio RPC y muestra las coordenadas en la terminal}}\label{index_steps_sec56}
+En este paso del proyecto, se implementa un programa en Java que consume el servicio RPC generado en el paso anterior y muestra las coordenadas del objeto en la terminal.
+
+A continuación, se describe el flujo de trabajo para implementar el programa en Java que consume el servicio RPC\+:
+
+
+\begin{DoxyEnumerate}
+\item Configurar el entorno de desarrollo\+: Antes de comenzar, nos aseguramos de tener instalado el entorno de desarrollo de Java, como JDK (Java Development Kit) y un IDE (Integrated Development Environment) en nuestro caso usamos Visual Studio Code.
+\item Importar el código generado\+: Importamos los archivos de código generados por el compilador de g\+RPC en el proyecto Java. Estos archivos incluyen los stubs del cliente y los mensajes definidos en el servicio RPC. Utilizamos Maven para manejar las dependencias y compilar el archivo .proto en el proyecto de Java.
+\item Configurar la conexión al servicio RPC\+: En el programa Java, configuramos la conexión al servicio RPC proporcionando la dirección y el puerto del servidor g\+RPC. Se utilizo los stubs del cliente generados para establecer la conexión y crear un cliente g\+RPC.
+\item Llamar al método del servicio RPC\+: Utilizando el cliente g\+RPC, llamamos el método del servicio RPC que devuelve las coordenadas del objeto. Pasa los parámetros necesarios según la definición del servicio y captura la respuesta del servidor.
+\item Procesar la respuesta y mostrar las coordenadas\+: Procesamos la respuesta recibida del servidor g\+RPC y muestra las coordenadas del objeto en la terminal, en el formato deseado.
+\end{DoxyEnumerate}
+
+El codigo se puede observar en el archivo {\ttfamily \doxylink{App_8java}{App.\+java}}\+: 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{keyword}{package\ }com.example;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{import}\ com.google.protobuf.Empty;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{import}\ io.grpc.ManagedChannel;}
+\DoxyCodeLine{\textcolor{keyword}{import}\ io.grpc.ManagedChannelBuilder;}
+\DoxyCodeLine{\textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobject__position}{object\_position}}.\mbox{\hyperlink{classobject__position_1_1PositionServiceGrpc}{PositionServiceGrpc}};}
+\DoxyCodeLine{\textcolor{keyword}{import}\ \mbox{\hyperlink{namespaceobject__position}{object\_position}}.\mbox{\hyperlink{classobject__position_1_1PositionServiceOuterClass}{PositionServiceOuterClass}}.\mbox{\hyperlink{classobject__position_1_1PositionServiceOuterClass_1_1Position}{Position}};}
+\DoxyCodeLine{\textcolor{keyword}{public}\ \textcolor{keyword}{class\ }App\ }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1example_1_1App_a28228b12da000bb30a163d24a7c43c35}{main}}(String[]\ args)\ \textcolor{keywordflow}{throws}\ Exception\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ManagedChannel\ channel\ =\ ManagedChannelBuilder.forTarget(\textcolor{stringliteral}{"{}192.168.55.1:50051"{}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .usePlaintext()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .build();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reemplace\ 'MyServiceGrpc'\ y\ 'MyRequest'\ con\ los\ nombres\ de\ tu\ servicio\ y\ tu\ mensaje.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ PositionServiceGrpc.PositionServiceBlockingStub\ stub\ =\ PositionServiceGrpc.newBlockingStub(channel);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Position\ response\ =\ stub.sendPosition(\textcolor{keyword}{null});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}Response\ x:\ "{}}\ +\ response.getX()\ +\ \textcolor{stringliteral}{"{}Response\ y:\ "{}}\ +\ response.getY()\ +\ \textcolor{stringliteral}{"{}\ Timestamp:\ "{}}\ +\ response.getTimestamp());}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Thread.sleep(10);\ \ \textcolor{comment}{//\ Add\ delay\ of\ 1\ second\ between\ each\ request}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (InterruptedException\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}Shutting\ down\ due\ to\ user\ request."{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{finally}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ channel.shutdown();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_steps_sec7}{}\doxysection{\texorpdfstring{Paso 7\+: Uso de grpc-\/\+Gateway para exponer el servicio como un REST-\/\+API}{Paso 7: Uso de grpc-Gateway para exponer el servicio como un REST-API}}\label{index_steps_sec7}
+En este paso del proyecto, se utiliza grpc-\/\+Gateway para exponer el servicio RPC generado anteriormente como un REST-\/\+API. Esto permite a otros sistemas o aplicaciones consumir el servicio RPC utilizando protocolos RESTful estándar.
+
+A continuación, se describe el flujo de trabajo para utilizar grpc-\/\+Gateway y exponer el servicio RPC como un REST-\/\+API\+:
+
+
+\begin{DoxyEnumerate}
+\item Configurar grpc-\/\+Gateway\+: Antes de comenzar, instalamos el entorno de desarrollo, se utilizo el github oficial de grpc-\/\+Gateway para obtener instrucciones sobre cómo instalarlo.
+\item Definir el archivo de configuración\+: Generamos una copia del archivo proto y creamos otro arhivo configuración proto pero le agregamos las especificaciones de la configuración del gateway. En este archivo se definio cómo se mapean los endpoints REST a los métodos del servicio RPC. A continuación se puede observar el archivo {\ttfamily .proto} usado en este proyecto {\ttfamily \doxylink{PositionServiceGo_8proto}{go/position\+Gateway/\+Position\+Service\+Go.\+proto}}\+: \begin{DoxyVerb}syntax = "proto3";
+
+package object_position;
+option go_package = ".";
+import "google/api/annotations.proto";
+
+message Empty {
+}
+// The response message containing the greetings
+message Position {
+  double x = 1;
+  double y = 2;
+  int64 timestamp = 3; // timestamp as UNIX epoch time
+}
+
+// The service definition.
+service PositionService {
+  // Sends a greeting
+  rpc SendPosition (Empty) returns (Position){
+    option (google.api.http) = {
+      get: "/position"
+    };
+  }
+}
+\end{DoxyVerb}
+
+\item Generar el servidor proxy\+: Utilizando el compilador de grpc-\/\+Gateway, generamoos el código del servidor proxy que actuará como intermediario entre las solicitudes REST y el servicio RPC. El servidor proxy se encargará de traducir las solicitudes REST a llamadas RPC y viceversa.
+\item Implementar el servidor proxy\+: Implementamos el servidor proxy en el lenguaje de Go. El servidor proxy debe configurarse para escuchar en un puerto específico y gestionar las solicitudes REST entrantes.
+\end{DoxyEnumerate}
+
+La implementación del servidor proxy se puede observar en el archivo {\ttfamily go/main.\+go}\+: 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{package\ main}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ (}
+\DoxyCodeLine{\ \ \ \ "{}context"{}}
+\DoxyCodeLine{\ \ \ \ "{}log"{}}
+\DoxyCodeLine{\ \ \ \ "{}net/http"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ "{}google.golang.org/grpc"{}}
+\DoxyCodeLine{\ \ \ \ "{}github.com/grpc-\/ecosystem/grpc-\/gateway/v2/runtime"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ pb\ "{}positionGate/positionGateway"{}}
+\DoxyCodeLine{)}
+\DoxyCodeLine{}
+\DoxyCodeLine{func\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ ctx\ :=\ context.Background()}
+\DoxyCodeLine{\ \ \ \ mux\ :=\ runtime.NewServeMux()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Create\ a\ gRPC\ connection\ to\ your\ existing\ Python\ gRPC\ server}
+\DoxyCodeLine{\ \ \ \ grpcServerEndpoint\ :=\ "{}localhost:50051"{}\ //\ Replace\ with\ the\ actual\ address\ of\ your\ Python\ gRPC\ server}
+\DoxyCodeLine{\ \ \ \ opts\ :=\ []grpc.DialOption\{grpc.WithInsecure()\}}
+\DoxyCodeLine{\ \ \ \ err\ :=\ pb.RegisterPositionServiceHandlerFromEndpoint(ctx,\ mux,\ grpcServerEndpoint,\ opts)}
+\DoxyCodeLine{\ \ \ \ if\ err\ !=\ nil\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ log.Fatalf("{}failed\ to\ register\ gateway:\ \%v"{},\ err)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Start\ the\ HTTP\ server}
+\DoxyCodeLine{\ \ \ \ httpAddr\ :=\ "{}:8080"{}\ //\ Set\ the\ listening\ address\ for\ the\ gateway\ server}
+\DoxyCodeLine{\ \ \ \ log.Printf("{}gRPC\ gateway\ server\ listening\ on\ \%s"{},\ httpAddr)}
+\DoxyCodeLine{\ \ \ \ if\ err\ :=\ http.ListenAndServe(httpAddr,\ mux);\ err\ !=\ nil\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ log.Fatalf("{}failed\ to\ serve:\ \%v"{},\ err)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyEnumerate}
+\item Ejecutar el servidor proxy\+: Inicia el servidor proxy y asegúrate de que esté en funcionamiento y escuchando en el puerto especificado. Puedes probar el servidor proxy enviando solicitudes REST utilizando herramientas como c\+URL o Postman y verificar las respuestas recibidas.
+\end{DoxyEnumerate}
+
+Si quiere ver el servidor proxy funcionando puedes ver el video de la demostración del proyecto que esta al inicio.\hypertarget{index_steps_sec8}{}\doxysection{\texorpdfstring{Paso 8\+:  Adquisición de las coordenadas del objeto desde el nuevo REST-\/\+API utilizando Postman o Flask, y guardar los datos en un archivo JSON}{Paso 8:  Adquisición de las coordenadas del objeto desde el nuevo REST-API utilizando Postman o Flask, y guardar los datos en un archivo JSON}}\label{index_steps_sec8}
+A continuación, se describe el flujo de trabajo para adquirir las coordenadas del objeto utilizando Postman o Flask\+:
+
+
+\begin{DoxyEnumerate}
+\item Configurar el entorno\+: Insalamos Postman. Postman es una herramienta de desarrollo de API que permite enviar solicitudes HTTP y recibir respuestas.
+\item Crear una solicitud HTTP\+: Utilizando Postman, creamos una solicitud HTTP a la ruta específica del REST-\/\+API que proporciona las coordenadas del objeto.
+\item Enviar la solicitud\+: Envíamos la solicitud HTTP al REST-\/\+API y esperamos la respuesta. Se puede ver la respuesta directamente en la interfaz de Postman.
+\item Guardar los datos en un archivo JSON\+: Una vez recibido la respuesta del REST-\/\+API, extramos los datos de coordenadas del objeto y guardarlos en un archivo JSON. 
 \end{DoxyEnumerate}

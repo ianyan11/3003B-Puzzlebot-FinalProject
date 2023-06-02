@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.5.28)  28 MAY 2023 23:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.5.28)  1 JUN 2023 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,154 +867,1897 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 3.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 6.
+
+(/home/ian/.miktex/texmfs/install/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Underfull \hbox (badness 3108) in paragraph at lines 6--6
+[]\T1/phv/m/n/10 Se puede un video del proyecto funcionando en [][] \T1/pcr/m/n
+/10 https[]://drive.[]google.[]com/file/d/1gf[]
+ []
+
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 2
-0.
+2.
 (/home/ian/.miktex/texmfs/install/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 20.
+(Font)              scaled to size 8.99994pt on input line 22.
  [1
 
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 41.
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 42
-.
+(Font)              scaled to size 10.79993pt on input line 43.
+ [2] [3]
+pdfTeX warning (ext4): destination with the same identifier (name{index_code_se
+c}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.132 \hypertarget{index_code_sec}{}
+                                    \doxysubsection{\texorpdfstring{CÃ³digo ...
 
-(/home/ian/.miktex/texmfs/install/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [2]) [3] [4]
+pdfTeX warning (ext4): destination with the same identifier (name{index_descrip
+tion_sec}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.159 \hypertarget{index_description_sec}{}
+                                           \doxysubsection{\texorpdfstring{D...
+[4] [5]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 245.
+ [6] [7] [8]
+Overfull \hbox (38.43654pt too wide) in paragraph at lines 428--428
+\T1/phv/m/n/10 observar el archivo \T1/pcr/m/n/10 .proto \T1/phv/m/n/10 usado e
+n este proyecto [][]
+ []
+
+[9]
+Underfull \hbox (badness 1107) in paragraph at lines 498--499
+\T1/phv/m/n/10 en el puerto especificado. Puedes probar el servidor proxy envia
+ndo solicitudes REST utilizando
+ []
+
+) [10]
 Chapter 2.
-(namespaces.tex) [5
+(namespaces.tex
 
-] [6
+LaTeX Warning: Reference `namespacecom_1_1example' on page 11 undefined on inpu
+t line 3.
+
+
+LaTeX Warning: Reference `namespaceobject__position' on page 11 undefined on in
+put line 5.
+
+) [11
+
+] [12
 
 ]
 Chapter 3.
-(hierarchy.tex) [7] [8
+(hierarchy.tex
+
+LaTeX Warning: Reference `classcom_1_1example_1_1App' on page 13 undefined on i
+nput line 3.
+
+
+LaTeX Warning: Reference `classcom_1_1example_1_1AppTest' on page 13 undefined 
+on input line 4.
+
+
+LaTeX Warning: Reference `interfaceobject__position_1_1PositionServiceOuterClas
+s_1_1EmptyOrBuilder' on page 13 undefined on input line 6.
+
+
+LaTeX Warning: Reference `interfaceobject__position_1_1PositionServiceOuterClas
+s_1_1PositionOrBuilder' on page 13 undefined on input line 7.
+
+
+LaTeX Warning: Reference `classobject__position_1_1PositionServiceGrpc' on page
+ 13 undefined on input line 17.
+
+
+LaTeX Warning: Reference `classobject__position_1_1PositionServiceOuterClass' o
+n page 13 undefined on input line 18.
+
+) [13] [14
 
 ]
 Chapter 4.
-(annotated.tex) [9] [10
+(annotated.tex
+
+LaTeX Warning: Reference `classcom_1_1example_1_1App' on page 15 undefined on i
+nput line 3.
+
+
+LaTeX Warning: Reference `classcom_1_1example_1_1AppTest' on page 15 undefined 
+on input line 4.
+
+
+LaTeX Warning: Reference `interfaceobject__position_1_1PositionServiceOuterClas
+s_1_1EmptyOrBuilder' on page 15 undefined on input line 5.
+
+
+LaTeX Warning: Reference `interfaceobject__position_1_1PositionServiceOuterClas
+s_1_1PositionOrBuilder' on page 15 undefined on input line 6.
+
+
+LaTeX Warning: Reference `classobject__position_1_1PositionServiceGrpc' on page
+ 15 undefined on input line 8.
+
+
+LaTeX Warning: Reference `classobject__position_1_1PositionServiceOuterClass' o
+n page 15 undefined on input line 9.
+
+) [15] [16
 
 ]
 Chapter 5.
-(namespacegrpc__wrapper.tex
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 13.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 13.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 13.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 13.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.29996pt on input line 13.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 17.
-) (namespacePositionService__pb2.tex
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
-[]\T1/phv/b/n/10 DESCRIPTOR \T1/phv/m/n/10 = []_[]descriptor[]_[]pool.[]Default
-().Add[]Serialized[]File(b\TS1/phv/m/n/10 '\T1/phv/m/n/10 \n%src/pycam/proto/Po
-sition[]Service.[]
+(files.tex
+
+LaTeX Warning: Reference `PositionServiceGo_8proto' on page 17 undefined on inp
+ut line 3.
+
+
+LaTeX Warning: Reference `multiply_8cpp' on page 17 undefined on input line 4.
+
+
+LaTeX Warning: Reference `multiply_8h' on page 17 undefined on input line 5.
+
+
+LaTeX Warning: Reference `proto_2PositionService_8proto' on page 17 undefined o
+n input line 6.
+
+
+LaTeX Warning: Reference `enable__camera_8cpp' on page 17 undefined on input li
+ne 7.
+
+
+LaTeX Warning: Reference `grpc__wrapper_8py' on page 17 undefined on input line
+ 8.
+
+
+LaTeX Warning: Reference `PositionService__pb2_8py' on page 17 undefined on inp
+ut line 9.
+
+
+LaTeX Warning: Reference `PositionService__pb2__grpc_8py' on page 17 undefined 
+on input line 10.
+
+
+LaTeX Warning: Reference `App_8java' on page 17 undefined on input line 11.
+
+
+LaTeX Warning: Reference `PositionServiceGrpc_8java' on page 17 undefined on in
+put line 12.
+
+
+LaTeX Warning: Reference `PositionServiceOuterClass_8java' on page 17 undefined
+ on input line 13.
+
+
+LaTeX Warning: Reference `windows_2demo_2src_2main_2resources_2proto_2PositionS
+ervice_8proto' on page 17 undefined on input line 14.
+
+
+LaTeX Warning: Reference `AppTest_8java' on page 17 undefined on input line 15.
+
+
+
+LaTeX Warning: Reference `windows_2demo_2target_2classes_2PositionService_8prot
+o' on page 17 undefined on input line 16.
+
+
+LaTeX Warning: Reference `windows_2demo_2target_2classes_2proto_2PositionServic
+e_8proto' on page 17 undefined on input line 17.
+
+
+LaTeX Warning: Reference `any_8proto' on page 17 undefined on input line 18.
+
+
+Overfull \hbox (57.57295pt too wide) in paragraph at lines 18--18
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
  []
 
 
-Overfull \hbox (40.68033pt too wide) in paragraph at lines 10--12
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+ []  
+ []
+
+
+LaTeX Warning: Reference `api_8proto' on page 17 undefined on input line 19.
+
+
+Overfull \hbox (56.10587pt too wide) in paragraph at lines 19--19
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+ []  
+ []
+
+
+LaTeX Warning: Reference `descriptor_8proto' on page 17 undefined on input line
+ 20.
+
+
+Overfull \hbox (83.29427pt too wide) in paragraph at lines 20--20
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+ []  
+ []
+
+
+LaTeX Warning: Reference `duration_8proto' on page 17 undefined on input line 2
+1.
+
+
+Overfull \hbox (76.52641pt too wide) in paragraph at lines 21--21
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+ []  
+ []
+
+
+LaTeX Warning: Reference `empty_8proto' on page 17 undefined on input line 22.
+
+
+Overfull \hbox (67.70667pt too wide) in paragraph at lines 22--22
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+ []  
+ []
+
+
+LaTeX Warning: Reference `field__mask_8proto' on page 17 undefined on input lin
+e 23.
+
+
+Overfull \hbox (87.11049pt too wide) in paragraph at lines 23--23
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+ []  
+ []
+
+
+LaTeX Warning: Reference `source__context_8proto' on page 17 undefined on input
+ line 24.
+
+
+Overfull \hbox (104.8581pt too wide) in paragraph at lines 24--24
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+ []  
+ []
+
+
+LaTeX Warning: Reference `struct_8proto' on page 17 undefined on input line 25.
+
+
+
+Overfull \hbox (66.23956pt too wide) in paragraph at lines 25--25
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+ []  
+ []
+
+
+LaTeX Warning: Reference `timestamp_8proto' on page 17 undefined on input line 
+26.
+
+
+Overfull \hbox (85.29234pt too wide) in paragraph at lines 26--26
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+ []  
+ []
+
+
+LaTeX Warning: Reference `type_8proto' on page 17 undefined on input line 27.
+
+
+Overfull \hbox (60.97485pt too wide) in paragraph at lines 27--27
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+ []  
+ []
+
+[17]
+
+LaTeX Warning: Reference `wrappers_8proto' on page 18 undefined on input line 2
+8.
+
+
+Overfull \hbox (80.88257pt too wide) in paragraph at lines 28--28
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+ []  
+ []
+
+
+LaTeX Warning: Reference `plugin_8proto' on page 18 undefined on input line 29.
+
+
+
+Overfull \hbox (104.61496pt too wide) in paragraph at lines 29--29
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/3ab7ef9f
+8540c2917da277871632308e/google/protobuf/compiler/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+ []  
+ []
+
+
+LaTeX Warning: Reference `annotations_8proto' on page 18 undefined on input lin
+e 30.
+
+
+Overfull \hbox (74.66374pt too wide) in paragraph at lines 30--30
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+ []  
+ []
+
+
+LaTeX Warning: Reference `auth_8proto' on page 18 undefined on input line 31.
+
+
+Overfull \hbox (45.78322pt too wide) in paragraph at lines 31--31
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+ []  
+ []
+
+
+LaTeX Warning: Reference `backend_8proto' on page 18 undefined on input line 32
+.
+
+
+Overfull \hbox (61.92915pt too wide) in paragraph at lines 32--32
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--32
+ []  
+ []
+
+
+LaTeX Warning: Reference `billing_8proto' on page 18 undefined on input line 33
+.
+
+
+Overfull \hbox (51.27315pt too wide) in paragraph at lines 33--33
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+ []  
+ []
+
+
+LaTeX Warning: Reference `client_8proto' on page 18 undefined on input line 34.
+
+
+
+Overfull \hbox (49.27519pt too wide) in paragraph at lines 34--34
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+ []  
+ []
+
+
+LaTeX Warning: Reference `config__change_8proto' on page 18 undefined on input 
+line 35.
+
+
+Overfull \hbox (86.66975pt too wide) in paragraph at lines 35--35
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+ []  
+ []
+
+
+LaTeX Warning: Reference `consumer_8proto' on page 18 undefined on input line 3
+6.
+
+
+Overfull \hbox (67.329pt too wide) in paragraph at lines 36--36
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+ []  
+ []
+
+
+LaTeX Warning: Reference `context_8proto' on page 18 undefined on input line 37
+.
+
+
+Overfull \hbox (57.0151pt too wide) in paragraph at lines 37--37
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+ []  
+ []
+
+
+LaTeX Warning: Reference `control_8proto' on page 18 undefined on input line 38
+.
+
+
+Overfull \hbox (55.27808pt too wide) in paragraph at lines 38--38
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+ []  
+ []
+
+
+LaTeX Warning: Reference `distribution_8proto' on page 18 undefined on input li
+ne 39.
+
+
+Overfull \hbox (71.73863pt too wide) in paragraph at lines 39--39
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
+ []  
+ []
+
+
+LaTeX Warning: Reference `documentation_8proto' on page 18 undefined on input l
+ine 40.
+
+
+Overfull \hbox (87.29947pt too wide) in paragraph at lines 40--40
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+ []  
+ []
+
+
+LaTeX Warning: Reference `endpoint_8proto' on page 18 undefined on input line 4
+1.
+
+
+Overfull \hbox (62.7929pt too wide) in paragraph at lines 41--41
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--41
+ []  
+ []
+
+
+LaTeX Warning: Reference `field__behavior_8proto' on page 18 undefined on input
+ line 42.
+
+
+Overfull \hbox (83.66367pt too wide) in paragraph at lines 42--42
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
+ []  
+ []
+
+
+LaTeX Warning: Reference `http_8proto' on page 18 undefined on input line 43.
+
+
+Overfull \hbox (42.96622pt too wide) in paragraph at lines 43--43
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+ []  
+ []
+
+
+LaTeX Warning: Reference `httpbody_8proto' on page 18 undefined on input line 4
+4.
+
+
+Overfull \hbox (61.89288pt too wide) in paragraph at lines 44--44
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+ []  
+ []
+
+
+LaTeX Warning: Reference `label_8proto' on page 18 undefined on input line 45.
+
+
+Overfull \hbox (47.27724pt too wide) in paragraph at lines 45--45
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+ []  
+ []
+
+
+LaTeX Warning: Reference `launch__stage_8proto' on page 18 undefined on input l
+ine 46.
+
+
+Overfull \hbox (81.66573pt too wide) in paragraph at lines 46--46
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+ []  
+ []
+
+
+LaTeX Warning: Reference `log_8proto' on page 18 undefined on input line 47.
+
+
+Overfull \hbox (40.27538pt too wide) in paragraph at lines 47--47
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
+ []  
+ []
+
+
+LaTeX Warning: Reference `logging_8proto' on page 18 undefined on input line 48
+.
+
+
+Overfull \hbox (57.28505pt too wide) in paragraph at lines 48--48
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
+ []  
+ []
+
+
+LaTeX Warning: Reference `metric_8proto' on page 18 undefined on input line 49.
+
+
+
+Overfull \hbox (52.90207pt too wide) in paragraph at lines 49--49
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
+ []  
+ []
+
+
+LaTeX Warning: Reference `monitored__resource_8proto' on page 18 undefined on i
+nput line 50.
+
+
+Overfull \hbox (108.16124pt too wide) in paragraph at lines 50--50
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--50
+ []  
+ []
+
+
+LaTeX Warning: Reference `monitoring_8proto' on page 18 undefined on input line
+ 51.
+
+
+Overfull \hbox (70.41568pt too wide) in paragraph at lines 51--51
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+ []  
+ []
+
+
+LaTeX Warning: Reference `quota_8proto' on page 18 undefined on input line 52.
+
+
+Overfull \hbox (50.78712pt too wide) in paragraph at lines 52--52
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+ []  
+ []
+
+
+LaTeX Warning: Reference `resource_8proto' on page 18 undefined on input line 5
+3.
+
+
+Overfull \hbox (63.14412pt too wide) in paragraph at lines 53--53
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+ []  
+ []
+
+
+LaTeX Warning: Reference `service_8proto' on page 18 undefined on input line 54
+.
+
+
+Overfull \hbox (56.90723pt too wide) in paragraph at lines 54--54
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
+ []  
+ []
+
+
+LaTeX Warning: Reference `source__info_8proto' on page 18 undefined on input li
+ne 55.
+
+
+Overfull \hbox (74.1599pt too wide) in paragraph at lines 55--55
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+ []  
+ []
+
+[18]
+
+LaTeX Warning: Reference `system__parameter_8proto' on page 19 undefined on inp
+ut line 56.
+
+
+Overfull \hbox (102.2483pt too wide) in paragraph at lines 56--56
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+ []  
+ []
+
+
+LaTeX Warning: Reference `usage_8proto' on page 19 undefined on input line 57.
+
+
+Overfull \hbox (52.65028pt too wide) in paragraph at lines 57--57
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/api/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+ []  
+ []
+
+
+LaTeX Warning: Reference `audit__log_8proto' on page 19 undefined on input line
+ 58.
+
+
+Overfull \hbox (96.30818pt too wide) in paragraph at lines 58--58
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/cloud/audit/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
+ []  
+ []
+
+
+LaTeX Warning: Reference `viewport_8proto' on page 19 undefined on input line 5
+9.
+
+
+Overfull \hbox (84.47346pt too wide) in paragraph at lines 59--59
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/geo/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--59
+ []  
+ []
+
+
+LaTeX Warning: Reference `http__request_8proto' on page 19 undefined on input l
+ine 60.
+
+
+Overfull \hbox (114.82077pt too wide) in paragraph at lines 60--60
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/logging/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
+ []  
+ []
+
+
+LaTeX Warning: Reference `log__severity_8proto' on page 19 undefined on input l
+ine 61.
+
+
+Overfull \hbox (111.54497pt too wide) in paragraph at lines 61--61
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/logging/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+ []  
+ []
+
+
+LaTeX Warning: Reference `operations_8proto' on page 19 undefined on input line
+ 62.
+
+
+Overfull \hbox (105.12811pt too wide) in paragraph at lines 62--62
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/longrunning/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--62
+ []  
+ []
+
+
+LaTeX Warning: Reference `code_8proto' on page 19 undefined on input line 63.
+
+
+Overfull \hbox (48.41135pt too wide) in paragraph at lines 63--63
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/rpc/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+ []  
+ []
+
+
+LaTeX Warning: Reference `error__details_8proto' on page 19 undefined on input 
+line 64.
+
+
+Overfull \hbox (78.91167pt too wide) in paragraph at lines 64--64
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/rpc/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+ []  
+ []
+
+
+LaTeX Warning: Reference `status_8proto' on page 19 undefined on input line 65.
+
+
+
+Overfull \hbox (52.9112pt too wide) in paragraph at lines 65--65
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/rpc/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+ []  
+ []
+
+
+LaTeX Warning: Reference `attribute__context_8proto' on page 19 undefined on in
+put line 66.
+
+
+Overfull \hbox (126.5025pt too wide) in paragraph at lines 66--66
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/rpc/context/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+ []  
+ []
+
+
+LaTeX Warning: Reference `calendar__period_8proto' on page 19 undefined on inpu
+t line 67.
+
+
+Overfull \hbox (97.93723pt too wide) in paragraph at lines 67--67
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
+ []  
+ []
+
+
+LaTeX Warning: Reference `color_8proto' on page 19 undefined on input line 68.
+
+
+Overfull \hbox (52.32617pt too wide) in paragraph at lines 68--68
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+ []  
+ []
+
+
+LaTeX Warning: Reference `date_8proto' on page 19 undefined on input line 69.
+
+
+Overfull \hbox (50.6522pt too wide) in paragraph at lines 69--69
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+ []  
+ []
+
+
+LaTeX Warning: Reference `datetime_8proto' on page 19 undefined on input line 7
+0.
+
+
+Overfull \hbox (67.65286pt too wide) in paragraph at lines 70--70
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+ []  
+ []
+
+
+LaTeX Warning: Reference `dayofweek_8proto' on page 19 undefined on input line 
+71.
+
+
+Overfull \hbox (75.7529pt too wide) in paragraph at lines 71--71
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+ []  
+ []
+
+
+LaTeX Warning: Reference `expr_8proto' on page 19 undefined on input line 72.
+
+
+Overfull \hbox (50.05827pt too wide) in paragraph at lines 72--72
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--72
+ []  
+ []
+
+
+LaTeX Warning: Reference `fraction_8proto' on page 19 undefined on input line 7
+3.
+
+
+Overfull \hbox (62.69388pt too wide) in paragraph at lines 73--73
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+ []  
+ []
+
+
+LaTeX Warning: Reference `latlng_8proto' on page 19 undefined on input line 74.
+
+
+
+Overfull \hbox (54.78304pt too wide) in paragraph at lines 74--74
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
+ []  
+ []
+
+
+LaTeX Warning: Reference `money_8proto' on page 19 undefined on input line 75.
+
+
+Overfull \hbox (59.20213pt too wide) in paragraph at lines 75--75
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+ []  
+ []
+
+
+LaTeX Warning: Reference `postal__address_8proto' on page 19 undefined on input
+ line 76.
+
+
+Overfull \hbox (94.16653pt too wide) in paragraph at lines 76--76
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+ []  
+ []
+
+
+LaTeX Warning: Reference `quaternion_8proto' on page 19 undefined on input line
+ 77.
+
+
+Overfull \hbox (76.02263pt too wide) in paragraph at lines 77--77
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--77
+ []  
+ []
+
+
+LaTeX Warning: Reference `timeofday_8proto' on page 19 undefined on input line 
+78.
+
+
+Overfull \hbox (71.1178pt too wide) in paragraph at lines 78--78
+ [][] \T1/phv/m/n/10 src/pycam/windows/demo/target/protoc-dependencies/626bed7a
+b4ce352886b6de85447453e5/google/type/[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+ []  
+ []
+
+) [19] [20
+
+]
+Chapter 6.
+(namespacecom_1_1example.tex) (namespacegrpc__wrapper.tex
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 6.29996pt on input line 12.
+)
+(namespaceobject__position.tex) (namespacePositionService__pb2.tex [21]
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+[][] \T1/phv/m/n/10 = []_[]descriptor[]_[]pool.[]Default().Add[]Serialized[]Fil
+e(b\TS1/phv/m/n/10 '\T1/phv/m/n/10 \n%src/pycam/proto/Position[]Service.[]
+ []
+
+
+Overfull \hbox (40.68033pt too wide) in paragraph at lines 8--10
 \T1/phv/m/n/10 proto\x12\x0fobject[]_[]position\^^D\x07\n\x05\x45mpty\^^D3\n\x0
 8[]Position\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02
  []
 
 
-Overfull \hbox (30.22246pt too wide) in paragraph at lines 10--12
+Overfull \hbox (30.22246pt too wide) in paragraph at lines 8--10
 \T1/phv/m/n/10 \x01(\x01\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x32[]T\n\x0f[]P
 osition[]Service\x12\x41\n\x0c[]Send[]Position\x12\x16.[]
  []
 
-) (namespacePositionService__pb2__grpc.tex [11]) [12]
-Chapter 6.
-(classPositionService__pb2__grpc_1_1PositionService.tex <./classPositionService
-__pb2__grpc_1_1PositionService.pdf>
-<classPositionService__pb2__grpc_1_1PositionService.pdf, id=357, 501.875pt x 15
-3.83472pt>
+LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 5
+1.
+(/home/ian/.miktex/texmfs/install/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+Overfull \hbox (67.33772pt too wide) in paragraph at lines 51--52
+\T1/pcr/m/n/8 Position[]Service[]_[]pb2.[]DESCRIPTOR = []_[]descriptor[]_[]pool
+.[]Default().Add[]Serialized[]File(b\TS1/pcr/m/n/8 '\T1/pcr/m/n/8 \n%src/pycam/
+proto/Position[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+\T1/pcr/m/n/8 Service.[]proto\x12\x0fobject[]_[]position\^^D\x07\n\x05\x45mpty\
+^^D3\n\x08[]Position\x12\t\n\x01x\x18\x01
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+\T1/pcr/m/n/8 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\x11\n\ttimestamp\x18
+\x03 \x01(\x03\x32[]T\n\x0f[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+\T1/pcr/m/n/8 Position[]Service\x12\x41\n\x0c[]Send[]Position\x12\x16.[]object[
+]_[]position.[]Empty\x1a\x19.[]object[]_[]
+ []
+
+) (namespacePositionService__pb2__grpc.tex [22]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 28.
+) [23] [24
+
+]
+Chapter 7.
+(classcom_1_1example_1_1App.tex
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 7.1 on input line 25.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 7.2 on input line 30.
+
+) (classcom_1_1example_1_1AppTest.tex [25])
+(interfaceobject__position_1_1PositionServiceOuterClass_1_1EmptyOrBuilder.tex <
+./interfaceobject__position_1_1PositionServiceOuterClass_1_1EmptyOrBuilder.pdf>
+<interfaceobject__position_1_1PositionServiceOuterClass_1_1EmptyOrBuilder.pdf, 
+id=693, 501.875pt x 114.4275pt>
+File: interfaceobject__position_1_1PositionServiceOuterClass_1_1EmptyOrBuilder.
+pdf Graphic file (type pdf)
+<use interfaceobject__position_1_1PositionServiceOuterClass_1_1EmptyOrBuilder.p
+df>
+Package pdftex.def Info: interfaceobject__position_1_1PositionServiceOuterClass
+_1_1EmptyOrBuilder.pdf  used on input line 6.
+(pdftex.def)             Requested size: 249.5814pt x 56.9055pt.
+)
+(interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilder.te
+x <./interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilde
+r.pdf>
+<interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilder.pd
+f, id=700, 501.875pt x 111.41624pt>
+File: interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuild
+er.pdf Graphic file (type pdf)
+<use interfaceobject__position_1_1PositionServiceOuterClass_1_1PositionOrBuilde
+r.pdf>
+Package pdftex.def Info: interfaceobject__position_1_1PositionServiceOuterClass
+_1_1PositionOrBuilder.pdf  used on input line 6.
+(pdftex.def)             Requested size: 256.3281pt x 56.9055pt.
+ [26]
+Underfull \hbox (badness 10000) detected at line 33
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 42
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 51
+[][][]
+ []
+
+) (classPositionService__pb2__grpc_1_1PositionService.tex <./classPositionServi
+ce__pb2__grpc_1_1PositionService.pdf>
+<classPositionService__pb2__grpc_1_1PositionService.pdf, id=724, 501.875pt x 15
+4.5775pt>
 File: classPositionService__pb2__grpc_1_1PositionService.pdf Graphic file (type
  pdf)
 <use classPositionService__pb2__grpc_1_1PositionService.pdf>
 Package pdftex.def Info: classPositionService__pb2__grpc_1_1PositionService.pdf
   used on input line 6.
-(pdftex.def)             Requested size: 185.65254pt x 56.9055pt.
+(pdftex.def)             Requested size: 184.75656pt x 56.9055pt.
+ [27]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 26.
 )
-(classgrpc__wrapper_1_1PositionServiceServicer.tex <./classgrpc__wrapper_1_1Pos
-itionServiceServicer.pdf>
-<classgrpc__wrapper_1_1PositionServiceServicer.pdf, id=363, 501.875pt x 194.275
-82pt>
+(classobject__position_1_1PositionServiceGrpc.tex
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
+[]\T1/phv/m/n/10 static io.[]grpc.[]Method[]Descriptor$\OML/cmm/m/it/10 <$ \T1/
+phv/m/n/10 object[]_[]position.[]Position[]Service[]Outer[]Class.[]Empty, objec
+t[]_[]position.[]
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/pcr/m/n/8 static io.[]grpc.[]Method[]Descriptor$\OML/cmm/m/it/8 <$ \T1/pcr/
+m/n/8 object[]_[]position.[]Position[]Service[]Outer[]Class.[]Empty, object[]_[
+]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/pcr/m/n/8 position.[]Position[]Service[]Outer[]Class.[]Position $\OML/cmm/m
+/it/8 >$ \T1/pcr/m/n/8 object[]_[]position.[]Position[]Service[]Grpc.[]get[]Sen
+d[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+\T1/pcr/m/n/8 static io.[]grpc.[]Service[]Descriptor object[]_[]position.[]Posi
+tion[]Service[]Grpc.[]get[]Service[]Descriptor ( )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+\T1/pcr/m/n/8 final String object[]_[]position.[]Position[]Service[]Grpc.[]SERV
+ICE[]_[][]NAME = ^^Dobject[]_[]position.[]Position[]
+ []
+
+[29]) (classobject__position_1_1PositionServiceOuterClass.tex
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+\T1/pcr/m/n/8 static com.[]google.[]protobuf.[]Descriptors.[]File[]Descriptor o
+bject[]_[]position.[]Position[]Service[]Outer[]
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 7.19995pt on input line 35.
+) (classgrpc__wrapper_1_1PositionServiceServicer.tex <./classgrpc__wrapper_1_1P
+ositionServiceServicer.pdf>
+<classgrpc__wrapper_1_1PositionServiceServicer.pdf, id=790, 501.875pt x 194.727
+5pt>
 File: classgrpc__wrapper_1_1PositionServiceServicer.pdf Graphic file (type pdf)
 
 <use classgrpc__wrapper_1_1PositionServiceServicer.pdf>
 Package pdftex.def Info: classgrpc__wrapper_1_1PositionServiceServicer.pdf  use
 d on input line 6.
-(pdftex.def)             Requested size: 220.50404pt x 85.35826pt.
- [13
-
-]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 49.
- [14])
+(pdftex.def)             Requested size: 219.99095pt x 85.35826pt.
+ [30] [31] [32])
 (classPositionService__pb2__grpc_1_1PositionServiceServicer.tex <./classPositio
 nService__pb2__grpc_1_1PositionServiceServicer.pdf>
-<classPositionService__pb2__grpc_1_1PositionServiceServicer.pdf, id=401, 501.87
-5pt x 194.27582pt>
+<classPositionService__pb2__grpc_1_1PositionServiceServicer.pdf, id=853, 501.87
+5pt x 194.7275pt>
 File: classPositionService__pb2__grpc_1_1PositionServiceServicer.pdf Graphic fi
 le (type pdf)
 <use classPositionService__pb2__grpc_1_1PositionServiceServicer.pdf>
 Package pdftex.def Info: classPositionService__pb2__grpc_1_1PositionServiceServ
 icer.pdf  used on input line 6.
-(pdftex.def)             Requested size: 220.50404pt x 85.35826pt.
- [15])
+(pdftex.def)             Requested size: 219.99095pt x 85.35826pt.
+ [33])
 (classPositionService__pb2__grpc_1_1PositionServiceStub.tex <./classPositionSer
 vice__pb2__grpc_1_1PositionServiceStub.pdf>
-<classPositionService__pb2__grpc_1_1PositionServiceStub.pdf, id=414, 501.875pt 
-x 140.38448pt>
+<classPositionService__pb2__grpc_1_1PositionServiceStub.pdf, id=874, 501.875pt 
+x 140.525pt>
 File: classPositionService__pb2__grpc_1_1PositionServiceStub.pdf Graphic file (
 type pdf)
 <use classPositionService__pb2__grpc_1_1PositionServiceStub.pdf>
 Package pdftex.def Info: classPositionService__pb2__grpc_1_1PositionServiceStub
 .pdf  used on input line 6.
-(pdftex.def)             Requested size: 203.43439pt x 56.9055pt.
- [16]) [17] [18
+(pdftex.def)             Requested size: 203.23528pt x 56.9055pt.
+ [34]) [35] [36
+
+]
+Chapter 8.
+(documentacion_8dox.tex
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/pcr/m/n/8 page agregar[]_[]so[]_[]python Agregar un archivo de biblioteca s
+e muestra una guía paso a paso para
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+\T1/pcr/m/n/8 agregar un archivo so a Python utilizando ctypes section paso1 pu
+edes utilizar el tipo ctypes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+\T1/pcr/m/n/8 page agregar[]_[]so[]_[]python Agregar un archivo de biblioteca s
+e muestra una guía paso a paso para
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+\T1/pcr/m/n/8 agregar un archivo so a Python utilizando ctypes section paso1 pu
+edes utilizar el tipo ctypes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+\T1/pcr/m/n/8 POINTER para crear un puntero a un tipo de datos específico Por s
+i tienes una función en la
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+\T1/pcr/m/n/8 page agregar[]_[]so[]_[]python Agregar un archivo de biblioteca s
+e muestra una guía paso a paso para
+ []
+
+[37]) (PositionServiceGo_8proto.tex) (multiply_8cpp.tex
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 8.1 on input line 39.
+
+
+Overfull \vbox (21.36737pt too high) has occurred while \output is active []
+
+
+[38]) (multiply_8h.tex
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 8.2 on input line 39.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 8.3 on input line 50.
+
+) (multiply_8h_source.tex [39]) (proto_2PositionService_8proto.tex)
+(windows_2demo_2src_2main_2resources_2proto_2PositionService_8proto.tex)
+(windows_2demo_2target_2classes_2PositionService_8proto.tex)
+(windows_2demo_2target_2classes_2proto_2PositionService_8proto.tex)
+(enable__camera_8cpp.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--11
+
+ []
+
+[40]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 8.4 on input line 37.
+
+
+Underfull \hbox (badness 10000) detected at line 38
+[][][]
+ []
+
+) (grpc__wrapper_8py.tex) (PositionService__pb2_8py.tex
+Overfull \hbox (29.7638pt too wide) in paragraph at lines 13--15
+[][] \T1/phv/m/n/10 = []_[]descriptor[]_[]pool.[]Default().Add[]Serialized[]Fil
+e(b\TS1/phv/m/n/10 '\T1/phv/m/n/10 \n%src/pycam/proto/Position[]
+ []
+
+
+Overfull \hbox (73.32275pt too wide) in paragraph at lines 13--15
+\T1/phv/m/n/10 Service.[]proto\x12\x0fobject[]_[]position\^^D\x07\n\x05\x45mpty
+\^^D3\n\x08[]Position\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02
+ []
+
+
+Overfull \hbox (30.22246pt too wide) in paragraph at lines 13--15
+\T1/phv/m/n/10 \x01(\x01\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x32[]T\n\x0f[]P
+osition[]Service\x12\x41\n\x0c[]Send[]Position\x12\x16.[]
+ []
+
+) (PositionService__pb2__grpc_8py.tex [41]) (App_8java.tex
+Underfull \hbox (badness 10000) detected at line 23
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 26
+[][][]
+ []
+
+) (PositionServiceGrpc_8java.tex) (PositionServiceOuterClass_8java.tex [42])
+(AppTest_8java.tex) (any_8proto.tex
+Overfull \hbox (62.71877pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+any.proto 
+ []
+
+) (api_8proto.tex
+Overfull \hbox (60.41173pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+api.proto 
+ []
+
+) (plugin_8proto.tex
+Overfull \hbox (138.18309pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+compiler/plugin.proto 
+ []
+
+) (descriptor_8proto.tex
+Overfull \hbox (104.28046pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+descriptor.proto 
+ []
+
+) (duration_8proto.tex
+Overfull \hbox (93.52402pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+duration.proto 
+ []
+
+) (empty_8proto.tex
+Overfull \hbox (78.81473pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+empty.proto 
+ []
+
+) (field__mask_8proto.tex
+Overfull \hbox (40.85583pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+field[] 
+ []
+
+) (source__context_8proto.tex
+Overfull \hbox (56.44647pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+source[] 
+ []
+
+) (struct_8proto.tex
+Overfull \hbox (77.68709pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+struct.proto 
+ []
+
+) (timestamp_8proto.tex
+Overfull \hbox (106.4966pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+timestamp.proto 
+ []
+
+) (type_8proto.tex
+Overfull \hbox (68.58934pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+type.proto 
+ []
+
+) (wrappers_8proto.tex
+Overfull \hbox (99.10965pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/3ab7ef9f8540c2917da277871632308e/google/protobuf/
+wrappers.proto 
+ []
+
+) (annotations_8proto.tex
+Overfull \hbox (89.0269pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/annot
+ations.proto 
+ []
+
+) (auth_8proto.tex
+Overfull \hbox (42.94194pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/auth.
+proto 
+ []
+
+) (backend_8proto.tex
+Overfull \hbox (67.90251pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/backe
+nd.proto 
+ []
+
+) (billing_8proto.tex
+Overfull \hbox (53.75009pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/billi
+ng.proto 
+ []
+
+) (client_8proto.tex
+Overfull \hbox (49.17538pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/clien
+t.proto 
+ []
+
+) (config__change_8proto.tex
+Overfull \hbox (26.98892pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/confi
+g[] 
+ []
+
+) (consumer_8proto.tex
+Overfull \hbox (76.74095pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/consu
+mer.proto 
+ []
+
+) (context_8proto.tex
+Overfull \hbox (61.47449pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/conte
+xt.proto 
+ []
+
+) (control_8proto.tex
+Overfull \hbox (59.24527pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/contr
+ol.proto 
+ []
+
+) (distribution_8proto.tex
+Overfull \hbox (86.60326pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/distr
+ibution.proto 
+ []
+
+) (documentation_8proto.tex
+Overfull \hbox (108.4666pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/docum
+entation.proto 
+ []
+
+) (endpoint_8proto.tex
+Overfull \hbox (70.30008pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/endpo
+int.proto 
+ []
+
+) (field__behavior_8proto.tex) (http_8proto.tex
+Overfull \hbox (40.05193pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/http.
+proto 
+ []
+
+) (httpbody_8proto.tex
+Overfull \hbox (69.78197pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/httpb
+ody.proto 
+ []
+
+) (label_8proto.tex
+Overfull \hbox (45.11893pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/label
+.proto 
+ []
+
+) (launch__stage_8proto.tex
+Overfull \hbox (29.7492pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/launc
+h[] 
+ []
+
+) (log_8proto.tex
+Overfull \hbox (35.02345pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/log.p
+roto 
+ []
+
+) (logging_8proto.tex
+Overfull \hbox (62.25201pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/loggi
+ng.proto 
+ []
+
+) (metric_8proto.tex
+Overfull \hbox (54.47583pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/metri
+c.proto 
+ []
+
+) (monitored__resource_8proto.tex
+Overfull \hbox (51.46974pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/monit
+ored[] 
+ []
+
+) (monitoring_8proto.tex
+Overfull \hbox (83.25969pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/monit
+oring.proto 
+ []
+
+) (quota_8proto.tex
+Overfull \hbox (50.86041pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/quota
+.proto 
+ []
+
+) (resource_8proto.tex
+Overfull \hbox (70.32571pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/resou
+rce.proto 
+ []
+
+) (service_8proto.tex
+Overfull \hbox (60.64453pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/servi
+ce.proto 
+ []
+
+) (source__info_8proto.tex
+Overfull \hbox (30.34534pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/sourc
+e[] 
+ []
+
+) (system__parameter_8proto.tex
+Overfull \hbox (32.76869pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/syste
+m[] 
+ []
+
+) (usage_8proto.tex
+Overfull \hbox (53.29668pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/api/usage
+.proto 
+ []
+
+) (audit__log_8proto.tex
+Overfull \hbox (69.2117pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/cloud/aud
+it/audit[] 
+ []
+
+) (viewport_8proto.tex
+Overfull \hbox (103.6324pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/geo/type/
+viewport.proto 
+ []
+
+) (http__request_8proto.tex
+Overfull \hbox (70.767pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/logging/t
+ype/http[] 
+ []
+
+) (log__severity_8proto.tex
+Overfull \hbox (65.73853pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/logging/t
+ype/log[] 
+ []
+
+) (operations_8proto.tex
+Overfull \hbox (138.7018pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/longrunni
+ng/operations.proto 
+ []
+
+) (code_8proto.tex
+Overfull \hbox (47.52963pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/code.
+proto 
+ []
+
+) (attribute__context_8proto.tex
+Overfull \hbox (90.62122pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/conte
+xt/attribute[] 
+ []
+
+) (error__details_8proto.tex
+Overfull \hbox (19.53674pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/error
+[] 
+ []
+
+) (status_8proto.tex
+Overfull \hbox (55.18884pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/rpc/statu
+s.proto 
+ []
+
+) (calendar__period_8proto.tex
+Overfull \hbox (49.3313pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/cale
+ndar[] 
+ []
+
+) (color_8proto.tex
+Overfull \hbox (54.41124pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/colo
+r.proto 
+ []
+
+) (date_8proto.tex
+Overfull \hbox (50.4067pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/date
+.proto 
+ []
+
+) (datetime_8proto.tex
+Overfull \hbox (77.05185pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/date
+time.proto 
+ []
+
+) (dayofweek_8proto.tex
+Overfull \hbox (89.1824pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/dayo
+fweek.proto 
+ []
+
+) (expr_8proto.tex
+Overfull \hbox (49.90138pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/expr
+.proto 
+ []
+
+) (fraction_8proto.tex
+Overfull \hbox (71.02563pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/frac
+tion.proto 
+ []
+
+) (latlng_8proto.tex
+Overfull \hbox (58.06587pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/latl
+ng.proto 
+ []
+
+) (money_8proto.tex
+Overfull \hbox (64.04068pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/mone
+y.proto 
+ []
+
+) (postal__address_8proto.tex
+Overfull \hbox (34.1944pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/post
+al[] 
+ []
+
+) (quaternion_8proto.tex
+Overfull \hbox (90.46545pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/quat
+ernion.proto 
+ []
+
+) (timeofday_8proto.tex
+Overfull \hbox (83.41534pt too wide) in paragraph at lines 1--1
+\T1/phv/b/n/14.4 dependencies/626bed7ab4ce352886b6de85447453e5/google/type/time
+ofday.proto 
+ []
+
+) [43] [44]
+Overfull \vbox (3501.87157pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 22.16548pt, for example:
+(fancyhdr)                \setlength{\headheight}{22.16548pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-10.16548pt}.
+
+[45] [46
 
 ] (refman.ind
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
-
-[19
-
+ [47
 
 
-]) (refman.aux)
-Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: DFF639C4D1196C8B93F40172070B7DAD;10069.
+
+])
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+(refman.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `refman.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `refman.out':
+(rerunfilecheck)             Before: DFF639C4D1196C8B93F40172070B7DAD;10069
+(rerunfilecheck)             After:  02B4897B4B8EFE8AEC4A894045A43124;79587.
  ) 
 Here is how much of TeX's memory you used:
- 18279 strings out of 478346
- 303349 string characters out of 5841009
- 1869851 words of memory out of 5000000
- 37936 multiletter control sequences out of 15000+600000
- 556971 words of font info for 80 fonts, out of 8000000 for 9000
+ 19478 strings out of 478346
+ 340371 string characters out of 5841009
+ 1887851 words of memory out of 5000000
+ 38566 multiletter control sequences out of 15000+600000
+ 569799 words of font info for 105 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 101i,16n,117p,1283b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/ian/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-home/ian/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home
-/ian/.miktex/texmfs/install/fonts/type1/urw/courier/ucrr8a.pfb></home/ian/.mikt
-ex/texmfs/install/fonts/type1/urw/courier/ucrro8a.pfb></home/ian/.miktex/texmfs
-/install/fonts/type1/urw/helvetic/uhvb8a.pfb></home/ian/.miktex/texmfs/install/
-fonts/type1/urw/helvetic/uhvr8a.pfb></home/ian/.miktex/texmfs/install/fonts/typ
-e1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (23 pages, 185039 bytes).
+ 101i,16n,117p,1378b,741s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{classobject__position_1_1PositionServiceOuterClass_
+1_1Position} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.3.2.1} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.3.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.3.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.2.4.1} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.2.4} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.2.3.4} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.2.3.3} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.2.3.2} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.6.2.3.1} has been referenced but does
+ not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.2.3} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.1.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.5.3.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.3} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.5.2.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.5.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.5.1.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+</home/ian/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></h
+ome/ian/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/
+ian/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/ian/
+.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/ian/.mi
+ktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/ian/.miktex
+/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/ian/.miktex/tex
+mfs/install/fonts/type1/urw/courier/ucrb8a.pfb></home/ian/.miktex/texmfs/instal
+l/fonts/type1/urw/courier/ucrr8a.pfb></home/ian/.miktex/texmfs/install/fonts/ty
+pe1/urw/courier/ucrro8a.pfb></home/ian/.miktex/texmfs/install/fonts/type1/urw/h
+elvetic/uhvb8a.pfb></home/ian/.miktex/texmfs/install/fonts/type1/urw/helvetic/u
+hvb8ac.pfb></home/ian/.miktex/texmfs/install/fonts/type1/urw/helvetic/uhvr8a.pf
+b></home/ian/.miktex/texmfs/install/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (51 pages, 389403 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 124 named destinations out of 1000 (max. 500000)
- 381 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1305 PDF objects out of 1440 (max. 8388607)
+ 497 named destinations out of 1000 (max. 500000)
+ 391 words of extra memory for PDF output out of 10000 (max. 10000000)
 
