@@ -1,0 +1,7 @@
+<launch>
+  	<arg name="robot_name"  value="puzzlebot" />
+
+	<param name="robot_description" command="$(find xacro)/xacro '$(find puzzlebot_gazebo)/urdf/puzzlebot_mod.xacro' prefix:=$(arg robot_name)/"  />
+	<node name = "rviz" pkg="rviz" type = "rviz" args=  "-d $(find puzzlebot_control)/rviz/laptop.rviz" required = "true"/>
+
+</launch>
