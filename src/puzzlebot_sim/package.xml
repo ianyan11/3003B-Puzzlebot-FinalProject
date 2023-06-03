@@ -23,6 +23,11 @@
   <depend>rospy</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>aruco</depend>
+  <depend>aruco_ros</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf</depend>
+
   <!--   Note that this is equivalent to the following: -->
   <!--   <exec_depend>roscpp</exec_depend> -->
   <!-- Use build_depend for packages you need at compile time: -->

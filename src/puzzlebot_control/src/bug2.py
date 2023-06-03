@@ -13,7 +13,7 @@ class Bug2Algorithm:
     OBSTACLE_DISTANCE_THRESHOLD = 0.3 # m
     RATE = 60 # Hz
     DESIRED_WALL_DISTANCE = 0.3 # m
-    MAX_TURN_SPEED = 0.25 # rad/s
+    MAX_TURN_SPEED = 0.1 # rad/s
     KP = 0.75 # Proportional gain for turning
     GOAL_REACHED_THRESHOLD = 0.4  # the goal is considered reached if we are closer than this value
 
@@ -72,6 +72,7 @@ class Bug2Algorithm:
     # Callback function to process goal setting service requests
     def set_goal_service_callback(self, req):
         self.goal = req.goal
+        self.calculate_goal_direction()
         # Start the bug2 algorithm towards the new goal
         completed = self.run()
         return SetGoalResponse(completed)

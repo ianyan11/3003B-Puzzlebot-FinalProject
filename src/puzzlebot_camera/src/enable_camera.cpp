@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
     // Adding CameraInfo publisher
     ros::Publisher cam_info_pub = nh.advertise<sensor_msgs::CameraInfo>("camera/camera_info", 1);
-    ros::Rate rate(120);
+    ros::Rate rate(30);
 
     sensor_msgs::CameraInfo cam_info_msg;
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
     // Define the video size
     cv::Size size = cv::Size(640, 480);
     // Initialize video capture
-    cv::VideoCapture cap("nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)120/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", cv::CAP_GSTREAMER);
+    cv::VideoCapture cap("nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert !  appsink", cv::CAP_GSTREAMER);
     
     if (!cap.isOpened()) {
         ROS_ERROR("Could not open camera");

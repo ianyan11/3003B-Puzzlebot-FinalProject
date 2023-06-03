@@ -17,13 +17,14 @@ class Odom():
         self.wr = 0
         self.rate =rate
         self.l = .09
-        self.r = .057
+        self.r = .05
         self.pose = np.empty((3,1))
         self.sigmak = np.empty((3,3))
         self.br = TransformBroadcaster()
+        self.name = rospy.get_param("~robot_name", "")
         rospy.Subscriber('/wl', Float32, self.update_wl)
         rospy.Subscriber('/wr', Float32, self.update_wr)
-        self.odom = rospy.Publisher('/odom', Odometry, queue_size=10)
+        self.odom = rospy.Publisher("/odom", Odometry, queue_size=10)
         self.odomConstants = self.fill_odometry()
 
     def update_wl(self, wl: Float32) -> None:
@@ -50,8 +51,8 @@ class Odom():
         #Fill the transform with the position and orientations
         t.header.stamp = rospy.Time.now()
         #Frame names
-        t.header.frame_id = "base_link"
-        t.child_frame_id = "chassis"
+        t.header.frame_id = f"{self.name}/base_link"
+        t.child_frame_id = f"{self.name}/chassis"
         t.transform.translation = Vector3(self.pose[0].item(), self.pose[1].item(), 0)
         t.transform.rotation = orientation
         #Send transform
@@ -111,7 +112,7 @@ class Odom():
         odometry = Odometry()
         odometry.header.stamp = rospy.Time.now() #time stamp
         odometry.header.frame_id = "world" #parent frame (joint)
-        odometry.child_frame_id = "rviz_puzzlebot/base_link" #child frame
+        odometry.child_frame_id = f"{self.name}/base_link" #child frame
         odometry.pose.pose.position.x = 0.0 #position of the robot “x” w.r.t “parent frame”
         odometry.pose.pose.position.y = 0.0 # position of the robot “x” w.r.t “parent frame”
         odometry.pose.pose.position.z = (self.r) #position of the robot “x” w.r.t “parent frame” 
@@ -135,7 +136,7 @@ class Odom():
 
 def main():
     rospy.init_node('localisation', anonymous=True)
-    hz = 100
+    hz = 10
     rate = rospy.Rate(hz)
     model = Odom(hz)
     while not rospy.is_shutdown():

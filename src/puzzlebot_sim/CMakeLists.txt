@@ -8,7 +8,23 @@ project(puzzlebot_sim)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(PythonLibs REQUIRED)
-find_package(catkin REQUIRED message_generation std_msgs geometry_msgs)
+find_package(OpenCV REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+   message_generation 
+   std_msgs 
+   geometry_msgs
+   cv_bridge
+   dynamic_reconfigure
+   image_transport
+   roscpp
+   rospy
+   tf
+   aruco
+   aruco_ros
+   sensor_msgs
+   visualization_msgs
+   aruco_msgs
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -71,6 +87,7 @@ generate_messages(
    DEPENDENCIES
    std_msgs  # Or other packages containing msgs
    geometry_msgs
+   aruco_msgs
 )
 
 ################################################
@@ -107,7 +124,7 @@ catkin_package(
 #  LIBRARIES puzzlebot_sim
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
-   CATKIN_DEPENDS std_msgs geometry_msgs
+   CATKIN_DEPENDS std_msgs geometry_msgs aruco_ros sensor_msgs tf 
 #   INCLUDE_DIRS include
 )
 
@@ -120,6 +137,8 @@ catkin_package(
 include_directories(
  include
  ${catkin_INCLUDE_DIRS}
+ ${OpenCV_INCLUDE_DIRS}
+ ${aruco_ros_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -131,7 +150,9 @@ include_directories(
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
+add_executable(markers_show src/markers_show.cpp)
+add_dependencies(markers_show ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(markers_show ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
@@ -206,3 +227,4 @@ catkin_install_python(PROGRAMS
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
